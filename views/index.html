@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Corporate Events Scheduler</title>
-    <meta name="description" content="Schedule meetings with our sales representatives at upcoming corporate events">
+    <title>Orchestrate - Enterprise Events</title>
+    <meta name="description" content="Streamline every meeting. Harmonize every event.">
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -12,89 +12,173 @@
     <!-- CSS -->
     <link rel="stylesheet" href="/css/styles.css">
     
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons (modern minimal icons) -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 </head>
 <body>
-    <!-- Header -->
-    <header>
+    <!-- Navigation -->
+    <nav class="top-nav">
         <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <h1><i class="fas fa-calendar-alt"></i> Corporate Events</h1>
-                    <p>Schedule meetings with our sales team</p>
+            <div class="nav-content">
+                <div class="nav-brand">
+                    <svg class="brand-icon" width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <path d="M8 12L16 16L24 12" stroke="currentColor" stroke-width="2"/>
+                        <path d="M16 16V24" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    <span class="brand-text">ORCHESTRATE</span>
                 </div>
-                <div class="nav-buttons">
-                    <a href="/admin" class="btn btn-secondary">
-                        <i class="fas fa-user-cog"></i> Admin Panel
+                <div class="nav-actions">
+                    <nav class="nav-links">
+                        <a href="#" id="navHome" class="nav-link active">Home</a>
+                        <a href="#" id="navEvents" class="nav-link">Events</a>
+                        <a href="#" id="navSalesReps" class="nav-link">Team</a>
+                    </nav>
+                    <a href="/admin" class="btn-outline">
+                        <i data-lucide="settings"></i>
+                        Admin Panel
                     </a>
                 </div>
             </div>
         </div>
-    </header>
+    </nav>
 
     <!-- Main Content -->
     <main>
         <div class="container">
             <!-- Hero Section -->
             <section class="hero">
-                <h2>Connect with Our Sales Team</h2>
-                <p>Browse upcoming events and schedule one-on-one meetings with our experienced sales representatives. Get personalized solutions for your business needs.</p>
-                
-                <div class="cta-buttons">
-                    <button id="viewEventsBtn" class="btn btn-primary btn-lg">
-                        <i class="fas fa-calendar-check"></i> View Events
-                    </button>
-                    <button id="requestMeetingBtn" class="btn btn-secondary btn-lg">
-                        <i class="fas fa-handshake"></i> Request Meeting
-                    </button>
-                    <button id="viewSalesRepsBtn" class="btn btn-secondary btn-lg">
-                        <i class="fas fa-users"></i> View Sales Reps
-                    </button>
+                <div class="hero-background">
+                    <svg class="hero-pattern" viewBox="0 0 400 200" fill="none">
+                        <path d="M0 100C100 50 150 150 250 100C350 50 400 100 400 100" stroke="url(#gradient)" stroke-width="2" opacity="0.3"/>
+                        <path d="M0 120C100 70 150 170 250 120C350 70 400 120 400 120" stroke="url(#gradient)" stroke-width="2" opacity="0.2"/>
+                        <path d="M0 80C100 30 150 130 250 80C350 30 400 80 400 80" stroke="url(#gradient)" stroke-width="2" opacity="0.1"/>
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#FF5A5F"/>
+                                <stop offset="100%" style="stop-color:#FF5A5F" stop-opacity="0.3"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <div class="hero-content">
+                    <h1 class="hero-title">ORCHESTRATE ENTERPRISE EVENTS</h1>
+                    <p class="hero-subtitle">Streamline every meeting. Harmonize every event.</p>
+                    
+                    <div class="hero-actions">
+                        <button id="requestMeetingBtn" class="btn-primary">
+                            <i data-lucide="calendar-plus"></i>
+                            Request Meeting
+                        </button>
+                        <button id="viewEventsBtn" class="btn-secondary">
+                            <i data-lucide="calendar-days"></i>
+                            View Events
+                        </button>
+                        <button id="viewSalesRepsBtn" class="btn-secondary">
+                            <i data-lucide="users"></i>
+                            View Sales Reps
+                        </button>
+                    </div>
                 </div>
             </section>
 
             <!-- Features Section -->
             <section class="features">
-                <h3>Why Schedule with Us?</h3>
+                <div class="section-header">
+                    <h2 class="section-title">WHY ORCHESTRATE WITH US?</h2>
+                </div>
                 <div class="features-grid">
                     <div class="feature-card">
-                        <i class="fas fa-clock"></i>
-                        <h4>Easy Scheduling</h4>
-                        <p>Quick and simple meeting request process with instant confirmation notifications.</p>
+                        <div class="feature-icon">
+                            <i data-lucide="zap"></i>
+                        </div>
+                        <h3 class="feature-title">Lightning Fast</h3>
+                        <p class="feature-description">Instant meeting requests with real-time confirmation and automated workflows.</p>
                     </div>
                     <div class="feature-card">
-                        <i class="fas fa-user-tie"></i>
-                        <h4>Expert Sales Team</h4>
-                        <p>Connect with our experienced sales professionals who understand your industry.</p>
+                        <div class="feature-icon">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <h3 class="feature-title">Expert Network</h3>
+                        <p class="feature-description">Connect with industry-leading professionals tailored to your specific needs.</p>
                     </div>
                     <div class="feature-card">
-                        <i class="fas fa-envelope"></i>
-                        <h4>Email Integration</h4>
-                        <p>Automatic calendar invites and email notifications through Microsoft Outlook.</p>
+                        <div class="feature-icon">
+                            <i data-lucide="mail"></i>
+                        </div>
+                        <h3 class="feature-title">Smart Integration</h3>
+                        <p class="feature-description">Seamless calendar sync and intelligent email orchestration across platforms.</p>
                     </div>
                 </div>
             </section>
 
             <!-- Events Section -->
-            <section id="eventsSection" class="section" style="display: none;">
-                <div class="section-header">
-                    <h3>Upcoming Events</h3>
-                    <div class="section-controls">
-                        <input type="search" id="eventSearchInput" placeholder="Search events..." class="form-control" style="width: 300px; display: inline-block;">
-                        <button id="refreshEventsBtn" class="btn btn-secondary btn-sm">
-                            <i class="fas fa-sync-alt"></i> Refresh
-                        </button>
+            <section id="eventsSection" class="events-page" style="display: none;">
+                <!-- Events Hero Section -->
+                <div class="events-hero">
+                    <div class="events-hero-content">
+                        <h1 class="events-hero-title">UPCOMING EVENTS</h1>
+                        <p class="events-hero-subtitle">Meet with our team at these conferences and request a one-on-one meeting.</p>
                     </div>
                 </div>
-                
-                <div id="eventsContainer" class="grid grid-2">
-                    <!-- Events will be loaded here -->
+
+                <!-- Events Filters -->
+                <div class="events-filters-section">
+                    <div class="container">
+                        <div class="events-filters">
+                            <div class="search-bar-container">
+                                <div class="search-input-wrapper">
+                                    <i data-lucide="search"></i>
+                                    <input type="search" id="eventSearchInput" placeholder="Search events..." class="events-search">
+                                </div>
+                            </div>
+                            <div class="filter-controls">
+                                <select id="dateFilter" class="filter-select">
+                                    <option value="">All Dates</option>
+                                    <option value="upcoming">Next 30 Days</option>
+                                    <option value="this-quarter">This Quarter</option>
+                                    <option value="next-quarter">Next Quarter</option>
+                                </select>
+                                <select id="regionFilter" class="filter-select">
+                                    <option value="">All Regions</option>
+                                    <option value="north-america">North America</option>
+                                    <option value="europe">Europe</option>
+                                    <option value="asia-pacific">Asia Pacific</option>
+                                    <option value="global">Global/Virtual</option>
+                                </select>
+                                <select id="industryFilter" class="filter-select">
+                                    <option value="">All Industries</option>
+                                    <option value="technology">Technology</option>
+                                    <option value="healthcare">Healthcare</option>
+                                    <option value="finance">Finance</option>
+                                    <option value="retail">Retail</option>
+                                </select>
+                                <button id="refreshEventsBtn" class="refresh-btn">
+                                    <i data-lucide="refresh-cw"></i>
+                                    Refresh
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <div id="eventsLoading" class="loading-spinner" style="display: none;">
-                    <div class="spinner"></div>
-                    <span>Loading events...</span>
+
+                <!-- Events Grid -->
+                <div class="events-content">
+                    <div class="container">
+                        <div id="eventsContainer" class="events-grid">
+                            <!-- Events will be loaded here -->
+                        </div>
+                        
+                        <div id="eventsLoading" class="events-loading" style="display: none;">
+                            <div class="spinner"></div>
+                            <span>Loading events...</span>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -229,11 +313,23 @@
         </div>
     </main>
 
+    <!-- Footer Divider -->
+    <div class="footer-divider"></div>
+    
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Corporate Events Scheduler. All rights reserved.</p>
-            <p>Powered by Microsoft Outlook Integration</p>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <svg class="brand-icon" width="24" height="24" viewBox="0 0 32 32" fill="none">
+                        <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <path d="M8 12L16 16L24 12" stroke="currentColor" stroke-width="2"/>
+                        <path d="M16 16V24" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                    <span class="brand-text">ORCHESTRATE</span>
+                </div>
+                <p class="footer-text">&copy; 2024 Orchestrate. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
@@ -300,5 +396,18 @@
     <!-- JavaScript -->
     <script src="/js/api.js"></script>
     <script src="/js/main.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Add subtle animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.feature-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+                card.classList.add('fade-in-up');
+            });
+        });
+    </script>
 </body>
 </html>

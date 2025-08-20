@@ -137,30 +137,38 @@ const insertSampleData = async () => {
             stmt.finalize();
         });
         
-        // Insert sample events
+        // Insert real events
         const events = [
             {
-                name: 'Tech Innovation Summit 2024',
-                description: 'Annual technology and innovation conference featuring the latest in AI, blockchain, and IoT.',
-                start_date: '2024-09-15',
-                end_date: '2024-09-17',
-                location: 'San Francisco Convention Center',
+                name: 'GBTA Convention 2024',
+                description: 'The Global Business Travel Association\'s premier annual convention bringing together travel management professionals, suppliers, and industry leaders to explore trends, innovations, and best practices in corporate travel.',
+                start_date: '2024-07-28',
+                end_date: '2024-08-01',
+                location: 'San Diego Convention Center, San Diego, CA',
                 status: 'active'
             },
             {
-                name: 'Digital Marketing Expo',
-                description: 'Premier event for digital marketing professionals and business leaders.',
-                start_date: '2024-10-20',
-                end_date: '2024-10-22',
-                location: 'New York Jacob K. Javits Convention Center',
+                name: 'Commercial Payments International Global Summit',
+                description: 'Leading international conference focused on commercial payments innovation, digital transformation, and emerging payment technologies. Bringing together payment processors, financial institutions, and technology providers.',
+                start_date: '2024-09-18',
+                end_date: '2024-09-19',
+                location: 'The Brewery, London, UK',
                 status: 'active'
             },
             {
-                name: 'Global Finance Conference',
-                description: 'International conference on finance, investment, and economic trends.',
-                start_date: '2024-11-10',
-                end_date: '2024-11-12',
-                location: 'Chicago McCormick Place',
+                name: 'NACHA Payments Conference',
+                description: 'The Electronic Payments Association\'s flagship event covering ACH payments, faster payments, digital wallets, and payment security. Essential for payment professionals and financial institutions.',
+                start_date: '2024-05-06',
+                end_date: '2024-05-08',
+                location: 'Gaylord Opryland Resort, Nashville, TN',
+                status: 'active'
+            },
+            {
+                name: 'Sibos 2024',
+                description: 'Swift\'s premier annual financial services event bringing together banks, financial institutions, corporates, and technology providers to discuss the future of financial messaging, payments, and market infrastructure.',
+                start_date: '2024-10-21',
+                end_date: '2024-10-24',
+                location: 'National Exhibition Centre (NEC), Birmingham, UK',
                 status: 'active'
             }
         ];
@@ -190,38 +198,38 @@ const insertSampleData = async () => {
         }
         console.log('✅ Sample events created');
         
-        // Insert sample sales reps
+        // Insert sales representatives
         const salesReps = [
             {
                 name: 'Sarah Johnson',
-                email: 'sarah.johnson@company.com',
+                email: 'sarah.johnson@orchestrate.com',
                 phone: '+1-555-0101',
-                department: 'Enterprise Solutions',
-                bio: 'Senior sales executive with 8+ years experience in enterprise software solutions.',
+                department: 'Travel & Expense Solutions',
+                bio: 'Senior sales executive specializing in corporate travel management platforms and expense automation solutions for enterprise clients.',
                 availability_status: 'available'
             },
             {
                 name: 'Michael Chen',
-                email: 'michael.chen@company.com',
+                email: 'michael.chen@orchestrate.com',
                 phone: '+1-555-0102',
-                department: 'Technology Sales',
-                bio: 'Technology sales specialist focusing on AI and machine learning solutions.',
+                department: 'Payment Solutions',
+                bio: 'Payments technology specialist with expertise in digital payment processing, ACH systems, and financial messaging infrastructure.',
                 availability_status: 'available'
             },
             {
                 name: 'Emily Rodriguez',
-                email: 'emily.rodriguez@company.com',
+                email: 'emily.rodriguez@orchestrate.com',
                 phone: '+1-555-0103',
-                department: 'Digital Marketing',
-                bio: 'Digital marketing solutions expert with proven track record in lead generation.',
+                department: 'Financial Technology',
+                bio: 'Fintech solutions expert focusing on banking infrastructure, regulatory compliance, and cross-border payment systems.',
                 availability_status: 'available'
             },
             {
                 name: 'David Thompson',
-                email: 'david.thompson@company.com',
+                email: 'david.thompson@orchestrate.com',
                 phone: '+1-555-0104',
-                department: 'Financial Services',
-                bio: 'Financial technology sales director specializing in fintech and blockchain solutions.',
+                department: 'Enterprise Integration',
+                bio: 'Enterprise integration director specializing in API solutions, system connectivity, and digital transformation for financial institutions.',
                 availability_status: 'available'
             }
         ];
@@ -253,12 +261,21 @@ const insertSampleData = async () => {
         
         // Associate sales reps with events
         const associations = [
-            { event_id: 1, sales_rep_id: 1 },
-            { event_id: 1, sales_rep_id: 2 },
-            { event_id: 2, sales_rep_id: 1 },
-            { event_id: 2, sales_rep_id: 3 },
-            { event_id: 3, sales_rep_id: 1 },
-            { event_id: 3, sales_rep_id: 4 }
+            // GBTA Convention 2024 - Travel & Expense + Payment Solutions
+            { event_id: 1, sales_rep_id: 1 }, // Sarah Johnson (Travel & Expense Solutions)
+            { event_id: 1, sales_rep_id: 2 }, // Michael Chen (Payment Solutions)
+            
+            // Commercial Payments International Global Summit - Payment Solutions + Financial Technology
+            { event_id: 2, sales_rep_id: 2 }, // Michael Chen (Payment Solutions)
+            { event_id: 2, sales_rep_id: 3 }, // Emily Rodriguez (Financial Technology)
+            
+            // NACHA Payments Conference - Payment Solutions + Enterprise Integration
+            { event_id: 3, sales_rep_id: 2 }, // Michael Chen (Payment Solutions)
+            { event_id: 3, sales_rep_id: 4 }, // David Thompson (Enterprise Integration)
+            
+            // Sibos 2024 - Financial Technology + Enterprise Integration
+            { event_id: 4, sales_rep_id: 3 }, // Emily Rodriguez (Financial Technology)
+            { event_id: 4, sales_rep_id: 4 }  // David Thompson (Enterprise Integration)
         ];
         
         for (const assoc of associations) {

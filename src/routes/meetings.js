@@ -3,10 +3,14 @@ const router = express.Router();
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
+const OutlookService = require('../utils/outlookService');
 
 // Database connection
 const dbPath = path.join(__dirname, '../../database.sqlite');
 const db = new sqlite3.Database(dbPath);
+
+// Initialize Outlook service
+const outlookService = new OutlookService();
 
 // Request a meeting
 router.post('/request', async (req, res) => {
@@ -150,7 +154,7 @@ router.post('/request', async (req, res) => {
                             WHERE mr.id = ?
                         `;
                         
-                        db.get(selectQuery, [meetingId], (err, meetingData) => {
+                        db.get(selectQuery, [meetingId], async (err, meetingData) => {
                             if (err) {
                                 console.error('❌ Error fetching meeting data:', err);
                                 return res.status(500).json({
@@ -159,11 +163,46 @@ router.post('/request', async (req, res) => {
                                 });
                             }
                             
-                            res.status(201).json({
-                                success: true,
-                                message: 'Meeting request submitted successfully',
-                                data: meetingData
-                            });
+                            // Send confirmation email
+                            try {
+                                const emailResult = await outlookService.sendMeetingRequestEmail({
+                                    meeting: meetingData,
+                                    event: {
+                                        name: meetingData.event_name,
+                                        location: meetingData.event_location,
+                                        start_date: meetingData.event_start_date,
+                                        end_date: meetingData.event_end_date
+                                    },
+                                    salesRep: {
+                                        name: meetingData.sales_rep_name,
+                                        email: meetingData.sales_rep_email,
+                                        department: meetingData.sales_rep_department
+                                    },
+                                    status: 'pending'
+                                });
+                                
+                                console.log('📧 Email result:', emailResult);
+                                
+                                res.status(201).json({
+                                    success: true,
+                                    message: 'Meeting request submitted successfully',
+                                    data: meetingData,
+                                    emailSent: emailResult.success,
+                                    emailProvider: emailResult.provider
+                                });
+                                
+                            } catch (emailError) {
+                                console.error('❌ Error sending confirmation email:', emailError);
+                                
+                                // Still return success for the meeting creation
+                                res.status(201).json({
+                                    success: true,
+                                    message: 'Meeting request submitted successfully (email notification failed)',
+                                    data: meetingData,
+                                    emailSent: false,
+                                    emailError: emailError.message
+                                });
+                            }
                         });
                     });
                     stmt.finalize();
@@ -315,7 +354,7 @@ router.put('/:id/status', (req, res) => {
             WHERE mr.id = ?
         `;
         
-        db.get(selectQuery, [meetingId], (err, updatedMeeting) => {
+        db.get(selectQuery, [meetingId], async (err, updatedMeeting) => {
             if (err) {
                 console.error('❌ Error fetching updated meeting:', err);
                 return res.status(500).json({
@@ -324,10 +363,63 @@ router.put('/:id/status', (req, res) => {
                 });
             }
             
+            // Send status update email if status changed to approved, rejected, or completed
+            let emailResult = { success: false };
+            if (['approved', 'rejected', 'completed'].includes(status)) {
+                try {
+                    emailResult = await outlookService.sendMeetingRequestEmail({
+                        meeting: updatedMeeting,
+                        event: {
+                            name: updatedMeeting.event_name,
+                            location: updatedMeeting.event_location,
+                            start_date: updatedMeeting.event_start_date,
+                            end_date: updatedMeeting.event_end_date
+                        },
+                        salesRep: {
+                            name: updatedMeeting.sales_rep_name,
+                            email: updatedMeeting.sales_rep_email,
+                            department: updatedMeeting.sales_rep_department
+                        },
+                        status: status
+                    });
+                    
+                    console.log(`📧 Status update email result:`, emailResult);
+                    
+                    // Create calendar event if approved
+                    if (status === 'approved') {
+                        try {
+                            const calendarResult = await outlookService.createCalendarEvent({
+                                meeting: updatedMeeting,
+                                event: {
+                                    name: updatedMeeting.event_name,
+                                    location: updatedMeeting.event_location,
+                                    start_date: updatedMeeting.event_start_date,
+                                    end_date: updatedMeeting.event_end_date
+                                },
+                                salesRep: {
+                                    name: updatedMeeting.sales_rep_name,
+                                    email: updatedMeeting.sales_rep_email,
+                                    department: updatedMeeting.sales_rep_department
+                                }
+                            });
+                            
+                            console.log(`📅 Calendar event result:`, calendarResult);
+                        } catch (calendarError) {
+                            console.error('❌ Calendar event creation failed:', calendarError);
+                        }
+                    }
+                    
+                } catch (emailError) {
+                    console.error('❌ Error sending status update email:', emailError);
+                }
+            }
+            
             res.json({
                 success: true,
                 message: `Meeting request ${status} successfully`,
-                data: updatedMeeting
+                data: updatedMeeting,
+                emailSent: emailResult.success,
+                emailProvider: emailResult.provider
             });
         });
     });
@@ -451,6 +543,34 @@ router.get('/search', (req, res) => {
             });
         });
     });
+});
+
+// Test email configuration endpoint
+router.get('/test/email-config', async (req, res) => {
+    try {
+        const testResults = await outlookService.testConfiguration();
+        
+        res.json({
+            success: true,
+            configuration: testResults,
+            recommendations: {
+                microsoftGraph: testResults.microsoftGraph.configured ? 
+                    (testResults.microsoftGraph.working ? 'Working correctly' : 'Configuration issue - check credentials') :
+                    'Not configured - set AZURE_CLIENT_ID, AZURE_CLIENT_SECRET, AZURE_TENANT_ID',
+                smtp: testResults.smtp.configured ?
+                    (testResults.smtp.working ? 'Working correctly' : 'Configuration issue - check SMTP settings') :
+                    'Not configured - set SMTP_HOST, SMTP_USER, SMTP_PASS'
+            }
+        });
+        
+    } catch (error) {
+        console.error('❌ Error testing email configuration:', error);
+        res.status(500).json({
+            success: false,
+            error: 'Failed to test email configuration',
+            message: error.message
+        });
+    }
 });
 
 module.exports = router;

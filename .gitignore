@@ -1,0 +1,3 @@
+# Remove .env from tracking due to sensitive credentials
+.env
+node_modules/

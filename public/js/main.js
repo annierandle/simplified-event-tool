@@ -24,17 +24,39 @@ class CorporateEventsApp {
     }
 
     bindEventListeners() {
+        // Navigation links
+        document.getElementById('navHome')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.showSection('hero');
+            this.updateNavigation('navHome');
+        });
+
+        document.getElementById('navEvents')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.showSection('events');
+            this.updateNavigation('navEvents');
+        });
+
+        document.getElementById('navSalesReps')?.addEventListener('click', (e) => {
+            e.preventDefault();
+            this.showSection('salesReps');
+            this.updateNavigation('navSalesReps');
+        });
+
         // Navigation buttons
         document.getElementById('viewEventsBtn')?.addEventListener('click', () => {
             this.showSection('events');
+            this.updateNavigation('navEvents');
         });
 
         document.getElementById('requestMeetingBtn')?.addEventListener('click', () => {
             this.showSection('meetingRequest');
+            this.updateNavigation('navHome');
         });
 
         document.getElementById('viewSalesRepsBtn')?.addEventListener('click', () => {
             this.showSection('salesReps');
+            this.updateNavigation('navSalesReps');
         });
 
         // Refresh buttons
@@ -246,6 +268,19 @@ class CorporateEventsApp {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    updateNavigation(activeNavId) {
+        // Remove active class from all nav links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+        });
+        
+        // Add active class to current nav link
+        const activeNav = document.getElementById(activeNavId);
+        if (activeNav) {
+            activeNav.classList.add('active');
+        }
+    }
+
     renderEvents() {
         const container = document.getElementById('eventsContainer');
         if (!container) return;
@@ -261,36 +296,50 @@ class CorporateEventsApp {
         }
         
         container.innerHTML = this.events.map(event => `
-            <div class="card event-card" data-event-id="${event.id}">
-                <div class="card-header">
-                    <h4 class="card-title">${window.utils.escapeHtml(event.name)}</h4>
-                    <div class="badge badge-primary">
-                        <i class="fas fa-users"></i> ${event.sales_rep_count} Sales Reps
+            <div class="event-card" data-event-id="${event.id}">
+                <div class="event-card-header">
+                    <div class="event-logo">
+                        <i data-lucide="calendar"></i>
+                    </div>
+                    <div class="event-rep-badge">
+                        ${event.sales_rep_count} ${event.sales_rep_count === 1 ? 'Rep' : 'Reps'}
                     </div>
                 </div>
-                <div class="card-body">
-                    <p class="card-text">
-                        <i class="fas fa-calendar"></i>
-                        ${window.utils.formatDate(event.start_date)} - ${window.utils.formatDate(event.end_date)}
-                    </p>
-                    <p class="card-text">
-                        <i class="fas fa-map-marker-alt"></i>
-                        ${window.utils.escapeHtml(event.location || 'Location TBD')}
-                    </p>
-                    <p class="card-text description">
-                        ${window.utils.escapeHtml(event.description || 'No description available')}
-                    </p>
+                
+                <h3 class="event-title">${window.utils.escapeHtml(event.name)}</h3>
+                
+                <div class="event-meta">
+                    <div class="event-meta-item">
+                        <i data-lucide="calendar-days"></i>
+                        <span>${window.utils.formatDate(event.start_date)} - ${window.utils.formatDate(event.end_date)}</span>
+                    </div>
+                    <div class="event-meta-item">
+                        <i data-lucide="map-pin"></i>
+                        <span>${window.utils.escapeHtml(event.location || 'Location TBD')}</span>
+                    </div>
                 </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary btn-sm view-event-details" data-event-id="${event.id}">
-                        <i class="fas fa-eye"></i> View Details
+                
+                <p class="event-description">
+                    ${window.utils.escapeHtml(event.description || 'Connect with our team at this upcoming event and explore partnership opportunities.')}
+                </p>
+                
+                <div class="event-actions">
+                    <button class="event-cta-primary schedule-meeting" data-event-id="${event.id}">
+                        <i data-lucide="calendar-plus"></i>
+                        Schedule Meeting
                     </button>
-                    <button class="btn btn-secondary btn-sm schedule-meeting" data-event-id="${event.id}">
-                        <i class="fas fa-calendar-plus"></i> Schedule Meeting
+                    <button class="event-cta-secondary view-event-details" data-event-id="${event.id}">
+                        <i data-lucide="eye"></i>
+                        View Details
                     </button>
                 </div>
             </div>
         `).join('');
+        
+        // Reinitialize Lucide icons for dynamic content
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
         
         // Bind event card buttons
         container.querySelectorAll('.view-event-details').forEach(btn => {

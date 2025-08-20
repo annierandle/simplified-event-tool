@@ -9,23 +9,32 @@
     "init-db": "node scripts/init-database.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["corporate", "events", "scheduling", "outlook", "meetings"],
+  "keywords": [
+    "corporate",
+    "events",
+    "scheduling",
+    "outlook",
+    "meetings"
+  ],
   "author": "Corporate Events Team",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.18.2",
-    "sqlite3": "^5.1.6",
-    "bcryptjs": "^2.4.3",
-    "jsonwebtoken": "^9.0.2",
-    "cors": "^2.8.5",
-    "helmet": "^7.0.0",
-    "express-rate-limit": "^6.10.0",
-    "nodemailer": "^6.9.4",
+    "@azure/identity": "^4.11.1",
     "@azure/msal-node": "^2.0.2",
+    "@microsoft/microsoft-graph-client": "^3.0.7",
+    "@sendgrid/mail": "^8.1.5",
     "axios": "^1.5.0",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.3.1",
-    "uuid": "^9.0.0",
-    "ical-generator": "^4.1.0"
+    "express": "^4.18.2",
+    "express-rate-limit": "^6.10.0",
+    "helmet": "^7.0.0",
+    "ical-generator": "^4.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^6.9.4",
+    "sqlite3": "^5.1.6",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
