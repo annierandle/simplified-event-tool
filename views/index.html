@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate Events Scheduler</title>
+    <meta name="description" content="Schedule meetings with our sales representatives at upcoming corporate events">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><i class="fas fa-calendar-alt"></i> Corporate Events</h1>
+                    <p>Schedule meetings with our sales team</p>
+                </div>
+                <div class="nav-buttons">
+                    <a href="/admin" class="btn btn-secondary">
+                        <i class="fas fa-user-cog"></i> Admin Panel
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <h2>Connect with Our Sales Team</h2>
+                <p>Browse upcoming events and schedule one-on-one meetings with our experienced sales representatives. Get personalized solutions for your business needs.</p>
+                
+                <div class="cta-buttons">
+                    <button id="viewEventsBtn" class="btn btn-primary btn-lg">
+                        <i class="fas fa-calendar-check"></i> View Events
+                    </button>
+                    <button id="requestMeetingBtn" class="btn btn-secondary btn-lg">
+                        <i class="fas fa-handshake"></i> Request Meeting
+                    </button>
+                    <button id="viewSalesRepsBtn" class="btn btn-secondary btn-lg">
+                        <i class="fas fa-users"></i> View Sales Reps
+                    </button>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="features">
+                <h3>Why Schedule with Us?</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-clock"></i>
+                        <h4>Easy Scheduling</h4>
+                        <p>Quick and simple meeting request process with instant confirmation notifications.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-user-tie"></i>
+                        <h4>Expert Sales Team</h4>
+                        <p>Connect with our experienced sales professionals who understand your industry.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-envelope"></i>
+                        <h4>Email Integration</h4>
+                        <p>Automatic calendar invites and email notifications through Microsoft Outlook.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Events Section -->
+            <section id="eventsSection" class="section" style="display: none;">
+                <div class="section-header">
+                    <h3>Upcoming Events</h3>
+                    <div class="section-controls">
+                        <input type="search" id="eventSearchInput" placeholder="Search events..." class="form-control" style="width: 300px; display: inline-block;">
+                        <button id="refreshEventsBtn" class="btn btn-secondary btn-sm">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="eventsContainer" class="grid grid-2">
+                    <!-- Events will be loaded here -->
+                </div>
+                
+                <div id="eventsLoading" class="loading-spinner" style="display: none;">
+                    <div class="spinner"></div>
+                    <span>Loading events...</span>
+                </div>
+            </section>
+
+            <!-- Sales Reps Section -->
+            <section id="salesRepsSection" class="section" style="display: none;">
+                <div class="section-header">
+                    <h3>Our Sales Representatives</h3>
+                    <div class="section-controls">
+                        <input type="search" id="salesRepSearchInput" placeholder="Search sales reps..." class="form-control" style="width: 300px; display: inline-block;">
+                        <select id="departmentFilter" class="form-control" style="width: 200px; display: inline-block;">
+                            <option value="">All Departments</option>
+                        </select>
+                        <button id="refreshSalesRepsBtn" class="btn btn-secondary btn-sm">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="salesRepsContainer" class="grid grid-3">
+                    <!-- Sales reps will be loaded here -->
+                </div>
+                
+                <div id="salesRepsLoading" class="loading-spinner" style="display: none;">
+                    <div class="spinner"></div>
+                    <span>Loading sales representatives...</span>
+                </div>
+            </section>
+
+            <!-- Meeting Request Section -->
+            <section id="meetingRequestSection" class="section" style="display: none;">
+                <div class="section-header">
+                    <h3>Request a Meeting</h3>
+                    <p>Fill out the form below to request a meeting with one of our sales representatives.</p>
+                </div>
+                
+                <div class="card" style="max-width: 600px; margin: 0 auto;">
+                    <div class="card-body">
+                        <form id="meetingRequestForm">
+                            <!-- Event Selection -->
+                            <div class="form-group">
+                                <label for="meetingEventSelect" class="form-label">
+                                    <i class="fas fa-calendar"></i> Select Event *
+                                </label>
+                                <select id="meetingEventSelect" class="form-control" required>
+                                    <option value="">Choose an event...</option>
+                                </select>
+                            </div>
+
+                            <!-- Sales Rep Selection -->
+                            <div class="form-group">
+                                <label for="meetingSalesRepSelect" class="form-label">
+                                    <i class="fas fa-user-tie"></i> Select Sales Representative *
+                                </label>
+                                <select id="meetingSalesRepSelect" class="form-control" required disabled>
+                                    <option value="">First select an event...</option>
+                                </select>
+                            </div>
+
+                            <!-- Client Information -->
+                            <div class="form-group">
+                                <label for="clientName" class="form-label">
+                                    <i class="fas fa-user"></i> Your Name *
+                                </label>
+                                <input type="text" id="clientName" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="clientEmail" class="form-label">
+                                    <i class="fas fa-envelope"></i> Your Email *
+                                </label>
+                                <input type="email" id="clientEmail" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="clientCompany" class="form-label">
+                                    <i class="fas fa-building"></i> Company
+                                </label>
+                                <input type="text" id="clientCompany" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="clientPhone" class="form-label">
+                                    <i class="fas fa-phone"></i> Phone Number
+                                </label>
+                                <input type="tel" id="clientPhone" class="form-control">
+                            </div>
+
+                            <!-- Meeting Preferences -->
+                            <div class="form-group">
+                                <label for="preferredDate" class="form-label">
+                                    <i class="fas fa-calendar-day"></i> Preferred Date
+                                </label>
+                                <input type="date" id="preferredDate" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="preferredTime" class="form-label">
+                                    <i class="fas fa-clock"></i> Preferred Time
+                                </label>
+                                <input type="time" id="preferredTime" class="form-control">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="meetingDuration" class="form-label">
+                                    <i class="fas fa-hourglass-half"></i> Meeting Duration
+                                </label>
+                                <select id="meetingDuration" class="form-control">
+                                    <option value="30">30 minutes</option>
+                                    <option value="45">45 minutes</option>
+                                    <option value="60">1 hour</option>
+                                    <option value="90">1.5 hours</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="meetingMessage" class="form-label">
+                                    <i class="fas fa-comment"></i> Message / Topics to Discuss
+                                </label>
+                                <textarea id="meetingMessage" class="form-control" rows="4" 
+                                    placeholder="Please describe what you'd like to discuss during the meeting..."></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">
+                                    <i class="fas fa-paper-plane"></i> Submit Meeting Request
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Corporate Events Scheduler. All rights reserved.</p>
+            <p>Powered by Microsoft Outlook Integration</p>
+        </div>
+    </footer>
+
+    <!-- Meeting Details Modal -->
+    <div id="meetingDetailsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Meeting Details</h4>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="meetingDetailsContent">
+                    <!-- Meeting details will be loaded here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-close">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Details Modal -->
+    <div id="eventDetailsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Event Details</h4>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="eventDetailsContent">
+                    <!-- Event details will be loaded here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-close">Close</button>
+                <button id="scheduleFromEvent" class="btn btn-primary">
+                    <i class="fas fa-calendar-plus"></i> Schedule Meeting
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sales Rep Details Modal -->
+    <div id="salesRepDetailsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Sales Representative Details</h4>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="salesRepDetailsContent">
+                    <!-- Sales rep details will be loaded here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-close">Close</button>
+                <button id="scheduleFromSalesRep" class="btn btn-primary">
+                    <i class="fas fa-calendar-plus"></i> Schedule Meeting
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/js/api.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

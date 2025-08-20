@@ -1,0 +1,14 @@
+2025-08-20T02:28:42: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-20T02:28:42: 📊 Admin panel: http://localhost:3000/admin
+2025-08-20T02:28:42: 🌐 Main site: http://localhost:3000
+2025-08-20T02:28:42: 💡 Environment: production
+2025-08-20T02:29:04: 🔐 Login attempt: { email: 'admin@company.com', hasPassword: true }
+2025-08-20T02:29:04: ✅ User found: { id: 1, email: 'admin@company.com', role: 'admin' }
+2025-08-20T02:29:05: ✅ Password verified for: admin@company.com
+2025-08-20T02:29:05: ✅ JWT token generated for: admin@company.com
+2025-08-20T02:29:10: 📅 Fetching all events
+2025-08-20T02:29:10: ✅ Found 3 events
+2025-08-20T02:29:15: 📅 Fetching all events
+2025-08-20T02:29:15: ✅ Found 3 events
+2025-08-20T02:29:20: 👥 Fetching all sales reps
+2025-08-20T02:29:20: ✅ Found 4 sales reps
