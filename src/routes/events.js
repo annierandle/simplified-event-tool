@@ -7,7 +7,7 @@ const path = require('path');
 const dbPath = path.join(__dirname, '../../database.sqlite');
 const db = new sqlite3.Database(dbPath);
 
-// Get all active events
+// Get all events (active and past)
 router.get('/', (req, res) => {
     console.log('📅 Fetching all events');
     
@@ -17,7 +17,6 @@ router.get('/', (req, res) => {
             COUNT(esr.sales_rep_id) as sales_rep_count
         FROM events e
         LEFT JOIN event_sales_reps esr ON e.id = esr.event_id
-        WHERE e.status = 'active'
         GROUP BY e.id
         ORDER BY e.start_date ASC
     `;
@@ -44,7 +43,7 @@ router.get('/:id', (req, res) => {
     const eventId = req.params.id;
     console.log(`📅 Fetching event ${eventId} with sales reps`);
     
-    const eventQuery = 'SELECT * FROM events WHERE id = ? AND status = "active"';
+    const eventQuery = 'SELECT * FROM events WHERE id = ?';
     
     db.get(eventQuery, [eventId], (err, event) => {
         if (err) {

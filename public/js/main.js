@@ -637,7 +637,7 @@ class CorporateEventsApp {
         select.innerHTML = '<option value="">Choose an event...</option>' + 
             activeEvents.map(event => `
                 <option value="${event.id}">
-                    ${window.utils.escapeHtml(event.name)} - ${window.utils.formatDate(event.start_date)}
+                    ${window.utils.escapeHtml(event.name)}
                 </option>
             `).join('');
     }
