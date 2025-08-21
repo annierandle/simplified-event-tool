@@ -7,6 +7,7 @@ class CorporateEventsApp {
         this.departments = [];
         this.selectedEvent = null;
         this.selectedSalesRep = null;
+        this.eventFilter = 'active'; // 'active', 'past', 'all'
         
         this.init();
     }
@@ -19,6 +20,9 @@ class CorporateEventsApp {
         
         // Load initial data
         await this.loadInitialData();
+        
+        // Load saved text changes
+        setTimeout(() => this.loadSavedTextChanges(), 100);
         
         console.log('✅ App initialized successfully');
     }
@@ -66,6 +70,19 @@ class CorporateEventsApp {
 
         document.getElementById('refreshSalesRepsBtn')?.addEventListener('click', () => {
             this.loadSalesReps();
+        });
+
+        // Event filter toggles
+        document.getElementById('showActiveEvents')?.addEventListener('click', () => {
+            this.setEventFilter('active');
+        });
+
+        document.getElementById('showPastEvents')?.addEventListener('click', () => {
+            this.setEventFilter('past');
+        });
+
+        document.getElementById('showAllEvents')?.addEventListener('click', () => {
+            this.setEventFilter('all');
         });
 
         // Search inputs
@@ -126,7 +143,164 @@ class CorporateEventsApp {
             this.scheduleFromSalesRep();
         });
 
+        // Initialize editable text system
+        this.initializeEditableText();
+        
+        // Add keyboard shortcut to reset all text changes (Ctrl+Shift+R)
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.shiftKey && e.key === 'R') {
+                e.preventDefault();
+                if (confirm('Reset all text changes to default? This cannot be undone.')) {
+                    localStorage.removeItem('orchestrateTextChanges');
+                    location.reload();
+                }
+            }
+        });
+        
         console.log('✅ Event listeners bound');
+    }
+
+    initializeEditableText() {
+        // Add editable class to text elements that should be editable
+        const editableSelectors = [
+            '.hero-title',
+            '.hero-subtitle', 
+            '.section-title',
+            '.feature-title',
+            '.feature-description',
+            '.events-hero-title',
+            '.events-hero-subtitle',
+            'h3',
+            'p:not(.footer-text)',
+            '.form-label'
+        ];
+        
+        editableSelectors.forEach(selector => {
+            document.querySelectorAll(selector).forEach(element => {
+                // Skip elements that are already inputs or have specific functionality
+                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA' || 
+                    element.tagName === 'SELECT' || element.closest('form') ||
+                    element.classList.contains('no-edit')) {
+                    return;
+                }
+                
+                element.classList.add('editable-text');
+                element.setAttribute('title', 'Double-click to edit');
+                element.style.cursor = 'pointer';
+            });
+        });
+        
+        // Add double-click event listeners for editable text
+        document.addEventListener('dblclick', (e) => {
+            if (e.target.classList.contains('editable-text')) {
+                this.makeTextEditable(e.target);
+            }
+        });
+        
+        console.log('✅ Editable text system initialized');
+    }
+
+    makeTextEditable(element) {
+        const originalText = element.textContent;
+        const originalHTML = element.innerHTML;
+        
+        // Create input element
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = originalText;
+        input.className = 'editable-input';
+        input.style.cssText = `
+            font-family: inherit;
+            font-size: inherit;
+            font-weight: inherit;
+            color: inherit;
+            background: rgba(255, 90, 95, 0.1);
+            border: 2px solid var(--color-coral);
+            border-radius: 4px;
+            padding: 4px 8px;
+            width: 100%;
+            min-width: 200px;
+        `;
+        
+        // Replace element content with input
+        element.innerHTML = '';
+        element.appendChild(input);
+        input.focus();
+        input.select();
+        
+        // Handle save on Enter or blur
+        const saveEdit = () => {
+            const newText = input.value.trim();
+            if (newText && newText !== originalText) {
+                element.textContent = newText;
+                console.log(`📝 Text updated: "${originalText}" → "${newText}"`);
+                
+                // Store the change in localStorage for persistence
+                this.saveTextChange(element, newText);
+                
+                // Show success feedback
+                element.style.background = 'rgba(40, 167, 69, 0.1)';
+                setTimeout(() => {
+                    element.style.background = '';
+                }, 1000);
+            } else {
+                element.innerHTML = originalHTML;
+            }
+        };
+        
+        // Handle cancel on Escape
+        const cancelEdit = () => {
+            element.innerHTML = originalHTML;
+        };
+        
+        input.addEventListener('blur', saveEdit);
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                saveEdit();
+            } else if (e.key === 'Escape') {
+                e.preventDefault();
+                cancelEdit();
+            }
+        });
+    }
+
+    saveTextChange(element, newText) {
+        // Create a unique identifier for the element
+        const elementId = this.getElementIdentifier(element);
+        
+        // Get existing changes from localStorage
+        const savedChanges = JSON.parse(localStorage.getItem('orchestrateTextChanges') || '{}');
+        
+        // Save the change
+        savedChanges[elementId] = newText;
+        localStorage.setItem('orchestrateTextChanges', JSON.stringify(savedChanges));
+        
+        console.log(`💾 Text change saved for ${elementId}: "${newText}"`);
+    }
+
+    getElementIdentifier(element) {
+        // Create a unique identifier based on element characteristics
+        const tagName = element.tagName.toLowerCase();
+        const className = element.className.replace(/\s+/g, '.');
+        const textContent = element.textContent.substring(0, 20).replace(/[^\w]/g, '');
+        
+        return `${tagName}.${className}.${textContent}`;
+    }
+
+    loadSavedTextChanges() {
+        const savedChanges = JSON.parse(localStorage.getItem('orchestrateTextChanges') || '{}');
+        
+        Object.entries(savedChanges).forEach(([elementId, newText]) => {
+            // Try to find and update elements with saved changes
+            document.querySelectorAll('.editable-text').forEach(element => {
+                if (this.getElementIdentifier(element) === elementId) {
+                    element.textContent = newText;
+                }
+            });
+        });
+        
+        console.log(`📚 Loaded ${Object.keys(savedChanges).length} saved text changes`);
     }
 
     async loadInitialData() {
@@ -285,17 +459,32 @@ class CorporateEventsApp {
         const container = document.getElementById('eventsContainer');
         if (!container) return;
         
-        if (this.events.length === 0) {
+        // Filter events based on current filter
+        let filteredEvents = this.events;
+        if (this.eventFilter === 'active') {
+            filteredEvents = this.events.filter(event => event.status !== 'past');
+        } else if (this.eventFilter === 'past') {
+            filteredEvents = this.events.filter(event => event.status === 'past');
+        }
+        // 'all' shows all events, no filtering needed
+        
+        if (filteredEvents.length === 0) {
+            const noEventsMessage = this.eventFilter === 'past' ? 
+                'No past events found.' : 
+                this.eventFilter === 'active' ? 
+                'No active events found.' : 
+                'No events found.';
+            
             container.innerHTML = `
                 <div class="info-message">
                     <i class="fas fa-info-circle"></i>
-                    <span>No events found.</span>
+                    <span>${noEventsMessage}</span>
                 </div>
             `;
             return;
         }
         
-        container.innerHTML = this.events.map(event => {
+        container.innerHTML = filteredEvents.map(event => {
             const isPast = event.status === 'past';
             const statusBadge = isPast ? '<div class="event-status-badge event-status-past">Event Concluded</div>' : '';
             
@@ -466,13 +655,42 @@ class CorporateEventsApp {
     async handleEventSelection(e) {
         const eventId = e.target.value;
         const salesRepSelect = document.getElementById('meetingSalesRepSelect');
+        const preferredDateInput = document.getElementById('preferredDate');
         
         if (!salesRepSelect) return;
         
         if (!eventId) {
             salesRepSelect.innerHTML = '<option value="">First select an event...</option>';
             salesRepSelect.disabled = true;
+            
+            // Reset date picker restrictions
+            if (preferredDateInput) {
+                preferredDateInput.removeAttribute('min');
+                preferredDateInput.removeAttribute('max');
+                preferredDateInput.value = '';
+            }
             return;
+        }
+        
+        // Set date picker restrictions based on selected event
+        const selectedEvent = this.events.find(event => event.id == eventId);
+        if (selectedEvent && preferredDateInput) {
+            // Format dates for input[type="date"] (YYYY-MM-DD format)
+            const startDate = new Date(selectedEvent.start_date).toISOString().split('T')[0];
+            const endDate = new Date(selectedEvent.end_date).toISOString().split('T')[0];
+            
+            preferredDateInput.setAttribute('min', startDate);
+            preferredDateInput.setAttribute('max', endDate);
+            
+            // Clear current value if it's outside the event date range
+            if (preferredDateInput.value) {
+                const currentValue = preferredDateInput.value;
+                if (currentValue < startDate || currentValue > endDate) {
+                    preferredDateInput.value = '';
+                }
+            }
+            
+            console.log(`📅 Date picker restricted to event dates: ${startDate} to ${endDate}`);
         }
         
         try {
@@ -522,7 +740,9 @@ class CorporateEventsApp {
         };
         
         // Validate required fields
-        if (!meetingData.eventId || !meetingData.salesRepId || !meetingData.clientName || !meetingData.clientEmail) {
+        if (!meetingData.eventId || !meetingData.salesRepId || !meetingData.clientName || 
+            !meetingData.clientEmail || !meetingData.clientCompany || !meetingData.clientPhone ||
+            !meetingData.preferredDate || !meetingData.preferredTime || !meetingData.duration) {
             window.utils.showError('Please fill in all required fields.');
             return;
         }
@@ -742,14 +962,50 @@ class CorporateEventsApp {
         this.scheduleFromSalesRep();
     }
 
+    setEventFilter(filter) {
+        console.log(`📊 Setting event filter to: ${filter}`);
+        
+        // Update filter state
+        this.eventFilter = filter;
+        
+        // Update filter button states
+        document.querySelectorAll('.filter-toggle').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        
+        if (filter === 'active') {
+            document.getElementById('showActiveEvents')?.classList.add('active');
+        } else if (filter === 'past') {
+            document.getElementById('showPastEvents')?.classList.add('active');
+        } else if (filter === 'all') {
+            document.getElementById('showAllEvents')?.classList.add('active');
+        }
+        
+        // Re-render events with new filter
+        this.renderEvents();
+    }
+
     filterEvents() {
         const searchTerm = document.getElementById('eventSearchInput')?.value.toLowerCase() || '';
         
-        const filteredEvents = this.events.filter(event => 
-            event.name.toLowerCase().includes(searchTerm) ||
-            event.description?.toLowerCase().includes(searchTerm) ||
-            event.location?.toLowerCase().includes(searchTerm)
-        );
+        // Apply both status filter and search filter
+        let filteredEvents = this.events;
+        
+        // First apply status filter
+        if (this.eventFilter === 'active') {
+            filteredEvents = filteredEvents.filter(event => event.status !== 'past');
+        } else if (this.eventFilter === 'past') {
+            filteredEvents = filteredEvents.filter(event => event.status === 'past');
+        }
+        
+        // Then apply search filter
+        if (searchTerm) {
+            filteredEvents = filteredEvents.filter(event => 
+                event.name.toLowerCase().includes(searchTerm) ||
+                event.description?.toLowerCase().includes(searchTerm) ||
+                event.location?.toLowerCase().includes(searchTerm)
+            );
+        }
         
         const container = document.getElementById('eventsContainer');
         if (container) {

@@ -138,26 +138,20 @@
                                 </div>
                             </div>
                             <div class="filter-controls">
-                                <select id="dateFilter" class="filter-select">
-                                    <option value="">All Dates</option>
-                                    <option value="upcoming">Next 30 Days</option>
-                                    <option value="this-quarter">This Quarter</option>
-                                    <option value="next-quarter">Next Quarter</option>
-                                </select>
-                                <select id="regionFilter" class="filter-select">
-                                    <option value="">All Regions</option>
-                                    <option value="north-america">North America</option>
-                                    <option value="europe">Europe</option>
-                                    <option value="asia-pacific">Asia Pacific</option>
-                                    <option value="global">Global/Virtual</option>
-                                </select>
-                                <select id="industryFilter" class="filter-select">
-                                    <option value="">All Industries</option>
-                                    <option value="technology">Technology</option>
-                                    <option value="healthcare">Healthcare</option>
-                                    <option value="finance">Finance</option>
-                                    <option value="retail">Retail</option>
-                                </select>
+                                <div class="filter-toggle-group">
+                                    <button id="showActiveEvents" class="filter-toggle active">
+                                        <i data-lucide="calendar-days"></i>
+                                        Active Events
+                                    </button>
+                                    <button id="showPastEvents" class="filter-toggle">
+                                        <i data-lucide="calendar-x"></i>
+                                        Past Events
+                                    </button>
+                                    <button id="showAllEvents" class="filter-toggle">
+                                        <i data-lucide="calendar"></i>
+                                        All Events
+                                    </button>
+                                </div>
                                 <button id="refreshEventsBtn" class="refresh-btn">
                                     <i data-lucide="refresh-cw"></i>
                                     Refresh
@@ -254,38 +248,39 @@
 
                             <div class="form-group">
                                 <label for="clientCompany" class="form-label">
-                                    <i class="fas fa-building"></i> Company
+                                    <i class="fas fa-building"></i> Company *
                                 </label>
-                                <input type="text" id="clientCompany" class="form-control">
+                                <input type="text" id="clientCompany" class="form-control" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="clientPhone" class="form-label">
-                                    <i class="fas fa-phone"></i> Phone Number
+                                    <i class="fas fa-phone"></i> Phone Number *
                                 </label>
-                                <input type="tel" id="clientPhone" class="form-control">
+                                <input type="tel" id="clientPhone" class="form-control" required>
                             </div>
 
                             <!-- Meeting Preferences -->
                             <div class="form-group">
                                 <label for="preferredDate" class="form-label">
-                                    <i class="fas fa-calendar-day"></i> Preferred Date
+                                    <i class="fas fa-calendar-day"></i> Preferred Date *
                                 </label>
-                                <input type="date" id="preferredDate" class="form-control">
+                                <input type="date" id="preferredDate" class="form-control" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="preferredTime" class="form-label">
-                                    <i class="fas fa-clock"></i> Preferred Time
+                                    <i class="fas fa-clock"></i> Preferred Time *
                                 </label>
-                                <input type="time" id="preferredTime" class="form-control">
+                                <input type="time" id="preferredTime" class="form-control" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="meetingDuration" class="form-label">
-                                    <i class="fas fa-hourglass-half"></i> Meeting Duration
+                                    <i class="fas fa-hourglass-half"></i> Meeting Duration *
                                 </label>
-                                <select id="meetingDuration" class="form-control">
+                                <select id="meetingDuration" class="form-control" required>
+                                    <option value="">Select duration...</option>
                                     <option value="30">30 minutes</option>
                                     <option value="45">45 minutes</option>
                                     <option value="60">1 hour</option>
