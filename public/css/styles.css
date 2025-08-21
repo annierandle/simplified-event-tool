@@ -574,11 +574,31 @@ h1, h2, h3, h4, h5, h6 {
 /* Sales Team Page Styles */
 .sales-rep-card {
     border: 1px solid rgba(0, 0, 0, 0.06);
+    overflow: hidden;
 }
 
 .sales-rep-card:hover {
     border-color: rgba(255, 90, 95, 0.2);
     transform: translateY(-2px);
+}
+
+.sales-rep-photo {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--color-light-gray), #E5E5E7);
+}
+
+.rep-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform var(--transition-normal);
+}
+
+.sales-rep-card:hover .rep-avatar {
+    transform: scale(1.05);
 }
 
 .card-header {
@@ -706,6 +726,267 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
     gap: 1.5rem;
     align-items: start;
+}
+
+/* Event Page Styles */
+.event-page-header {
+    margin-bottom: 2rem;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-coral);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+}
+
+.back-link:hover {
+    color: #FF4449;
+    transform: translateX(-2px);
+}
+
+.event-details-page {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.event-hero {
+    background: var(--color-charcoal);
+    border-radius: var(--border-radius-xl);
+    padding: 3rem 2rem;
+    margin-bottom: 3rem;
+    color: var(--color-white);
+    text-align: center;
+}
+
+.event-hero-badges {
+    margin-bottom: 1rem;
+}
+
+.event-status-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-pill);
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.event-status-active {
+    background: var(--color-coral);
+    color: var(--color-white);
+}
+
+.event-status-past {
+    background: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.event-hero-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.event-hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.event-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.event-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 3rem;
+    align-items: start;
+}
+
+.event-section {
+    margin-bottom: 3rem;
+}
+
+.event-section h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.section-subtitle {
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+    font-size: 1.125rem;
+}
+
+.event-info-card {
+    background: var(--color-light-gray);
+    border-radius: var(--border-radius-lg);
+    padding: 2rem;
+}
+
+.event-description {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.event-sales-reps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.event-sales-rep-card {
+    background: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: all var(--transition-fast);
+}
+
+.event-sales-rep-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(255, 90, 95, 0.2);
+}
+
+.event-rep-photo {
+    height: 180px;
+    overflow: hidden;
+}
+
+.event-rep-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.event-rep-content {
+    padding: 1.5rem;
+}
+
+.event-rep-name {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.event-rep-department {
+    color: var(--color-coral);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+    margin-bottom: 0.75rem;
+}
+
+.event-rep-bio {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    margin: 0;
+}
+
+.event-cta-card {
+    background: var(--color-white);
+    border-radius: var(--border-radius-lg);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 2rem;
+    text-align: center;
+    position: sticky;
+    top: 2rem;
+}
+
+.event-cta-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.event-cta-card p {
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+.btn-disabled {
+    background: var(--color-text-light) !important;
+    color: var(--color-white) !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+}
+
+.no-reps-message {
+    text-align: center;
+    color: var(--color-text-secondary);
+    font-style: italic;
+    padding: 2rem;
+    background: var(--color-light-gray);
+    border-radius: var(--border-radius-lg);
+}
+
+.error-state {
+    text-align: center;
+    padding: 4rem 2rem;
+}
+
+.error-icon {
+    font-size: 3rem;
+    color: var(--color-coral);
+    margin-bottom: 1rem;
+}
+
+.error-state h2 {
+    font-size: 1.5rem;
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.error-state p {
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+}
+
+/* Responsive Design for Event Page */
+@media (max-width: 768px) {
+    .event-content-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .event-hero {
+        padding: 2rem 1.5rem;
+    }
+    
+    .event-hero-meta {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .event-sales-reps-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .event-cta-card {
+        position: static;
+    }
 }
 
 /* Loading States */

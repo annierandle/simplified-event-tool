@@ -884,3 +884,992 @@ DTEN...
 2025-08-21T00:00:56: 📊 Admin panel: http://localhost:3000/admin
 2025-08-21T00:00:56: 🌐 Main site: http://localhost:3000
 2025-08-21T00:00:56: 💡 Environment: production
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+Error: Cannot find module '@microsoft/microsoft-graph-client'
+Require stack:
+- /home/user/webapp/src/utils/outlookService.js
+- /home/user/webapp/src/routes/meetings.js
+- /home/user/webapp/server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1212:15)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:81:25)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/src/utils/outlookService.js:1:20)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+/home/user/webapp/src/routes/meetings.js:177
+                                    },
+                                    ^
+
+SyntaxError: Missing catch or finally after try
+    at wrapSafe (node:internal/modules/cjs/loader:1472:18)
+    at Module._compile (node:internal/modules/cjs/loader:1501:20)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1613:10)
+    at Module.load (node:internal/modules/cjs/loader:1275:32)
+    at Module._load (node:internal/modules/cjs/loader:1096:12)
+    at Module.require (node:internal/modules/cjs/loader:1298:19)
+    at Hook._require.Module.require (/usr/lib/node_modules/pm2/node_modules/require-in-the-middle/index.js:101:39)
+    at require (node:internal/modules/helpers:182:18)
+    at Object.<anonymous> (/home/user/webapp/server.js:42:26)
+    at Module._compile (node:internal/modules/cjs/loader:1529:14)
+2025-08-21T03:39:57: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-21T03:39:57: 📊 Admin panel: http://localhost:3000/admin
+2025-08-21T03:39:57: 🌐 Main site: http://localhost:3000
+2025-08-21T03:39:57: 💡 Environment: production
+2025-08-21T03:44:14: 🏢 Fetching departments list
+2025-08-21T03:44:14: 👥 Fetching all sales reps
+2025-08-21T03:44:14: ✅ Found 4 departments
+2025-08-21T03:44:14: 📅 Fetching all events
+2025-08-21T03:44:14: ✅ Found 4 sales reps
+2025-08-21T03:44:14: ✅ Found 4 events
+2025-08-21T03:46:30: 👥 Fetching sales rep 3 with events
+2025-08-21T03:46:30: ✅ Found sales rep with 2 events
+2025-08-21T03:47:53: 👥 Fetching all sales reps
+2025-08-21T03:47:53: 📅 Fetching all events
+2025-08-21T03:47:53: ✅ Found 4 sales reps
+2025-08-21T03:47:53: ✅ Found 4 events
+2025-08-21T03:47:53: 🏢 Fetching departments list
+2025-08-21T03:47:53: ✅ Found 4 departments
+2025-08-21T03:48:44: 📅 Fetching event 3 with sales reps
+2025-08-21T03:48:44: ✅ Found event with 2 sales reps
+2025-08-21T03:50:56: 📅 Fetching event 2 with sales reps
+2025-08-21T03:50:56: ✅ Found event with 2 sales reps
+2025-08-21T03:54:27: 👥 Fetching sales reps for event 2
+2025-08-21T03:54:27: ✅ Found 2 sales reps for event 2
+2025-08-21T03:57:01: SIGINT received, shutting down gracefully
+2025-08-21T03:57:01: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-21T03:57:01: 📊 Admin panel: http://localhost:3000/admin
+2025-08-21T03:57:01: 🌐 Main site: http://localhost:3000
+2025-08-21T03:57:01: 💡 Environment: production

@@ -51,6 +51,10 @@ app.get('/admin', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'admin.html'));
 });
 
+app.get('/event/:id', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'event.html'));
+});
+
 // Health check endpoint
 app.get('/health', (req, res) => {
     res.json({ 
