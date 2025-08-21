@@ -278,30 +278,46 @@ class AdminApp {
             
             // Update stat cards
             if (eventsResponse.success) {
-                const activeEvents = eventsResponse.data.filter(event => event.status === 'active');
-                document.getElementById('totalEvents').textContent = activeEvents.length;
+                const events = eventsResponse.data.data || eventsResponse.data || [];
+                const activeEvents = events.filter(event => event.status === 'active');
+                document.getElementById('totalEvents').textContent = activeEvents.length || events.length;
+                console.log(`📊 Active events: ${activeEvents.length}, Total events: ${events.length}`);
+            } else {
+                document.getElementById('totalEvents').textContent = '0';
             }
             
             if (salesRepsResponse.success) {
-                const availableReps = salesRepsResponse.data.filter(rep => rep.availability_status === 'available');
-                document.getElementById('totalSalesReps').textContent = availableReps.length;
+                const reps = salesRepsResponse.data.data || salesRepsResponse.data || [];
+                const availableReps = reps.filter(rep => rep.availability_status === 'available');
+                document.getElementById('totalSalesReps').textContent = availableReps.length || reps.length;
+                console.log(`📊 Available reps: ${availableReps.length}, Total reps: ${reps.length}`);
+            } else {
+                document.getElementById('totalSalesReps').textContent = '0';
             }
             
             if (pendingStatsResponse.success) {
-                document.getElementById('pendingRequests').textContent = pendingStatsResponse.data.total || 0;
-                
-                // Update pending requests count
-                document.getElementById('pendingRequests').textContent = pendingStatsResponse.data.total || 0;
+                const pendingCount = pendingStatsResponse.data.total || 0;
+                document.getElementById('pendingRequests').textContent = pendingCount;
+                console.log(`📊 Pending requests: ${pendingCount}`);
+            } else {
+                // Fallback: count pending from meetings data
+                const meetings = meetingsResponse.data.data || meetingsResponse.data || [];
+                const pendingCount = meetings.filter(meeting => meeting.status === 'pending').length;
+                document.getElementById('pendingRequests').textContent = pendingCount;
             }
             
             if (meetingsResponse.success) {
+                const meetings = meetingsResponse.data.data || meetingsResponse.data || [];
                 // Count only approved meetings that haven't happened yet
-                const upcomingMeetings = (meetingsResponse.data.data || meetingsResponse.data).filter(meeting => {
+                const upcomingMeetings = meetings.filter(meeting => {
                     return meeting.status === 'approved' && 
                            meeting.preferred_date && 
                            new Date(meeting.preferred_date) > new Date();
                 });
                 document.getElementById('upcomingMeetings').textContent = upcomingMeetings.length;
+                console.log(`📊 Upcoming meetings: ${upcomingMeetings.length}`);
+            } else {
+                document.getElementById('upcomingMeetings').textContent = '0';
             }
             
             console.log('✅ Dashboard data loaded');
@@ -569,15 +585,15 @@ class AdminApp {
             return;
         }
         
-        // Map event logos based on event names
+        // Map professional event logos
         const getEventLogo = (eventName) => {
             const logos = {
-                'GBTA Convention': 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=200&h=100&fit=crop&crop=center&q=80', // Business/travel theme  
-                'Commercial Payments International Global Summit': 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=200&h=100&fit=crop&crop=center&q=80', // Finance/payment theme
-                'NACHA Payments Conference': 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=200&h=100&fit=crop&crop=center&q=80', // Banking/ACH theme
-                'Sibos': 'https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=200&h=100&fit=crop&crop=center&q=80' // Global finance theme
+                'GBTA Convention': 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=200&fit=crop&crop=center&q=80', // Professional conference
+                'Commercial Payments International Global Summit': 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=400&h=200&fit=crop&crop=center&q=80', // Finance/fintech
+                'NACHA Payments Conference': 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=200&fit=crop&crop=center&q=80', // Banking/payments
+                'Sibos': 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=200&fit=crop&crop=center&q=80' // Global business/finance
             };
-            return logos[eventName] || 'https://images.unsplash.com/photo-1556740758-90de374c12ad?w=200&h=100&fit=crop&crop=center&q=80';
+            return logos[eventName] || 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=200&fit=crop&crop=center&q=80';
         };
         
         container.innerHTML = `
@@ -595,7 +611,7 @@ class AdminApp {
                                     ${event.status}
                                 </span>
                             </div>
-                            <p class="event-description">${window.utils.escapeHtml(window.utils.truncateText(event.description || 'No description', 120))}</p>
+
                             <div class="event-meta">
                                 <div class="meta-item">
                                     <i class="fas fa-calendar-alt"></i>
