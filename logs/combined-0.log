@@ -1873,3 +1873,33 @@ SyntaxError: Missing catch or finally after try
 2025-08-21T03:57:01: 📊 Admin panel: http://localhost:3000/admin
 2025-08-21T03:57:01: 🌐 Main site: http://localhost:3000
 2025-08-21T03:57:01: 💡 Environment: production
+2025-08-21T04:00:04: 📅 Fetching all events
+2025-08-21T04:00:04: 👥 Fetching all sales reps
+2025-08-21T04:00:04: ✅ Found 4 events
+2025-08-21T04:00:04: 🏢 Fetching departments list
+2025-08-21T04:00:04: ✅ Found 4 sales reps
+2025-08-21T04:00:04: ✅ Found 4 departments
+2025-08-21T04:01:27: ❌ Token verification error: TokenExpiredError: jwt expired
+    at /home/user/webapp/node_modules/jsonwebtoken/verify.js:190:21
+    at getSecret (/home/user/webapp/node_modules/jsonwebtoken/verify.js:97:14)
+    at module.exports [as verify] (/home/user/webapp/node_modules/jsonwebtoken/verify.js:101:10)
+    at /home/user/webapp/src/routes/auth.js:122:29
+    at Layer.handle [as handle_request] (/home/user/webapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/user/webapp/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/user/webapp/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/user/webapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/user/webapp/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/user/webapp/node_modules/express/lib/router/index.js:346:12) {
+  expiredAt: 2025-08-21T02:31:55.000Z
+}
+2025-08-21T04:07:07: SIGINT received, shutting down gracefully
+2025-08-21T04:07:07: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-21T04:07:07: 📊 Admin panel: http://localhost:3000/admin
+2025-08-21T04:07:07: 🌐 Main site: http://localhost:3000
+2025-08-21T04:07:07: 💡 Environment: production
+2025-08-21T04:07:16: 🏢 Fetching departments list
+2025-08-21T04:07:16: ✅ Found 4 departments
+2025-08-21T04:07:16: 👥 Fetching all sales reps
+2025-08-21T04:07:16: 📅 Fetching all events
+2025-08-21T04:07:16: ✅ Found 4 sales reps
+2025-08-21T04:07:16: ✅ Found 4 events

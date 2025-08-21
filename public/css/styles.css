@@ -1295,8 +1295,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .event-past:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
+    transform: translateY(-8px); /* Same as regular event cards */
+    box-shadow: var(--shadow-xl); /* Same as regular event cards */
 }
 
 .event-past .event-title {
@@ -1552,6 +1552,80 @@ h1, h2, h3, h4, h5, h6 {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Smooth section transitions */
+.section {
+    opacity: 1;
+    transition: opacity var(--transition-fast) ease;
+}
+
+.section[style*="display: none"] {
+    opacity: 0;
+}
+
+/* Hide content during loading to prevent flashing */
+.section-loading .section {
+    visibility: hidden;
+}
+
+.section-loading .hero,
+.section-loading .features {
+    visibility: hidden;
+}
+
+/* Ensure sections are visible when not loading */
+body:not(.section-loading) .section {
+    visibility: visible;
+}
+
+body:not(.section-loading) .hero,
+body:not(.section-loading) .features {
+    visibility: visible;
+}
+
+/* Hide content during loading to prevent flashing */
+.events-grid {
+    min-height: 200px;
+    transition: all var(--transition-normal) ease;
+}
+
+.events-grid:empty {
+    min-height: 400px;
+}
+
+/* Prevent layout shift during grid loading */
+.event-card {
+    min-height: 350px;
+    transform: translateY(0);
+    transition: all var(--transition-fast) ease;
+}
+
+.event-card:hover {
+    transform: translateY(-8px);
+}
+
+/* Sales rep card consistency */
+.sales-rep-card {
+    min-height: 420px;
+    transform: translateY(0);
+    transition: all var(--transition-fast) ease;
+}
+
+.sales-rep-card:hover {
+    transform: translateY(-2px);
+}
+
+/* Loading state improvements */
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    min-height: 200px;
+    gap: 1rem;
+    color: var(--color-text-secondary);
 }
 
 /* Responsive Design */

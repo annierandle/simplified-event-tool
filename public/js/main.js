@@ -406,28 +406,59 @@ class CorporateEventsApp {
     showSection(sectionName) {
         console.log(`🔄 Switching to section: ${sectionName}`);
         
-        // Hide all sections
-        document.querySelectorAll('.section').forEach(section => {
-            section.style.display = 'none';
-        });
+        // Add loading class to prevent flashing
+        document.body.classList.add('section-loading');
         
-        // Hide hero if showing a section
+        // Get the target section first
+        const targetSection = document.getElementById(`${sectionName}Section`);
         const hero = document.querySelector('.hero');
         const features = document.querySelector('.features');
         
+        // Immediately hide all sections without fade for smoother transition
+        document.querySelectorAll('.section').forEach(section => {
+            if (section !== targetSection) {
+                section.style.display = 'none';
+                section.style.opacity = '0';
+            }
+        });
+        
+        // Handle hero and features visibility
         if (sectionName !== 'hero') {
-            if (hero) hero.style.display = 'none';
-            if (features) features.style.display = 'none';
+            if (hero) {
+                hero.style.display = 'none';
+                hero.style.opacity = '0';
+            }
+            if (features) {
+                features.style.display = 'none';
+                features.style.opacity = '0';
+            }
         } else {
-            if (hero) hero.style.display = 'block';
-            if (features) features.style.display = 'block';
+            if (hero) {
+                hero.style.display = 'block';
+                // Force reflow
+                hero.offsetHeight;
+                hero.style.opacity = '1';
+            }
+            if (features) {
+                features.style.display = 'block';
+                // Force reflow
+                features.offsetHeight;
+                features.style.opacity = '1';
+            }
         }
         
-        // Show selected section
-        const targetSection = document.getElementById(`${sectionName}Section`);
+        // Show target section immediately if it exists
         if (targetSection) {
             targetSection.style.display = 'block';
+            // Force reflow to ensure display is applied before opacity
+            targetSection.offsetHeight;
+            targetSection.style.opacity = '1';
         }
+        
+        // Remove loading class after transition
+        setTimeout(() => {
+            document.body.classList.remove('section-loading');
+        }, 100);
         
         this.currentSection = sectionName;
         
@@ -875,7 +906,6 @@ class CorporateEventsApp {
 
     scheduleFromEvent() {
         if (this.selectedEvent) {
-            document.getElementById('eventDetailsModal').classList.remove('show');
             this.showSection('meetingRequest');
             
             // Pre-select the event

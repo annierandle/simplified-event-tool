@@ -768,3 +768,20 @@ DTEN...
 2025-08-21T03:57:01: 📊 Admin panel: http://localhost:3000/admin
 2025-08-21T03:57:01: 🌐 Main site: http://localhost:3000
 2025-08-21T03:57:01: 💡 Environment: production
+2025-08-21T04:00:04: 📅 Fetching all events
+2025-08-21T04:00:04: 👥 Fetching all sales reps
+2025-08-21T04:00:04: ✅ Found 4 events
+2025-08-21T04:00:04: 🏢 Fetching departments list
+2025-08-21T04:00:04: ✅ Found 4 sales reps
+2025-08-21T04:00:04: ✅ Found 4 departments
+2025-08-21T04:07:07: SIGINT received, shutting down gracefully
+2025-08-21T04:07:07: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-21T04:07:07: 📊 Admin panel: http://localhost:3000/admin
+2025-08-21T04:07:07: 🌐 Main site: http://localhost:3000
+2025-08-21T04:07:07: 💡 Environment: production
+2025-08-21T04:07:16: 🏢 Fetching departments list
+2025-08-21T04:07:16: ✅ Found 4 departments
+2025-08-21T04:07:16: 👥 Fetching all sales reps
+2025-08-21T04:07:16: 📅 Fetching all events
+2025-08-21T04:07:16: ✅ Found 4 sales reps
+2025-08-21T04:07:16: ✅ Found 4 events
