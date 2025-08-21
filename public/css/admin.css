@@ -1217,8 +1217,26 @@
 }
 
 /* Compact Request Card Styles */
+.requests-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    max-width: 100%;
+}
+
+.requests-container .request-card.compact {
+    width: 48%;
+    max-width: 450px;
+    padding: 12px;
+    margin-bottom: 12px;
+    margin-right: 12px;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-color);
+    box-sizing: border-box;
+}
+
 .request-card.compact {
-    padding: 16px;
+    padding: 12px;
     margin-bottom: 12px;
     border-radius: 8px;
     border-left: 4px solid var(--primary-color);
@@ -1292,8 +1310,50 @@
     border-left-color: var(--primary-color);
 }
 
+/* Back to Dashboard Button */
+.back-to-dashboard {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 16px;
+    text-decoration: none;
+}
+
+.back-to-dashboard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    color: white;
+    text-decoration: none;
+}
+
+.back-to-dashboard:active {
+    transform: translateY(0);
+}
+
+.back-to-dashboard i {
+    font-size: 0.875rem;
+}
+
 /* Responsive adjustments for compact layout */
 @media (max-width: 768px) {
+    .requests-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .requests-container .request-card.compact {
+        width: 100%;
+        margin-right: 0;
+    }
+    
     .request-details.compact .detail-row {
         flex-direction: column;
         gap: 8px;
