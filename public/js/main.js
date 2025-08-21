@@ -612,29 +612,26 @@ class CorporateEventsApp {
                 'Emily Rodriguez': 'emily-rodriguez.jpg',
                 'David Thompson': 'david-thompson.jpg'
             };
-            const imageName = imageMap[rep.name] || 'default-avatar.jpg';
+            const imageName = imageMap[rep.name] || 'default-avatar.svg';
             
             return `
-                <div class="card sales-rep-card" data-rep-id="${rep.id}">
-                    <div class="sales-rep-photo">
-                        <img src="/images/team/${imageName}" alt="${window.utils.escapeHtml(rep.name)}" class="rep-avatar">
+                <div class="team-member-card" data-rep-id="${rep.id}">
+                    <div class="team-member-photo">
+                        <img src="/images/team/${imageName}" alt="${window.utils.escapeHtml(rep.name)}" class="team-member-avatar">
                     </div>
-                    <div class="card-header">
-                        <h4 class="card-title">${window.utils.escapeHtml(rep.name)}</h4>
-                        <div class="badge badge-info">${window.utils.escapeHtml(rep.department || 'General')}</div>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text bio">
-                            ${window.utils.escapeHtml(rep.bio || 'No bio available')}
-                        </p>
-                        <p class="card-text">
+                    <div class="team-member-info">
+                        <h4 class="team-member-name">${window.utils.escapeHtml(rep.name)}</h4>
+                        <div class="team-member-department">${window.utils.escapeHtml(rep.department || 'General')}</div>
+                        <p class="team-member-bio">${window.utils.escapeHtml((rep.bio || 'Available for meetings').substring(0, 80))}${rep.bio && rep.bio.length > 80 ? '...' : ''}</p>
+                        <div class="team-member-availability">
                             <i class="fas fa-calendar-check"></i>
-                            <span class="badge badge-success">Available for ${rep.event_count} events</span>
-                        </p>
+                            <span>${rep.event_count} events</span>
+                        </div>
                     </div>
-                    <div class="card-footer">
-                        <button class="btn btn-primary btn-sm schedule-with-rep" data-rep-id="${rep.id}">
-                            <i class="fas fa-calendar-plus"></i> Schedule Meeting
+                    <div class="team-member-actions">
+                        <button class="btn-team-contact schedule-with-rep" data-rep-id="${rep.id}">
+                            <i class="fas fa-calendar-plus"></i>
+                            <span>Schedule Meeting</span>
                         </button>
                     </div>
                 </div>
@@ -648,6 +645,11 @@ class CorporateEventsApp {
                 this.scheduleFromSalesRepId(repId);
             });
         });
+        
+        // Reinitialize Lucide icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
     }
 
     populateEventSelect() {

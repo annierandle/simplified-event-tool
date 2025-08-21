@@ -785,3 +785,109 @@ DTEN...
 2025-08-21T04:07:16: 📅 Fetching all events
 2025-08-21T04:07:16: ✅ Found 4 sales reps
 2025-08-21T04:07:16: ✅ Found 4 events
+2025-08-21T04:08:35: 🔐 Login attempt: { email: 'admin@company.com', hasPassword: true }
+2025-08-21T04:08:35: ✅ User found: { id: 1, email: 'admin@company.com', role: 'admin' }
+2025-08-21T04:08:35: ✅ Password verified for: admin@company.com
+2025-08-21T04:08:35: ✅ JWT token generated for: admin@company.com
+2025-08-21T04:08:36: 📋 Fetching all meeting requests
+2025-08-21T04:08:36: ✅ Found 0 meeting requests
+2025-08-21T04:11:13: 📅 Fetching all events
+2025-08-21T04:11:13: 🏢 Fetching departments list
+2025-08-21T04:11:13: 👥 Fetching all sales reps
+2025-08-21T04:11:13: ✅ Found 4 events
+2025-08-21T04:11:13: ✅ Found 4 departments
+2025-08-21T04:11:13: ✅ Found 4 sales reps
+2025-08-21T04:13:38: 📋 Fetching all meeting requests
+2025-08-21T04:13:38: ✅ Found 0 meeting requests
+2025-08-21T04:14:08: 📅 Fetching all events
+2025-08-21T04:14:08: ✅ Found 4 events
+2025-08-21T04:14:38: 👥 Fetching all sales reps
+2025-08-21T04:14:38: ✅ Found 4 sales reps
+2025-08-21T04:14:38: 🏢 Fetching departments list
+2025-08-21T04:14:38: ✅ Found 4 departments
+2025-08-21T04:15:05: 📅 Fetching all events
+2025-08-21T04:15:05: ✅ Found 4 events
+2025-08-21T04:15:07: 📋 Fetching all meeting requests
+2025-08-21T04:15:07: ✅ Found 0 meeting requests
+2025-08-21T04:17:42: 📋 Fetching all meeting requests
+2025-08-21T04:17:42: ✅ Found 0 meeting requests
+2025-08-21T04:18:45: 📋 Fetching all meeting requests
+2025-08-21T04:18:45: ✅ Found 0 meeting requests
+2025-08-21T04:20:02: SIGINT received, shutting down gracefully
+2025-08-21T04:20:03: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-21T04:20:03: 📊 Admin panel: http://localhost:3000/admin
+2025-08-21T04:20:03: 🌐 Main site: http://localhost:3000
+2025-08-21T04:20:03: 💡 Environment: production
+2025-08-21T04:21:21: 📋 Fetching all meeting requests
+2025-08-21T04:21:21: ✅ Found 0 meeting requests
+2025-08-21T04:21:22: 📅 Fetching all events
+2025-08-21T04:21:22: ✅ Found 4 events
+2025-08-21T04:21:25: 👥 Fetching all sales reps
+2025-08-21T04:21:25: ✅ Found 4 sales reps
+2025-08-21T04:21:25: 🏢 Fetching departments list
+2025-08-21T04:21:25: ✅ Found 4 departments
+2025-08-21T04:21:32: 📅 Fetching all events
+2025-08-21T04:21:32: ✅ Found 4 events
+2025-08-21T04:21:36: 📋 Fetching all meeting requests
+2025-08-21T04:21:36: ✅ Found 0 meeting requests
+2025-08-21T04:21:39: 📋 Fetching all meeting requests
+2025-08-21T04:21:39: ✅ Found 0 meeting requests
+2025-08-21T04:22:48: 📅 Fetching all events
+2025-08-21T04:22:48: 👥 Fetching all sales reps
+2025-08-21T04:22:48: 🏢 Fetching departments list
+2025-08-21T04:22:48: ✅ Found 4 events
+2025-08-21T04:22:48: ✅ Found 4 sales reps
+2025-08-21T04:22:48: ✅ Found 4 departments
+2025-08-21T04:23:12: 📅 Fetching all events
+2025-08-21T04:23:12: 👥 Fetching all sales reps
+2025-08-21T04:23:12: ✅ Found 4 events
+2025-08-21T04:23:12: ✅ Found 4 sales reps
+2025-08-21T04:23:12: 🏢 Fetching departments list
+2025-08-21T04:23:12: ✅ Found 4 departments
+2025-08-21T04:27:49: 📅 Fetching event 3 with sales reps
+2025-08-21T04:27:49: ✅ Found event with 2 sales reps
+2025-08-21T04:27:52: 📅 Fetching all events
+2025-08-21T04:27:52: 🏢 Fetching departments list
+2025-08-21T04:27:52: 👥 Fetching all sales reps
+2025-08-21T04:27:52: ✅ Found 4 events
+2025-08-21T04:27:52: ✅ Found 4 departments
+2025-08-21T04:27:52: ✅ Found 4 sales reps
+2025-08-21T04:27:58: 📅 Fetching event 2 with sales reps
+2025-08-21T04:27:58: ✅ Found event with 2 sales reps
+2025-08-21T04:28:47: 📅 Fetching all events
+2025-08-21T04:28:47: ✅ Found 4 events
+2025-08-21T04:28:47: 👥 Fetching all sales reps
+2025-08-21T04:28:47: 🏢 Fetching departments list
+2025-08-21T04:28:47: ✅ Found 4 sales reps
+2025-08-21T04:28:47: ✅ Found 4 departments
+2025-08-21T04:29:29: SIGINT received, shutting down gracefully
+2025-08-21T04:29:30: 📁 Created upload directory: public/images/events
+2025-08-21T04:29:30: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-21T04:29:30: 📊 Admin panel: http://localhost:3000/admin
+2025-08-21T04:29:30: 🌐 Main site: http://localhost:3000
+2025-08-21T04:29:30: 💡 Environment: production
+2025-08-21T04:33:22: SIGINT received, shutting down gracefully
+2025-08-21T04:33:22: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-21T04:33:22: 📊 Admin panel: http://localhost:3000/admin
+2025-08-21T04:33:22: 🌐 Main site: http://localhost:3000
+2025-08-21T04:33:22: 💡 Environment: production
+2025-08-21T04:39:03: SIGINT received, shutting down gracefully
+2025-08-21T04:39:03: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-21T04:39:03: 📊 Admin panel: http://localhost:3000/admin
+2025-08-21T04:39:03: 🌐 Main site: http://localhost:3000
+2025-08-21T04:39:03: 💡 Environment: production
+2025-08-21T04:41:22: 📅 Fetching all events
+2025-08-21T04:41:22: 🏢 Fetching departments list
+2025-08-21T04:41:22: ✅ Found 4 departments
+2025-08-21T04:41:22: ✅ Found 4 events
+2025-08-21T04:41:22: 👥 Fetching all sales reps
+2025-08-21T04:41:22: ✅ Found 4 sales reps
+2025-08-21T04:47:52: SIGINT received, shutting down gracefully
+2025-08-21T04:47:53: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-21T04:47:53: 📊 Admin panel: http://localhost:3000/admin
+2025-08-21T04:47:53: 🌐 Main site: http://localhost:3000
+2025-08-21T04:47:53: 💡 Environment: production
+2025-08-21T04:50:50: 🔐 Login attempt: { email: 'admin@company.com', hasPassword: true }
+2025-08-21T04:50:50: ✅ User found: { id: 1, email: 'admin@company.com', role: 'admin' }
+2025-08-21T04:50:51: ✅ Password verified for: admin@company.com
+2025-08-21T04:50:51: ✅ JWT token generated for: admin@company.com

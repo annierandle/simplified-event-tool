@@ -160,4 +160,102 @@ router.get('/search', (req, res) => {
     });
 });
 
+// Update event
+router.put('/:id', (req, res) => {
+    const eventId = req.params.id;
+    const { name, description, location, start_date, end_date, status } = req.body;
+    
+    console.log(`📅 Updating event ${eventId}`);
+    
+    const updateQuery = `
+        UPDATE events 
+        SET name = ?, description = ?, location = ?, start_date = ?, end_date = ?, status = ?, updated_at = CURRENT_TIMESTAMP
+        WHERE id = ?
+    `;
+    
+    db.run(updateQuery, [name, description, location, start_date, end_date, status, eventId], function(err) {
+        if (err) {
+            console.error('❌ Error updating event:', err);
+            return res.status(500).json({ 
+                success: false, 
+                error: 'Database error' 
+            });
+        }
+        
+        if (this.changes === 0) {
+            return res.status(404).json({ 
+                success: false, 
+                error: 'Event not found' 
+            });
+        }
+        
+        console.log(`✅ Event ${eventId} updated successfully`);
+        res.json({
+            success: true,
+            message: 'Event updated successfully'
+        });
+    });
+});
+
+// Create new event
+router.post('/', (req, res) => {
+    const { name, description, location, start_date, end_date, status = 'active' } = req.body;
+    
+    console.log('📅 Creating new event:', name);
+    
+    const insertQuery = `
+        INSERT INTO events (name, description, location, start_date, end_date, status, created_at, updated_at)
+        VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    `;
+    
+    db.run(insertQuery, [name, description, location, start_date, end_date, status], function(err) {
+        if (err) {
+            console.error('❌ Error creating event:', err);
+            return res.status(500).json({ 
+                success: false, 
+                error: 'Database error' 
+            });
+        }
+        
+        console.log(`✅ Event created with ID: ${this.lastID}`);
+        res.json({
+            success: true,
+            data: { id: this.lastID },
+            message: 'Event created successfully'
+        });
+    });
+});
+
+// Delete event
+router.delete('/:id', (req, res) => {
+    const eventId = req.params.id;
+    
+    console.log(`📅 Deleting event ${eventId}`);
+    
+    const deleteQuery = 'DELETE FROM events WHERE id = ?';
+    
+    db.run(deleteQuery, [eventId], function(err) {
+        if (err) {
+            console.error('❌ Error deleting event:', err);
+            return res.status(500).json({ 
+                success: false, 
+                error: 'Database error' 
+            });
+        }
+        
+        if (this.changes === 0) {
+            return res.status(404).json({ 
+                success: false, 
+                error: 'Event not found' 
+            });
+        }
+        
+        console.log(`✅ Event ${eventId} deleted successfully`);
+        res.json({
+            success: true,
+            message: 'Event deleted successfully'
+        });
+    });
+});
+
 module.exports = router;

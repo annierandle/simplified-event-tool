@@ -231,4 +231,133 @@ router.get('/departments/list', (req, res) => {
     });
 });
 
+// Get all sales reps (including unavailable for admin)
+router.get('/admin/all', (req, res) => {
+    console.log('👥 Fetching all sales reps for admin');
+    
+    const query = `
+        SELECT 
+            sr.*,
+            COUNT(esr.event_id) as event_count
+        FROM sales_reps sr
+        LEFT JOIN event_sales_reps esr ON sr.id = esr.sales_rep_id
+        GROUP BY sr.id
+        ORDER BY sr.name ASC
+    `;
+    
+    db.all(query, [], (err, rows) => {
+        if (err) {
+            console.error('❌ Error fetching all sales reps:', err);
+            return res.status(500).json({ 
+                success: false, 
+                error: 'Database error' 
+            });
+        }
+        
+        console.log(`✅ Found ${rows.length} sales reps for admin`);
+        res.json({
+            success: true,
+            data: rows
+        });
+    });
+});
+
+// Update sales rep
+router.put('/:id', (req, res) => {
+    const salesRepId = req.params.id;
+    const { name, email, phone, department, bio, availability_status } = req.body;
+    
+    console.log(`👥 Updating sales rep ${salesRepId}`);
+    
+    const updateQuery = `
+        UPDATE sales_reps 
+        SET name = ?, email = ?, phone = ?, department = ?, bio = ?, availability_status = ?, updated_at = CURRENT_TIMESTAMP
+        WHERE id = ?
+    `;
+    
+    db.run(updateQuery, [name, email, phone, department, bio, availability_status, salesRepId], function(err) {
+        if (err) {
+            console.error('❌ Error updating sales rep:', err);
+            return res.status(500).json({ 
+                success: false, 
+                error: 'Database error' 
+            });
+        }
+        
+        if (this.changes === 0) {
+            return res.status(404).json({ 
+                success: false, 
+                error: 'Sales representative not found' 
+            });
+        }
+        
+        console.log(`✅ Sales rep ${salesRepId} updated successfully`);
+        res.json({
+            success: true,
+            message: 'Sales representative updated successfully'
+        });
+    });
+});
+
+// Create new sales rep
+router.post('/', (req, res) => {
+    const { name, email, phone, department, bio, availability_status = 'available' } = req.body;
+    
+    console.log('👥 Creating new sales rep:', name);
+    
+    const insertQuery = `
+        INSERT INTO sales_reps (name, email, phone, department, bio, availability_status, created_at, updated_at)
+        VALUES (?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+    `;
+    
+    db.run(insertQuery, [name, email, phone, department, bio, availability_status], function(err) {
+        if (err) {
+            console.error('❌ Error creating sales rep:', err);
+            return res.status(500).json({ 
+                success: false, 
+                error: 'Database error' 
+            });
+        }
+        
+        console.log(`✅ Sales rep created with ID: ${this.lastID}`);
+        res.json({
+            success: true,
+            data: { id: this.lastID },
+            message: 'Sales representative created successfully'
+        });
+    });
+});
+
+// Delete sales rep
+router.delete('/:id', (req, res) => {
+    const salesRepId = req.params.id;
+    
+    console.log(`👥 Deleting sales rep ${salesRepId}`);
+    
+    const deleteQuery = 'DELETE FROM sales_reps WHERE id = ?';
+    
+    db.run(deleteQuery, [salesRepId], function(err) {
+        if (err) {
+            console.error('❌ Error deleting sales rep:', err);
+            return res.status(500).json({ 
+                success: false, 
+                error: 'Database error' 
+            });
+        }
+        
+        if (this.changes === 0) {
+            return res.status(404).json({ 
+                success: false, 
+                error: 'Sales representative not found' 
+            });
+        }
+        
+        console.log(`✅ Sales rep ${salesRepId} deleted successfully`);
+        res.json({
+            success: true,
+            message: 'Sales representative deleted successfully'
+        });
+    });
+});
+
 module.exports = router;

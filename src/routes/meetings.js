@@ -579,4 +579,61 @@ router.get('/test/email-config', async (req, res) => {
     }
 });
 
+// Get pending requests statistics
+router.get('/admin/pending-stats', (req, res) => {
+    console.log('📊 Fetching pending requests statistics');
+    
+    const queries = {
+        today: `
+            SELECT COUNT(*) as count
+            FROM meeting_requests 
+            WHERE status = 'pending' 
+            AND DATE(created_at) = DATE('now')
+        `,
+        week: `
+            SELECT COUNT(*) as count
+            FROM meeting_requests 
+            WHERE status = 'pending' 
+            AND DATE(created_at) >= DATE('now', '-7 days')
+        `,
+        urgent: `
+            SELECT COUNT(*) as count
+            FROM meeting_requests 
+            WHERE status = 'pending' 
+            AND DATE(preferred_date) <= DATE('now', '+3 days')
+            AND DATE(preferred_date) >= DATE('now')
+        `,
+        total: `
+            SELECT COUNT(*) as count
+            FROM meeting_requests 
+            WHERE status = 'pending'
+        `
+    };
+    
+    const results = {};
+    let completedQueries = 0;
+    const totalQueries = Object.keys(queries).length;
+    
+    Object.entries(queries).forEach(([key, query]) => {
+        db.get(query, [], (err, row) => {
+            if (err) {
+                console.error(`❌ Error fetching ${key} stats:`, err);
+                results[key] = 0;
+            } else {
+                results[key] = row.count;
+            }
+            
+            completedQueries++;
+            
+            if (completedQueries === totalQueries) {
+                console.log('✅ Pending requests statistics fetched:', results);
+                res.json({
+                    success: true,
+                    data: results
+                });
+            }
+        });
+    });
+});
+
 module.exports = router;

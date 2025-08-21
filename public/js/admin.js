@@ -165,10 +165,10 @@ class AdminApp {
             const response = await window.apiClient.login(email, password);
             
             if (response.success) {
-                console.log('✅ Login successful:', response.user);
+                console.log('✅ Login successful:', response.data.user);
                 
                 // Update user info
-                document.getElementById('userName').textContent = response.user.name || response.user.email;
+                document.getElementById('userName').textContent = response.data.user.name || response.data.user.email;
                 
                 // Show dashboard
                 this.showDashboard();
@@ -200,7 +200,7 @@ class AdminApp {
             const response = await window.apiClient.verifyToken();
             
             if (response.success) {
-                document.getElementById('userName').textContent = response.user.name || response.user.email;
+                document.getElementById('userName').textContent = response.data.user.name || response.data.user.email;
                 this.showDashboard();
                 return true;
             } else {
@@ -263,25 +263,39 @@ class AdminApp {
         try {
             console.log('📊 Loading dashboard data...');
             
-            const response = await window.apiClient.getDashboardData();
+            // Load basic stats
+            const [eventsResponse, salesRepsResponse, meetingsResponse, pendingStatsResponse] = await Promise.all([
+                window.apiClient.getEvents(),
+                window.apiClient.request('GET', '/sales-reps/admin/all'),
+                window.apiClient.getMeetings(),
+                window.apiClient.request('GET', '/meetings/admin/pending-stats')
+            ]);
             
-            if (response.success) {
-                const data = response.data;
-                
-                // Update stat cards
-                document.getElementById('totalEvents').textContent = data.totalEvents || 0;
-                document.getElementById('totalSalesReps').textContent = data.totalSalesReps || 0;
-                document.getElementById('pendingMeetings').textContent = data.pendingMeetings || 0;
-                document.getElementById('totalMeetings').textContent = data.totalMeetings || 0;
-                
-                console.log('✅ Dashboard data loaded:', data);
-                
-                // Load recent meetings
-                await this.loadRecentMeetings();
-                
-            } else {
-                throw new Error(response.error || 'Failed to load dashboard data');
+            // Update stat cards
+            if (eventsResponse.success) {
+                const activeEvents = eventsResponse.data.filter(event => event.status === 'active');
+                document.getElementById('totalEvents').textContent = activeEvents.length;
             }
+            
+            if (salesRepsResponse.success) {
+                const availableReps = salesRepsResponse.data.filter(rep => rep.availability_status === 'available');
+                document.getElementById('totalSalesReps').textContent = availableReps.length;
+            }
+            
+            if (pendingStatsResponse.success) {
+                document.getElementById('pendingRequests').textContent = pendingStatsResponse.data.total || 0;
+                
+                // Update pending requests stats
+                document.getElementById('todayRequests').textContent = pendingStatsResponse.data.today || 0;
+                document.getElementById('weekRequests').textContent = pendingStatsResponse.data.week || 0;
+                document.getElementById('urgentRequests').textContent = pendingStatsResponse.data.urgent || 0;
+            }
+            
+            if (meetingsResponse.success) {
+                document.getElementById('totalMeetings').textContent = meetingsResponse.data.length;
+            }
+            
+            console.log('✅ Dashboard data loaded');
             
         } catch (error) {
             console.error('❌ Error loading dashboard data:', error);
@@ -339,26 +353,31 @@ class AdminApp {
 
     async loadMeetings() {
         try {
-            console.log('📋 Loading meetings...');
+            console.log('📋 Loading pending requests...');
             
             const loading = document.getElementById('meetingsLoading');
             if (loading) loading.style.display = 'block';
             
-            const response = await window.apiClient.getMeetings();
+            // Load only pending meetings for the admin panel
+            const response = await window.apiClient.request('GET', '/meetings/search?status=pending&limit=50');
             
             if (response.success) {
                 this.meetings = response.data;
-                this.renderMeetings();
-                console.log(`✅ Loaded ${this.meetings.length} meetings`);
+                this.renderPendingRequests();
+                console.log(`✅ Loaded ${this.meetings.length} pending requests`);
+                
+                // Load pending stats
+                await this.loadDashboardData();
+                
             } else {
-                throw new Error(response.error || 'Failed to load meetings');
+                throw new Error(response.error || 'Failed to load pending requests');
             }
             
         } catch (error) {
-            console.error('❌ Error loading meetings:', error);
-            const container = document.getElementById('meetingsContainer');
+            console.error('❌ Error loading pending requests:', error);
+            const container = document.getElementById('pendingRequestsContainer');
             if (container) {
-                window.utils.showError('Failed to load meetings. Please try again.', container);
+                window.utils.showError('Failed to load pending requests. Please try again.', container);
             }
         } finally {
             const loading = document.getElementById('meetingsLoading');
@@ -366,8 +385,8 @@ class AdminApp {
         }
     }
 
-    renderMeetings(meetingsToRender = null) {
-        const container = document.getElementById('meetingsContainer');
+    renderPendingRequests(meetingsToRender = null) {
+        const container = document.getElementById('pendingRequestsContainer');
         if (!container) return;
         
         const meetings = meetingsToRender || this.meetings;
@@ -375,78 +394,101 @@ class AdminApp {
         if (meetings.length === 0) {
             container.innerHTML = `
                 <div class="empty-state">
-                    <i class="fas fa-calendar-times"></i>
-                    <h4>No Meetings Found</h4>
-                    <p>No meeting requests match your current filters.</p>
+                    <i class="fas fa-clock"></i>
+                    <h4>No Pending Requests</h4>
+                    <p>All meeting requests have been processed.</p>
                 </div>
             `;
             return;
         }
         
-        container.innerHTML = `
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Client</th>
-                        <th>Event</th>
-                        <th>Sales Rep</th>
-                        <th>Preferred Date</th>
-                        <th>Status</th>
-                        <th>Created</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${meetings.map(meeting => `
-                        <tr>
-                            <td>
-                                <strong>${window.utils.escapeHtml(meeting.client_name)}</strong><br>
-                                <small>${window.utils.escapeHtml(meeting.client_email)}</small>
-                                ${meeting.client_company ? `<br><small>${window.utils.escapeHtml(meeting.client_company)}</small>` : ''}
-                            </td>
-                            <td>
-                                <strong>${window.utils.escapeHtml(meeting.event_name)}</strong><br>
-                                <small>${window.utils.escapeHtml(meeting.event_location || 'Location TBD')}</small>
-                            </td>
-                            <td>
-                                <strong>${window.utils.escapeHtml(meeting.sales_rep_name)}</strong><br>
-                                <small>${window.utils.escapeHtml(meeting.sales_rep_department || 'General')}</small>
-                            </td>
-                            <td>
-                                ${meeting.preferred_date ? window.utils.formatDate(meeting.preferred_date) : 'Not specified'}<br>
-                                ${meeting.preferred_time ? `<small>${meeting.preferred_time}</small>` : '<small>Any time</small>'}
-                            </td>
-                            <td>
-                                <span class="status-badge ${meeting.status}">
-                                    <i class="fas ${this.getStatusIcon(meeting.status)}"></i>
-                                    ${meeting.status}
-                                </span>
-                            </td>
-                            <td>
-                                ${window.utils.formatDateTime(meeting.created_at)}
-                            </td>
-                            <td class="actions">
-                                <button class="btn btn-primary btn-sm view-meeting" data-meeting-id="${meeting.id}">
-                                    <i class="fas fa-eye"></i> View
-                                </button>
-                                ${meeting.status === 'pending' ? `
-                                    <button class="btn btn-success btn-sm approve-meeting" data-meeting-id="${meeting.id}">
-                                        <i class="fas fa-check"></i> Approve
-                                    </button>
-                                    <button class="btn btn-danger btn-sm reject-meeting" data-meeting-id="${meeting.id}">
-                                        <i class="fas fa-times"></i> Reject
-                                    </button>
-                                ` : `
-                                    <button class="btn btn-secondary btn-sm update-status" data-meeting-id="${meeting.id}">
-                                        <i class="fas fa-edit"></i> Update
-                                    </button>
-                                `}
-                            </td>
-                        </tr>
-                    `).join('')}
-                </tbody>
-            </table>
-        `;
+        container.innerHTML = meetings.map(meeting => {
+            const isUrgent = new Date(meeting.preferred_date) <= new Date(Date.now() + 3 * 24 * 60 * 60 * 1000);
+            
+            return `
+                <div class="request-card ${isUrgent ? 'urgent' : ''}" data-meeting-id="${meeting.id}">
+                    <div class="request-header">
+                        <div class="request-info">
+                            <h5>${window.utils.escapeHtml(meeting.client_name)} - ${window.utils.escapeHtml(meeting.event_name)}</h5>
+                            <div class="request-meta">
+                                Requested ${window.utils.formatDateTime(meeting.created_at)}
+                                ${isUrgent ? ' • <span class="text-danger"><i class="fas fa-exclamation-triangle"></i> Urgent</span>' : ''}
+                            </div>
+                        </div>
+                        <div class="request-actions">
+                            <button class="btn btn-sm btn-primary view-request" data-meeting-id="${meeting.id}" title="View Details">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="btn btn-sm btn-success approve-request" data-meeting-id="${meeting.id}" title="Approve">
+                                <i class="fas fa-check"></i>
+                            </button>
+                            <button class="btn btn-sm btn-danger reject-request" data-meeting-id="${meeting.id}" title="Reject">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="request-details">
+                        <div class="detail-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>${window.utils.escapeHtml(meeting.client_email)}</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-building"></i>
+                            <span>${window.utils.escapeHtml(meeting.client_company || 'No company')}</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-user-tie"></i>
+                            <span>${window.utils.escapeHtml(meeting.sales_rep_name)}</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-calendar"></i>
+                            <span>${meeting.preferred_date ? window.utils.formatDate(meeting.preferred_date) : 'Any date'}</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-clock"></i>
+                            <span>${meeting.preferred_time || 'Any time'} (${meeting.duration || 30} min)</span>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>${window.utils.escapeHtml(meeting.event_location || 'Location TBD')}</span>
+                        </div>
+                    </div>
+                    ${meeting.message ? `
+                        <div class="request-message">
+                            <strong>Message:</strong> ${window.utils.escapeHtml(meeting.message)}
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        }).join('');
+        
+        // Bind event listeners for request actions
+        container.querySelectorAll('.view-request').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const meetingId = e.target.closest('[data-meeting-id]').dataset.meetingId;
+                this.showRequestDetails(meetingId);
+            });
+        });
+        
+        container.querySelectorAll('.approve-request').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const meetingId = e.target.closest('[data-meeting-id]').dataset.meetingId;
+                this.updateMeetingStatus(meetingId, 'approved');
+            });
+        });
+        
+        container.querySelectorAll('.reject-request').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const meetingId = e.target.closest('[data-meeting-id]').dataset.meetingId;
+                this.updateMeetingStatus(meetingId, 'rejected');
+            });
+        });
+    }
+    
+    // Keep the old method for backward compatibility
+    renderMeetings(meetingsToRender = null) {
+        return this.renderPendingRequests(meetingsToRender);
+    }
         
         // Bind action buttons
         container.querySelectorAll('.view-meeting').forEach(btn => {
@@ -877,11 +919,543 @@ class AdminApp {
         };
         return icons[status] || 'fa-question';
     }
+
+    showRequestDetails(meetingId) {
+        const meeting = this.meetings.find(m => m.id == meetingId);
+        if (!meeting) return;
+        
+        const modal = document.getElementById('requestDetailsModal');
+        const content = document.getElementById('requestDetailsContent');
+        
+        content.innerHTML = `
+            <div class="meeting-details">
+                <div class="detail-group">
+                    <h6><i class="fas fa-user"></i> Client Information</h6>
+                    <div class="client-info">
+                        <div>
+                            <strong>Name:</strong> ${window.utils.escapeHtml(meeting.client_name)}
+                        </div>
+                        <div>
+                            <strong>Email:</strong> ${window.utils.escapeHtml(meeting.client_email)}
+                        </div>
+                        <div>
+                            <strong>Company:</strong> ${window.utils.escapeHtml(meeting.client_company || 'Not specified')}
+                        </div>
+                        <div>
+                            <strong>Phone:</strong> ${window.utils.escapeHtml(meeting.client_phone || 'Not provided')}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="detail-group">
+                    <h6><i class="fas fa-calendar"></i> Event Information</h6>
+                    <p>
+                        <strong>${window.utils.escapeHtml(meeting.event_name)}</strong><br>
+                        <i class="fas fa-map-marker-alt"></i> ${window.utils.escapeHtml(meeting.event_location || 'Location TBD')}
+                    </p>
+                </div>
+                
+                <div class="detail-group">
+                    <h6><i class="fas fa-user-tie"></i> Sales Representative</h6>
+                    <p>
+                        <strong>${window.utils.escapeHtml(meeting.sales_rep_name)}</strong><br>
+                        ${window.utils.escapeHtml(meeting.sales_rep_department || 'General')} Department<br>
+                        <i class="fas fa-envelope"></i> ${window.utils.escapeHtml(meeting.sales_rep_email || '')}
+                    </p>
+                </div>
+                
+                <div class="detail-group">
+                    <h6><i class="fas fa-clock"></i> Meeting Preferences</h6>
+                    <p>
+                        <strong>Date:</strong> ${meeting.preferred_date ? window.utils.formatDate(meeting.preferred_date) : 'Flexible'}<br>
+                        <strong>Time:</strong> ${meeting.preferred_time || 'Flexible'}<br>
+                        <strong>Duration:</strong> ${meeting.duration || 30} minutes
+                    </p>
+                </div>
+                
+                ${meeting.message ? `
+                    <div class="detail-group">
+                        <h6><i class="fas fa-comment"></i> Message</h6>
+                        <p>${window.utils.escapeHtml(meeting.message)}</p>
+                    </div>
+                ` : ''}
+                
+                <div class="detail-group">
+                    <h6><i class="fas fa-info"></i> Request Details</h6>
+                    <p>
+                        <strong>Submitted:</strong> ${window.utils.formatDateTime(meeting.created_at)}<br>
+                        <strong>Status:</strong> <span class="status-badge ${meeting.status}">${meeting.status.toUpperCase()}</span>
+                    </p>
+                </div>
+            </div>
+        `;
+        
+        // Set up approve/reject buttons
+        const approveBtn = document.getElementById('approveRequestBtn');
+        const rejectBtn = document.getElementById('rejectRequestBtn');
+        
+        approveBtn.onclick = () => {
+            modal.classList.remove('show');
+            this.updateMeetingStatus(meetingId, 'approved');
+        };
+        
+        rejectBtn.onclick = () => {
+            modal.classList.remove('show');
+            this.updateMeetingStatus(meetingId, 'rejected');
+        };
+        
+        modal.classList.add('show');
+    }
+
+    // New methods for events and sales reps management
+    async loadEventsForAdmin() {
+        try {
+            console.log('📅 Loading events for admin');
+            const response = await window.apiClient.getEvents();
+            
+            if (response.success) {
+                this.events = response.data;
+                this.renderEventsAdmin();
+                console.log(`✅ Loaded ${this.events.length} events for admin`);
+            } else {
+                throw new Error(response.error || 'Failed to load events');
+            }
+        } catch (error) {
+            console.error('❌ Error loading events for admin:', error);
+            window.utils.showError('Failed to load events. Please try again.');
+        }
+    }
+
+    renderEventsAdmin() {
+        const container = document.getElementById('eventsContainer');
+        if (!container) return;
+
+        if (this.events.length === 0) {
+            container.innerHTML = '<div class="empty-state"><h4>No Events Found</h4><p>Create your first event to get started.</p></div>';
+            return;
+        }
+
+        container.innerHTML = this.events.map(event => `
+            <div class="event-card-admin" data-event-id="${event.id}">
+                <div class="event-image-admin">
+                    ${event.image_url ? 
+                        `<img src="${event.image_url}" alt="${window.utils.escapeHtml(event.name)}">` :
+                        '<div class="event-placeholder"><i class="fas fa-calendar-alt"></i></div>'
+                    }
+                    <div class="event-actions-overlay">
+                        <button class="btn btn-sm btn-primary edit-event-btn" data-event-id="${event.id}" title="Edit Event">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger delete-event-btn" data-event-id="${event.id}" title="Delete Event">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="event-content-admin">
+                    <h4 class="event-title-admin">${window.utils.escapeHtml(event.name)}</h4>
+                    <div class="event-meta-admin">
+                        <div class="event-meta-item-admin">
+                            <i class="fas fa-calendar"></i>
+                            <span>${window.utils.formatDate(event.start_date)} - ${window.utils.formatDate(event.end_date)}</span>
+                        </div>
+                        <div class="event-meta-item-admin">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>${window.utils.escapeHtml(event.location || 'Location TBD')}</span>
+                        </div>
+                        <div class="event-meta-item-admin">
+                            <i class="fas fa-info-circle"></i>
+                            <span class="status-badge-admin ${event.status}">${event.status.toUpperCase()}</span>
+                        </div>
+                    </div>
+                    <p class="event-description-admin">${window.utils.escapeHtml((event.description || 'No description available').substring(0, 100))}${event.description && event.description.length > 100 ? '...' : ''}</p>
+                    <div class="event-actions-admin">
+                        <button class="btn btn-sm btn-outline edit-event-btn" data-event-id="${event.id}">
+                            <i class="fas fa-edit"></i> Edit
+                        </button>
+                        <button class="btn btn-sm btn-danger delete-event-btn" data-event-id="${event.id}">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+
+        // Bind event listeners for event management
+        container.querySelectorAll('.edit-event-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const eventId = e.target.closest('[data-event-id]').dataset.eventId;
+                this.showEventEditModal(eventId);
+            });
+        });
+
+        container.querySelectorAll('.delete-event-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const eventId = e.target.closest('[data-event-id]').dataset.eventId;
+                this.deleteEvent(eventId);
+            });
+        });
+    }
+
+    async loadSalesRepsForAdmin() {
+        try {
+            console.log('👥 Loading sales reps for admin');
+            const response = await window.apiClient.request('GET', '/sales-reps/admin/all');
+            
+            if (response.success) {
+                this.salesReps = response.data;
+                this.renderSalesRepsAdmin();
+                console.log(`✅ Loaded ${this.salesReps.length} sales reps for admin`);
+            } else {
+                throw new Error(response.error || 'Failed to load sales reps');
+            }
+        } catch (error) {
+            console.error('❌ Error loading sales reps for admin:', error);
+            window.utils.showError('Failed to load sales reps. Please try again.');
+        }
+    }
+
+    renderSalesRepsAdmin() {
+        const container = document.getElementById('salesRepsContainer');
+        if (!container) return;
+
+        if (this.salesReps.length === 0) {
+            container.innerHTML = '<div class="empty-state"><h4>No Sales Reps Found</h4><p>Add your first sales representative to get started.</p></div>';
+            return;
+        }
+
+        container.innerHTML = this.salesReps.map(rep => `
+            <div class="sales-rep-card-admin" data-rep-id="${rep.id}">
+                <div class="sales-rep-photo-admin">
+                    <img src="${rep.photo_url || '/images/team/default-avatar.svg'}" alt="${window.utils.escapeHtml(rep.name)}" class="sales-rep-avatar-admin">
+                    <div class="photo-actions-overlay">
+                        <button class="btn btn-sm btn-primary edit-rep-btn" data-rep-id="${rep.id}" title="Edit Profile">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+                </div>
+                <h4 class="sales-rep-name-admin">${window.utils.escapeHtml(rep.name)}</h4>
+                <div class="sales-rep-department-admin">${window.utils.escapeHtml(rep.department || 'General')}</div>
+                <div class="sales-rep-contact-admin">
+                    <div class="contact-item-admin">
+                        <i class="fas fa-envelope"></i>
+                        <span>${window.utils.escapeHtml(rep.email || '')}</span>
+                    </div>
+                    ${rep.phone ? `
+                        <div class="contact-item-admin">
+                            <i class="fas fa-phone"></i>
+                            <span>${window.utils.escapeHtml(rep.phone)}</span>
+                        </div>
+                    ` : ''}
+                </div>
+                <p class="sales-rep-bio-admin">${window.utils.escapeHtml((rep.bio || 'No bio available').substring(0, 100))}${rep.bio && rep.bio.length > 100 ? '...' : ''}</p>
+                <div class="sales-rep-actions-admin">
+                    <span class="status-badge-admin ${rep.availability_status}">${rep.availability_status.toUpperCase()}</span>
+                    <button class="btn btn-sm btn-outline edit-rep-btn" data-rep-id="${rep.id}">
+                        <i class="fas fa-edit"></i> Edit
+                    </button>
+                    <button class="btn btn-sm btn-danger delete-rep-btn" data-rep-id="${rep.id}">
+                        <i class="fas fa-trash"></i> Delete
+                    </button>
+                </div>
+            </div>
+        `).join('');
+
+        // Bind event listeners for sales rep management
+        container.querySelectorAll('.edit-rep-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const repId = e.target.closest('[data-rep-id]').dataset.repId;
+                this.showSalesRepEditModal(repId);
+            });
+        });
+
+        container.querySelectorAll('.delete-rep-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const repId = e.target.closest('[data-rep-id]').dataset.repId;
+                this.deleteSalesRep(repId);
+            });
+        });
+    }
+
+    showEventEditModal(eventId = null) {
+        const modal = document.getElementById('eventEditModal');
+        const form = document.getElementById('eventEditForm');
+        
+        if (eventId) {
+            const event = this.events.find(e => e.id == eventId);
+            if (event) {
+                document.getElementById('editEventId').value = event.id;
+                document.getElementById('editEventName').value = event.name;
+                document.getElementById('editEventLocation').value = event.location || '';
+                document.getElementById('editEventDescription').value = event.description || '';
+                document.getElementById('editEventStartDate').value = event.start_date ? event.start_date.split(' ')[0] : '';
+                document.getElementById('editEventEndDate').value = event.end_date ? event.end_date.split(' ')[0] : '';
+                document.getElementById('editEventStatus').value = event.status;
+                
+                // Show current image if exists
+                if (event.image_url) {
+                    const currentImage = document.getElementById('currentEventImage');
+                    const img = currentImage.querySelector('img');
+                    img.src = event.image_url;
+                    currentImage.style.display = 'block';
+                }
+            }
+        } else {
+            form.reset();
+            document.getElementById('editEventId').value = '';
+            document.getElementById('currentEventImage').style.display = 'none';
+        }
+        
+        modal.classList.add('show');
+    }
+
+    showSalesRepEditModal(repId = null) {
+        const modal = document.getElementById('salesRepEditModal');
+        const form = document.getElementById('salesRepEditForm');
+        
+        if (repId) {
+            const rep = this.salesReps.find(r => r.id == repId);
+            if (rep) {
+                document.getElementById('editSalesRepId').value = rep.id;
+                document.getElementById('editSalesRepName').value = rep.name;
+                document.getElementById('editSalesRepEmail').value = rep.email || '';
+                document.getElementById('editSalesRepPhone').value = rep.phone || '';
+                document.getElementById('editSalesRepDepartment').value = rep.department || '';
+                document.getElementById('editSalesRepBio').value = rep.bio || '';
+                document.getElementById('editSalesRepStatus').value = rep.availability_status;
+                
+                // Show current photo if exists
+                if (rep.photo_url) {
+                    const currentPhoto = document.getElementById('currentSalesRepPhoto');
+                    const img = currentPhoto.querySelector('img');
+                    img.src = rep.photo_url;
+                    currentPhoto.style.display = 'block';
+                }
+            }
+        } else {
+            form.reset();
+            document.getElementById('editSalesRepId').value = '';
+            document.getElementById('currentSalesRepPhoto').style.display = 'none';
+        }
+        
+        modal.classList.add('show');
+    }
+
+    async saveEvent() {
+        try {
+            const form = document.getElementById('eventEditForm');
+            const formData = new FormData(form);
+            
+            const eventId = document.getElementById('editEventId').value;
+            const eventData = {
+                name: document.getElementById('editEventName').value,
+                location: document.getElementById('editEventLocation').value,
+                description: document.getElementById('editEventDescription').value,
+                start_date: document.getElementById('editEventStartDate').value,
+                end_date: document.getElementById('editEventEndDate').value,
+                status: document.getElementById('editEventStatus').value
+            };
+            
+            // Handle image upload if file is selected
+            const imageFile = document.getElementById('editEventImage').files[0];
+            if (imageFile) {
+                const uploadFormData = new FormData();
+                uploadFormData.append('image', imageFile);
+                
+                const uploadResponse = await fetch('/api/uploads/events', {
+                    method: 'POST',
+                    body: uploadFormData
+                });
+                
+                if (uploadResponse.ok) {
+                    const uploadResult = await uploadResponse.json();
+                    eventData.image_url = uploadResult.data.path;
+                }
+            }
+            
+            let response;
+            if (eventId) {
+                response = await window.apiClient.updateEvent(eventId, eventData);
+            } else {
+                response = await window.apiClient.createEvent(eventData);
+            }
+            
+            if (response.success) {
+                window.utils.showSuccess(eventId ? 'Event updated successfully!' : 'Event created successfully!');
+                await this.loadEventsForAdmin();
+                await this.loadDashboardData();
+                document.getElementById('eventEditModal').classList.remove('show');
+            } else {
+                throw new Error(response.error || 'Failed to save event');
+            }
+            
+        } catch (error) {
+            console.error('❌ Error saving event:', error);
+            window.utils.showError(error.message || 'Failed to save event. Please try again.');
+        }
+    }
+
+    async saveSalesRep() {
+        try {
+            const form = document.getElementById('salesRepEditForm');
+            
+            const repId = document.getElementById('editSalesRepId').value;
+            const repData = {
+                name: document.getElementById('editSalesRepName').value,
+                email: document.getElementById('editSalesRepEmail').value,
+                phone: document.getElementById('editSalesRepPhone').value,
+                department: document.getElementById('editSalesRepDepartment').value,
+                bio: document.getElementById('editSalesRepBio').value,
+                availability_status: document.getElementById('editSalesRepStatus').value
+            };
+            
+            // Handle photo upload if file is selected
+            const photoFile = document.getElementById('editSalesRepPhoto').files[0];
+            if (photoFile) {
+                const uploadFormData = new FormData();
+                uploadFormData.append('image', photoFile);
+                
+                const uploadResponse = await fetch('/api/uploads/team', {
+                    method: 'POST',
+                    body: uploadFormData
+                });
+                
+                if (uploadResponse.ok) {
+                    const uploadResult = await uploadResponse.json();
+                    repData.photo_url = uploadResult.data.path;
+                }
+            }
+            
+            let response;
+            if (repId) {
+                response = await window.apiClient.updateSalesRep(repId, repData);
+            } else {
+                response = await window.apiClient.createSalesRep(repData);
+            }
+            
+            if (response.success) {
+                window.utils.showSuccess(repId ? 'Sales representative updated successfully!' : 'Sales representative created successfully!');
+                await this.loadSalesRepsForAdmin();
+                await this.loadDashboardData();
+                document.getElementById('salesRepEditModal').classList.remove('show');
+            } else {
+                throw new Error(response.error || 'Failed to save sales representative');
+            }
+            
+        } catch (error) {
+            console.error('❌ Error saving sales rep:', error);
+            window.utils.showError(error.message || 'Failed to save sales representative. Please try again.');
+        }
+    }
+
+    async deleteEvent(eventId) {
+        if (!confirm('Are you sure you want to delete this event? This action cannot be undone.')) {
+            return;
+        }
+        
+        try {
+            const response = await window.apiClient.deleteEvent(eventId);
+            
+            if (response.success) {
+                window.utils.showSuccess('Event deleted successfully!');
+                await this.loadEventsForAdmin();
+                await this.loadDashboardData();
+            } else {
+                throw new Error(response.error || 'Failed to delete event');
+            }
+        } catch (error) {
+            console.error('❌ Error deleting event:', error);
+            window.utils.showError(error.message || 'Failed to delete event. Please try again.');
+        }
+    }
+
+    async deleteSalesRep(repId) {
+        if (!confirm('Are you sure you want to delete this sales representative? This action cannot be undone.')) {
+            return;
+        }
+        
+        try {
+            const response = await window.apiClient.deleteSalesRep(repId);
+            
+            if (response.success) {
+                window.utils.showSuccess('Sales representative deleted successfully!');
+                await this.loadSalesRepsForAdmin();
+                await this.loadDashboardData();
+            } else {
+                throw new Error(response.error || 'Failed to delete sales representative');
+            }
+        } catch (error) {
+            console.error('❌ Error deleting sales rep:', error);
+            window.utils.showError(error.message || 'Failed to delete sales representative. Please try again.');
+        }
+    }
+
+    // Update existing methods to use new admin versions
+    async loadEvents() {
+        await this.loadEventsForAdmin();
+    }
+
+    async loadSalesReps() {
+        await this.loadSalesRepsForAdmin();
+    }
 }
 
 // Initialize admin app when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     window.adminApp = new AdminApp();
+    
+    // Bind new event listeners
+    document.getElementById('addEventBtn')?.addEventListener('click', () => {
+        window.adminApp.showEventEditModal();
+    });
+    
+    document.getElementById('addSalesRepBtn')?.addEventListener('click', () => {
+        window.adminApp.showSalesRepEditModal();
+    });
+    
+    document.getElementById('saveEventBtn')?.addEventListener('click', () => {
+        window.adminApp.saveEvent();
+    });
+    
+    document.getElementById('saveSalesRepBtn')?.addEventListener('click', () => {
+        window.adminApp.saveSalesRep();
+    });
+    
+    // Quick action buttons
+    document.querySelectorAll('.action-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const action = e.target.dataset.action;
+            switch(action) {
+                case 'add-event':
+                    window.adminApp.showEventEditModal();
+                    break;
+                case 'add-sales-rep':
+                    window.adminApp.showSalesRepEditModal();
+                    break;
+                case 'view-pending':
+                    window.adminApp.switchTab('meetings');
+                    break;
+                case 'export-data':
+                    // TODO: Implement data export functionality
+                    window.utils.showSuccess('Export functionality coming soon!');
+                    break;
+            }
+        });
+    });
+    
+    // Image remove buttons
+    document.querySelectorAll('.remove-image').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const currentImage = e.target.closest('.current-image');
+            currentImage.style.display = 'none';
+            
+            // Clear the file input
+            const fileInput = currentImage.closest('.form-group').querySelector('input[type="file"]');
+            if (fileInput) {
+                fileInput.value = '';
+            }
+        });
+    });
 });
 
-console.log('✅ Admin.js loaded successfully');
+console.log('✅ Enhanced Admin.js loaded successfully');
