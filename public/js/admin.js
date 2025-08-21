@@ -362,7 +362,7 @@ class AdminApp {
             const response = await window.apiClient.request('GET', '/meetings/search?status=pending&limit=50');
             
             if (response.success) {
-                this.meetings = response.data;
+                this.meetings = response.data.data || response.data;
                 this.renderPendingRequests();
                 console.log(`✅ Loaded ${this.meetings.length} pending requests`);
                 
@@ -500,7 +500,7 @@ class AdminApp {
             const response = await window.apiClient.getEvents();
             
             if (response.success) {
-                this.events = response.data;
+                this.events = response.data.data || response.data;
                 this.renderEvents();
                 console.log(`✅ Loaded ${this.events.length} events`);
             } else {
@@ -588,7 +588,7 @@ class AdminApp {
             const response = await window.apiClient.getSalesReps();
             
             if (response.success) {
-                this.salesReps = response.data;
+                this.salesReps = response.data.data || response.data;
                 this.renderSalesReps();
                 console.log(`✅ Loaded ${this.salesReps.length} sales reps`);
             } else {
@@ -672,7 +672,7 @@ class AdminApp {
             const response = await window.apiClient.getDepartments();
             
             if (response.success) {
-                this.departments = response.data;
+                this.departments = response.data.data || response.data;
                 this.populateDepartmentFilter();
             }
             
@@ -984,7 +984,7 @@ class AdminApp {
             const response = await window.apiClient.getEvents();
             
             if (response.success) {
-                this.events = response.data;
+                this.events = response.data.data || response.data;
                 this.renderEventsAdmin();
                 console.log(`✅ Loaded ${this.events.length} events for admin`);
             } else {
@@ -1072,7 +1072,7 @@ class AdminApp {
             const response = await window.apiClient.request('GET', '/sales-reps/admin/all');
             
             if (response.success) {
-                this.salesReps = response.data;
+                this.salesReps = response.data.data || response.data;
                 this.renderSalesRepsAdmin();
                 console.log(`✅ Loaded ${this.salesReps.length} sales reps for admin`);
             } else {
