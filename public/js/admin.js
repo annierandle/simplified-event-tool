@@ -412,16 +412,20 @@ class AdminApp {
         }
         
         container.innerHTML = meetings.map(meeting => {
-            const isUrgent = new Date(meeting.preferred_date) <= new Date(Date.now() + 3 * 24 * 60 * 60 * 1000);
+            // Format date without year for cleaner display
+            const requestDate = new Date(meeting.created_at);
+            const formattedDate = requestDate.toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric'
+            });
             
             return `
-                <div class="request-card ${isUrgent ? 'urgent' : ''}" data-meeting-id="${meeting.id}">
+                <div class="request-card compact" data-meeting-id="${meeting.id}">
                     <div class="request-header">
                         <div class="request-info">
                             <h5>${window.utils.escapeHtml(meeting.client_name)} - ${window.utils.escapeHtml(meeting.event_name)}</h5>
                             <div class="request-meta">
-                                Requested ${window.utils.formatDateTime(meeting.created_at)}
-                                ${isUrgent ? ' • <span class="text-danger"><i class="fas fa-exclamation-triangle"></i> Urgent</span>' : ''}
+                                Requested ${formattedDate}
                             </div>
                         </div>
                         <div class="request-actions">
@@ -436,22 +440,24 @@ class AdminApp {
                             </button>
                         </div>
                     </div>
-                    <div class="request-details">
-                        <div class="detail-item">
-                            <i class="fas fa-building"></i>
-                            <span>${window.utils.escapeHtml(meeting.client_company || 'No company')}</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-user-tie"></i>
-                            <span>${window.utils.escapeHtml(meeting.sales_rep_name)}</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-clock"></i>
-                            <span>${meeting.preferred_time || 'Any time'} (${meeting.duration || 30} min)</span>
+                    <div class="request-details compact">
+                        <div class="detail-row">
+                            <div class="detail-item">
+                                <i class="fas fa-building"></i>
+                                <span>${window.utils.escapeHtml(meeting.client_company || 'No company')}</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-user-tie"></i>
+                                <span>${window.utils.escapeHtml(meeting.sales_rep_name)}</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>${meeting.preferred_time || 'Any time'} (${meeting.duration || 30} min)</span>
+                            </div>
                         </div>
                     </div>
                     ${meeting.message ? `
-                        <div class="request-message">
+                        <div class="request-message compact">
                             <strong>Message:</strong> ${window.utils.escapeHtml(meeting.message)}
                         </div>
                     ` : ''}
@@ -462,22 +468,54 @@ class AdminApp {
         // Bind event listeners for request actions
         container.querySelectorAll('.view-request').forEach(btn => {
             btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
                 const meetingId = e.target.closest('[data-meeting-id]').dataset.meetingId;
                 this.showRequestDetails(meetingId);
             });
         });
         
         container.querySelectorAll('.approve-request').forEach(btn => {
-            btn.addEventListener('click', (e) => {
+            btn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const button = e.target.closest('button');
                 const meetingId = e.target.closest('[data-meeting-id]').dataset.meetingId;
-                this.updateMeetingStatus(meetingId, 'approved');
+                
+                // Show loading state
+                const originalContent = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                button.disabled = true;
+                
+                try {
+                    await this.updateMeetingStatus(meetingId, 'approved');
+                } catch (error) {
+                    // Reset button on error
+                    button.innerHTML = originalContent;
+                    button.disabled = false;
+                }
             });
         });
         
         container.querySelectorAll('.reject-request').forEach(btn => {
-            btn.addEventListener('click', (e) => {
+            btn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const button = e.target.closest('button');
                 const meetingId = e.target.closest('[data-meeting-id]').dataset.meetingId;
-                this.updateMeetingStatus(meetingId, 'rejected');
+                
+                // Show loading state
+                const originalContent = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                button.disabled = true;
+                
+                try {
+                    await this.updateMeetingStatus(meetingId, 'rejected');
+                } catch (error) {
+                    // Reset button on error
+                    button.innerHTML = originalContent;
+                    button.disabled = false;
+                }
             });
         });
     }
@@ -864,7 +902,7 @@ class AdminApp {
                 }
                 
                 // Refresh displays
-                this.renderMeetings();
+                await this.loadMeetings(); // Reload data from server
                 this.loadDashboardData();
                 
                 // Close modals
