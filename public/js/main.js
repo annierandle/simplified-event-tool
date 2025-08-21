@@ -295,46 +295,61 @@ class CorporateEventsApp {
             return;
         }
         
-        container.innerHTML = this.events.map(event => `
-            <div class="event-card" data-event-id="${event.id}">
-                <div class="event-card-header">
-                    <div class="event-logo">
-                        <i data-lucide="calendar"></i>
+        container.innerHTML = this.events.map(event => {
+            const isPast = event.status === 'past';
+            const statusBadge = isPast ? '<div class="event-status-badge event-status-past">Event Concluded</div>' : '';
+            
+            return `
+                <div class="event-card ${isPast ? 'event-past' : ''}" data-event-id="${event.id}">
+                    <div class="event-card-header">
+                        <div class="event-logo">
+                            <i data-lucide="calendar"></i>
+                        </div>
+                        <div class="event-badges">
+                            <div class="event-rep-badge">
+                                ${event.sales_rep_count} ${event.sales_rep_count === 1 ? 'Rep' : 'Reps'}
+                            </div>
+                            ${statusBadge}
+                        </div>
                     </div>
-                    <div class="event-rep-badge">
-                        ${event.sales_rep_count} ${event.sales_rep_count === 1 ? 'Rep' : 'Reps'}
+                    
+                    <h3 class="event-title">${window.utils.escapeHtml(event.name)}</h3>
+                    
+                    <div class="event-meta">
+                        <div class="event-meta-item">
+                            <i data-lucide="calendar-days"></i>
+                            <span>${window.utils.formatDate(event.start_date)} - ${window.utils.formatDate(event.end_date)}</span>
+                        </div>
+                        <div class="event-meta-item">
+                            <i data-lucide="map-pin"></i>
+                            <span>${window.utils.escapeHtml(event.location || 'Location TBD')}</span>
+                        </div>
+                    </div>
+                    
+                    <p class="event-description">
+                        ${window.utils.escapeHtml(event.description || 'Connect with our team at this upcoming event and explore partnership opportunities.')}
+                    </p>
+                    
+                    <div class="event-actions">
+                        ${isPast ? `
+                            <button class="event-cta-primary event-cta-disabled" disabled>
+                                <i data-lucide="calendar-x"></i>
+                                Meeting Requests Closed
+                            </button>
+                        ` : `
+                            <button class="event-cta-primary schedule-meeting" data-event-id="${event.id}">
+                                <i data-lucide="calendar-plus"></i>
+                                Schedule Meeting
+                            </button>
+                        `}
+                        <button class="event-cta-secondary view-event-details" data-event-id="${event.id}">
+                            <i data-lucide="eye"></i>
+                            View Details
+                        </button>
                     </div>
                 </div>
-                
-                <h3 class="event-title">${window.utils.escapeHtml(event.name)}</h3>
-                
-                <div class="event-meta">
-                    <div class="event-meta-item">
-                        <i data-lucide="calendar-days"></i>
-                        <span>${window.utils.formatDate(event.start_date)} - ${window.utils.formatDate(event.end_date)}</span>
-                    </div>
-                    <div class="event-meta-item">
-                        <i data-lucide="map-pin"></i>
-                        <span>${window.utils.escapeHtml(event.location || 'Location TBD')}</span>
-                    </div>
-                </div>
-                
-                <p class="event-description">
-                    ${window.utils.escapeHtml(event.description || 'Connect with our team at this upcoming event and explore partnership opportunities.')}
-                </p>
-                
-                <div class="event-actions">
-                    <button class="event-cta-primary schedule-meeting" data-event-id="${event.id}">
-                        <i data-lucide="calendar-plus"></i>
-                        Schedule Meeting
-                    </button>
-                    <button class="event-cta-secondary view-event-details" data-event-id="${event.id}">
-                        <i data-lucide="eye"></i>
-                        View Details
-                    </button>
-                </div>
-            </div>
-        `).join('');
+            `;
+        }).join('');
         
         // Reinitialize Lucide icons for dynamic content
         if (typeof lucide !== 'undefined') {
@@ -427,8 +442,11 @@ class CorporateEventsApp {
         const select = document.getElementById('meetingEventSelect');
         if (!select) return;
         
+        // Filter out past events from the dropdown
+        const activeEvents = this.events.filter(event => event.status !== 'past');
+        
         select.innerHTML = '<option value="">Choose an event...</option>' + 
-            this.events.map(event => `
+            activeEvents.map(event => `
                 <option value="${event.id}">
                     ${window.utils.escapeHtml(event.name)} - ${window.utils.formatDate(event.start_date)}
                 </option>

@@ -12,3 +12,875 @@
 2025-08-20T02:29:15: ✅ Found 3 events
 2025-08-20T02:29:20: 👥 Fetching all sales reps
 2025-08-20T02:29:20: ✅ Found 4 sales reps
+2025-08-20T02:30:49: 📅 Fetching all events
+2025-08-20T02:30:49: ✅ Found 3 events
+2025-08-20T02:30:49: 👥 Fetching all sales reps
+2025-08-20T02:30:49: ✅ Found 4 sales reps
+2025-08-20T02:30:49: 🏢 Fetching departments list
+2025-08-20T02:30:49: ✅ Found 4 departments
+2025-08-20T02:31:01: 👥 Fetching sales reps for event 1
+2025-08-20T02:31:01: ✅ Found 2 sales reps for event 1
+2025-08-20T02:31:18: 📝 New meeting request: {
+  eventId: '1',
+  salesRepId: '2',
+  clientName: 'test',
+  clientEmail: 'test@test.com',
+  clientCompany: '',
+  clientPhone: '',
+  preferredDate: '',
+  preferredTime: '',
+  duration: 30,
+  message: ''
+}
+2025-08-20T02:31:18: ✅ Meeting request created with ID: 1
+2025-08-20T02:31:54: 🔐 Login attempt: { email: 'admin@company.com', hasPassword: true }
+2025-08-20T02:31:54: ✅ User found: { id: 1, email: 'admin@company.com', role: 'admin' }
+2025-08-20T02:31:55: ✅ Password verified for: admin@company.com
+2025-08-20T02:31:55: ✅ JWT token generated for: admin@company.com
+2025-08-20T02:31:55: 📋 Fetching all meeting requests
+2025-08-20T02:31:55: ✅ Found 1 meeting requests
+2025-08-20T02:32:16: 📋 Fetching all meeting requests
+2025-08-20T02:32:16: ✅ Found 1 meeting requests
+2025-08-20T02:32:27: 📝 Updating meeting request 1 status to: approved
+2025-08-20T02:32:27: ✅ Meeting request 1 status updated to: approved
+2025-08-20T02:32:27: 📋 Fetching all meeting requests
+2025-08-20T02:32:27: ✅ Found 1 meeting requests
+2025-08-20T02:32:37: 📋 Fetching all meeting requests
+2025-08-20T02:32:37: ✅ Found 1 meeting requests
+2025-08-20T02:32:39: 📋 Fetching all meeting requests
+2025-08-20T02:32:39: ✅ Found 1 meeting requests
+2025-08-20T02:32:41: 📅 Fetching all events
+2025-08-20T02:32:41: ✅ Found 3 events
+2025-08-20T02:32:48: 👥 Fetching all sales reps
+2025-08-20T02:32:48: ✅ Found 4 sales reps
+2025-08-20T02:32:48: 🏢 Fetching departments list
+2025-08-20T02:32:48: ✅ Found 4 departments
+2025-08-20T02:32:52: 📅 Fetching all events
+2025-08-20T02:32:52: ✅ Found 3 events
+2025-08-20T02:33:03: 👥 Fetching all sales reps
+2025-08-20T02:33:03: 📅 Fetching all events
+2025-08-20T02:33:03: 🏢 Fetching departments list
+2025-08-20T02:33:03: ✅ Found 4 sales reps
+2025-08-20T02:33:03: ✅ Found 3 events
+2025-08-20T02:33:03: ✅ Found 4 departments
+2025-08-20T02:33:40: 📅 Fetching event 1 with sales reps
+2025-08-20T02:33:40: ✅ Found event with 2 sales reps
+2025-08-20T02:33:43: 👥 Fetching sales reps for event 1
+2025-08-20T02:33:43: ✅ Found 2 sales reps for event 1
+2025-08-20T02:34:15: 📋 Fetching all meeting requests
+2025-08-20T02:34:15: ✅ Found 1 meeting requests
+2025-08-20T02:40:06: SIGINT received, shutting down gracefully
+2025-08-20T02:40:07: ✅ Microsoft Graph client initialized successfully
+2025-08-20T02:40:07: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-20T02:40:07: 📊 Admin panel: http://localhost:3000/admin
+2025-08-20T02:40:07: 🌐 Main site: http://localhost:3000
+2025-08-20T02:40:07: 💡 Environment: production
+2025-08-20T02:40:14: Microsoft Graph test failed: Cannot read properties of undefined (reading 'get')
+2025-08-20T02:40:14: SMTP test failed: nodemailer.createTransporter is not a function
+2025-08-20T03:29:29: Microsoft Graph test failed: Cannot read properties of undefined (reading 'get')
+2025-08-20T03:29:29: SMTP test failed: nodemailer.createTransporter is not a function
+2025-08-20T04:13:31: Microsoft Graph test failed: Cannot read properties of undefined (reading 'get')
+2025-08-20T04:13:31: SMTP test failed: nodemailer.createTransporter is not a function
+2025-08-20T04:14:13: Microsoft Graph test failed: Cannot read properties of undefined (reading 'get')
+2025-08-20T04:14:13: SMTP test failed: nodemailer.createTransporter is not a function
+2025-08-20T04:15:28: 👥 Fetching all sales reps
+2025-08-20T04:15:28: 🏢 Fetching departments list
+2025-08-20T04:15:28: 📅 Fetching all events
+2025-08-20T04:15:28: ✅ Found 4 sales reps
+2025-08-20T04:15:28: ✅ Found 4 departments
+2025-08-20T04:15:28: ✅ Found 3 events
+2025-08-20T04:15:34: Microsoft Graph test failed: Cannot read properties of undefined (reading 'get')
+2025-08-20T04:15:34: SMTP test failed: nodemailer.createTransporter is not a function
+2025-08-20T04:15:56: 📋 Fetching all meeting requests
+2025-08-20T04:15:56: ✅ Found 1 meeting requests
+2025-08-20T04:36:32: Microsoft Graph test failed: Cannot read properties of undefined (reading 'get')
+2025-08-20T04:36:32: SMTP test failed: nodemailer.createTransporter is not a function
+2025-08-20T15:21:16: SIGINT received, shutting down gracefully
+2025-08-20T15:21:17: ✅ Microsoft Graph client initialized successfully
+2025-08-20T15:21:17: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-20T15:21:17: 📊 Admin panel: http://localhost:3000/admin
+2025-08-20T15:21:17: 🌐 Main site: http://localhost:3000
+2025-08-20T15:21:17: 💡 Environment: production
+2025-08-20T15:21:23: Microsoft Graph test failed: Cannot read properties of undefined (reading 'get')
+2025-08-20T15:21:23: SMTP test failed: nodemailer.createTransporter is not a function
+2025-08-20T15:21:56: SIGINT received, shutting down gracefully
+2025-08-20T15:21:57: ✅ Microsoft Graph client initialized successfully
+2025-08-20T15:21:57: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-20T15:21:57: 📊 Admin panel: http://localhost:3000/admin
+2025-08-20T15:21:57: 🌐 Main site: http://localhost:3000
+2025-08-20T15:21:57: 💡 Environment: production
+2025-08-20T15:22:02: Microsoft Graph test failed: invalid_request: Error(s): 900023 - Timestamp: 2025-08-20 15:22:02Z - Description: AADSTS900023: Specified tenant identifier 'your-azure-tenant-id' is neither a valid DNS name, nor a valid external domain. Trace ID: 827a8bfd-725e-45fe-8f2c-7e9d67fc1000 Correlation ID: 2f70dcb4-56bf-4d57-8840-ce394470e89a Timestamp: 2025-08-20 15:22:02Z - Correlation ID: 2f70dcb4-56bf-4d57-8840-ce394470e89a - Trace ID: 827a8bfd-725e-45fe-8f2c-7e9d67fc1000
+2025-08-20T15:22:02: SMTP test failed: nodemailer.createTransporter is not a function
+2025-08-20T15:22:27: 📅 Fetching all events
+2025-08-20T15:22:27: 👥 Fetching all sales reps
+2025-08-20T15:22:27: ✅ Found 3 events
+2025-08-20T15:22:27: 🏢 Fetching departments list
+2025-08-20T15:22:27: ✅ Found 4 sales reps
+2025-08-20T15:22:27: ✅ Found 4 departments
+2025-08-20T15:24:20: 👥 Fetching sales reps for event 1
+2025-08-20T15:24:20: ✅ Found 2 sales reps for event 1
+2025-08-20T15:24:41: 📝 New meeting request: {
+  eventId: '1',
+  salesRepId: '2',
+  clientName: 'test',
+  clientEmail: 'test@test.com',
+  clientCompany: '',
+  clientPhone: '',
+  preferredDate: '',
+  preferredTime: '',
+  duration: 30,
+  message: ''
+}
+2025-08-20T15:24:41: ✅ Meeting request created with ID: 2
+2025-08-20T15:24:41: ❌ Microsoft Graph email error: TypeError: ical is not a function
+    at OutlookService.generateICSContent (/home/user/webapp/src/utils/outlookService.js:617:26)
+    at OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:61:37)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:168:74)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+2025-08-20T15:24:41: 📧 Falling back to SMTP...
+2025-08-20T15:24:41: ❌ SMTP email error: TypeError: nodemailer.createTransporter is not a function
+    at OutlookService.sendEmailViaSMTP (/home/user/webapp/src/utils/outlookService.js:202:44)
+    at OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:116:31)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:168:74)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+2025-08-20T15:24:41: 📧 Email result: {
+  success: false,
+  error: 'nodemailer.createTransporter is not a function',
+  provider: 'smtp'
+}
+2025-08-20T15:24:53: 📋 Fetching all meeting requests
+2025-08-20T15:24:53: ✅ Found 2 meeting requests
+2025-08-20T15:25:01: 📋 Fetching all meeting requests
+2025-08-20T15:25:01: ✅ Found 2 meeting requests
+2025-08-20T15:25:07: 📝 Updating meeting request 2 status to: approved
+2025-08-20T15:25:07: ✅ Meeting request 2 status updated to: approved
+2025-08-20T15:25:07: ❌ Microsoft Graph email error: TypeError: ical is not a function
+    at OutlookService.generateICSContent (/home/user/webapp/src/utils/outlookService.js:617:26)
+    at OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:61:37)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:370:56)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+2025-08-20T15:25:07: 📧 Falling back to SMTP...
+2025-08-20T15:25:07: ❌ SMTP email error: TypeError: nodemailer.createTransporter is not a function
+    at OutlookService.sendEmailViaSMTP (/home/user/webapp/src/utils/outlookService.js:202:44)
+    at OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:116:31)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:370:56)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+2025-08-20T15:25:07: 📧 Status update email result: {
+  success: false,
+  error: 'nodemailer.createTransporter is not a function',
+  provider: 'smtp'
+}
+2025-08-20T15:25:07: ❌ Calendar event creation error: RangeError: Invalid time value
+    at Date.toISOString (<anonymous>)
+    at OutlookService.createCalendarEvent (/home/user/webapp/src/utils/outlookService.js:143:45)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:391:73)
+2025-08-20T15:25:07: 📅 Calendar event result: { success: false, error: 'Invalid time value' }
+2025-08-20T15:25:07: 📋 Fetching all meeting requests
+2025-08-20T15:25:07: ✅ Found 2 meeting requests
+2025-08-20T15:25:11: 📋 Fetching all meeting requests
+2025-08-20T15:25:11: ✅ Found 2 meeting requests
+2025-08-20T15:25:14: 📋 Fetching all meeting requests
+2025-08-20T15:25:14: ✅ Found 2 meeting requests
+2025-08-20T15:25:16: 📅 Fetching all events
+2025-08-20T15:25:16: ✅ Found 3 events
+2025-08-20T15:25:18: 👥 Fetching all sales reps
+2025-08-20T15:25:18: ✅ Found 4 sales reps
+2025-08-20T15:25:18: 🏢 Fetching departments list
+2025-08-20T15:25:18: ✅ Found 4 departments
+2025-08-20T15:25:19: 📋 Fetching all meeting requests
+2025-08-20T15:25:19: ✅ Found 2 meeting requests
+2025-08-20T15:25:30: Microsoft Graph test failed: invalid_request: Error(s): 900023 - Timestamp: 2025-08-20 15:25:30Z - Description: AADSTS900023: Specified tenant identifier 'your-azure-tenant-id' is neither a valid DNS name, nor a valid external domain. Trace ID: cef020a1-f062-41bd-973b-8a67a9da0000 Correlation ID: 5666fc5d-26fd-49c3-8ce5-2b602ab571fb Timestamp: 2025-08-20 15:25:30Z - Correlation ID: 5666fc5d-26fd-49c3-8ce5-2b602ab571fb - Trace ID: cef020a1-f062-41bd-973b-8a67a9da0000
+2025-08-20T15:25:30: SMTP test failed: nodemailer.createTransporter is not a function
+2025-08-20T15:32:08: SIGINT received, shutting down gracefully
+2025-08-20T15:32:09: ✅ Microsoft Graph client initialized successfully
+2025-08-20T15:32:09: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-20T15:32:09: 📊 Admin panel: http://localhost:3000/admin
+2025-08-20T15:32:09: 🌐 Main site: http://localhost:3000
+2025-08-20T15:32:09: 💡 Environment: production
+2025-08-20T15:32:15: SMTP test failed: nodemailer.createTransporter is not a function
+2025-08-20T15:33:20: 📅 Fetching all events
+2025-08-20T15:33:20: 👥 Fetching all sales reps
+2025-08-20T15:33:20: 🏢 Fetching departments list
+2025-08-20T15:33:20: ✅ Found 3 events
+2025-08-20T15:33:20: ✅ Found 4 sales reps
+2025-08-20T15:33:20: ✅ Found 4 departments
+2025-08-20T15:33:25: 👥 Fetching sales reps for event 1
+2025-08-20T15:33:25: ✅ Found 2 sales reps for event 1
+2025-08-20T15:34:16: 📝 New meeting request: {
+  eventId: '1',
+  salesRepId: '2',
+  clientName: 'Annie Randle',
+  clientEmail: 'test@test.com',
+  clientCompany: 'Visa',
+  clientPhone: '9168939888',
+  preferredDate: '2025-08-22',
+  preferredTime: '15:00',
+  duration: 60,
+  message: 'b2b products'
+}
+2025-08-20T15:34:16: ✅ Meeting request created with ID: 3
+2025-08-20T15:34:16: ❌ Microsoft Graph email error: TypeError: ical is not a function
+    at OutlookService.generateICSContent (/home/user/webapp/src/utils/outlookService.js:617:26)
+    at OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:61:37)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:168:74)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+2025-08-20T15:34:16: 📧 Falling back to SMTP...
+2025-08-20T15:34:16: ❌ SMTP email error: TypeError: nodemailer.createTransporter is not a function
+    at OutlookService.sendEmailViaSMTP (/home/user/webapp/src/utils/outlookService.js:202:44)
+    at OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:116:31)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:168:74)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+2025-08-20T15:34:16: 📧 Email result: {
+  success: false,
+  error: 'nodemailer.createTransporter is not a function',
+  provider: 'smtp'
+}
+2025-08-20T15:39:27: 👥 Fetching sales reps for event 1
+2025-08-20T15:39:27: ✅ Found 2 sales reps for event 1
+2025-08-20T15:42:27: 📝 New meeting request: {
+  eventId: '1',
+  salesRepId: '2',
+  clientName: 'Annie Randle',
+  clientEmail: 'test@test.com',
+  clientCompany: 'Visa',
+  clientPhone: '9168939888',
+  preferredDate: '2025-08-22',
+  preferredTime: '15:00',
+  duration: 30,
+  message: ''
+}
+2025-08-20T15:42:27: ✅ Meeting request created with ID: 4
+2025-08-20T15:42:27: ❌ Microsoft Graph email error: TypeError: ical is not a function
+    at OutlookService.generateICSContent (/home/user/webapp/src/utils/outlookService.js:617:26)
+    at OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:61:37)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:168:74)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+2025-08-20T15:42:27: 📧 Falling back to SMTP...
+2025-08-20T15:42:27: ❌ SMTP email error: TypeError: nodemailer.createTransporter is not a function
+    at OutlookService.sendEmailViaSMTP (/home/user/webapp/src/utils/outlookService.js:202:44)
+    at OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:116:31)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:168:74)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+2025-08-20T15:42:27: 📧 Email result: {
+  success: false,
+  error: 'nodemailer.createTransporter is not a function',
+  provider: 'smtp'
+}
+2025-08-20T15:46:19: SIGINT received, shutting down gracefully
+2025-08-20T15:46:20: ✅ Microsoft Graph client initialized successfully
+2025-08-20T15:46:20: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-20T15:46:20: 📊 Admin panel: http://localhost:3000/admin
+2025-08-20T15:46:20: 🌐 Main site: http://localhost:3000
+2025-08-20T15:46:20: 💡 Environment: production
+2025-08-20T15:46:29: SMTP test failed: nodemailer.createTransporter is not a function
+2025-08-20T15:47:10: 👥 Fetching all sales reps
+2025-08-20T15:47:10: 📅 Fetching all events
+2025-08-20T15:47:10: ✅ Found 4 sales reps
+2025-08-20T15:47:10: 🏢 Fetching departments list
+2025-08-20T15:47:10: ✅ Found 3 events
+2025-08-20T15:47:10: ✅ Found 4 departments
+2025-08-20T15:47:15: 👥 Fetching sales reps for event 1
+2025-08-20T15:47:15: ✅ Found 2 sales reps for event 1
+2025-08-20T15:47:42: 📝 New meeting request: {
+  eventId: '1',
+  salesRepId: '2',
+  clientName: 'Annie Randle',
+  clientEmail: 'annie.e.randle@gmail.com',
+  clientCompany: 'Visa',
+  clientPhone: '9168939888',
+  preferredDate: '2025-08-22',
+  preferredTime: '15:00',
+  duration: 30,
+  message: ''
+}
+2025-08-20T15:47:42: ✅ Meeting request created with ID: 5
+2025-08-20T15:47:42: ❌ Microsoft Graph email error: TypeError: ical is not a function
+    at OutlookService.generateICSContent (/home/user/webapp/src/utils/outlookService.js:618:26)
+    at OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:61:37)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:168:74)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+2025-08-20T15:47:42: 📧 Falling back to SMTP...
+2025-08-20T15:47:42: ❌ SMTP email error: TypeError: ical is not a function
+    at OutlookService.generateICSContent (/home/user/webapp/src/utils/outlookService.js:618:26)
+    at OutlookService.sendEmailViaSMTP (/home/user/webapp/src/utils/outlookService.js:216:37)
+    at OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:116:31)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:168:74)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+2025-08-20T15:47:42: 📧 Email result: { success: false, error: 'ical is not a function', provider: 'smtp' }
+2025-08-20T15:51:30: SIGINT received, shutting down gracefully
+2025-08-20T15:51:30: ✅ Microsoft Graph client initialized successfully
+2025-08-20T15:51:30: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-20T15:51:30: 📊 Admin panel: http://localhost:3000/admin
+2025-08-20T15:51:30: 🌐 Main site: http://localhost:3000
+2025-08-20T15:51:30: 💡 Environment: production
+2025-08-20T15:51:57: SIGINT received, shutting down gracefully
+2025-08-20T15:52:03: ✅ Microsoft Graph client initialized successfully
+2025-08-20T15:52:03: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-20T15:52:03: 📊 Admin panel: http://localhost:3000/admin
+2025-08-20T15:52:03: 🌐 Main site: http://localhost:3000
+2025-08-20T15:52:03: 💡 Environment: production
+2025-08-20T15:54:03: 📅 Fetching all events
+2025-08-20T15:54:03: 👥 Fetching all sales reps
+2025-08-20T15:54:03: ✅ Found 3 events
+2025-08-20T15:54:03: ✅ Found 4 sales reps
+2025-08-20T15:54:03: 🏢 Fetching departments list
+2025-08-20T15:54:03: ✅ Found 4 departments
+2025-08-20T15:54:06: 👥 Fetching sales reps for event 1
+2025-08-20T15:54:06: ✅ Found 2 sales reps for event 1
+2025-08-20T15:54:14: 📝 New meeting request: {
+  eventId: '1',
+  salesRepId: '2',
+  clientName: 'Annie Randle',
+  clientEmail: 'annie.e.randle@gmail.com',
+  clientCompany: 'Visa',
+  clientPhone: '9168939888',
+  preferredDate: '',
+  preferredTime: '',
+  duration: 30,
+  message: ''
+}
+2025-08-20T15:54:14: ✅ Meeting request created with ID: 6
+2025-08-20T15:54:14: ❌ Microsoft Graph email error: TypeError: this.graphClient.users is not a function
+    at OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:100:18)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:168:74)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+2025-08-20T15:54:14: 📧 Falling back to SMTP...
+2025-08-20T15:54:15: ❌ SMTP email error: Error: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-76e7d1375a3sm5680406b3a.43 - gsmtp
+    at SMTPConnection._formatError (/home/user/webapp/node_modules/nodemailer/lib/smtp-connection/index.js:809:19)
+    at SMTPConnection._actionAUTHComplete (/home/user/webapp/node_modules/nodemailer/lib/smtp-connection/index.js:1588:34)
+    at SMTPConnection.<anonymous> (/home/user/webapp/node_modules/nodemailer/lib/smtp-connection/index.js:556:26)
+    at SMTPConnection._processResponse (/home/user/webapp/node_modules/nodemailer/lib/smtp-connection/index.js:993:20)
+    at SMTPConnection._onData (/home/user/webapp/node_modules/nodemailer/lib/smtp-connection/index.js:774:14)
+    at SMTPConnection._onSocketData (/home/user/webapp/node_modules/nodemailer/lib/smtp-connection/index.js:195:44)
+    at TLSSocket.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5) {
+  code: 'EAUTH',
+  response: '535-5.7.8 Username and Password not accepted. For more information, go to\n' +
+    '535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-76e7d1375a3sm5680406b3a.43 - gsmtp',
+  responseCode: 535,
+  command: 'AUTH PLAIN'
+}
+2025-08-20T15:54:15: 📧 Email result: {
+  success: false,
+  error: 'Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to\n' +
+    '535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-76e7d1375a3sm5680406b3a.43 - gsmtp',
+  provider: 'smtp'
+}
+2025-08-20T15:56:22: SIGINT received, shutting down gracefully
+2025-08-20T15:56:23: ✅ Microsoft Graph client initialized successfully
+2025-08-20T15:56:23: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-20T15:56:23: 📊 Admin panel: http://localhost:3000/admin
+2025-08-20T15:56:23: 🌐 Main site: http://localhost:3000
+2025-08-20T15:56:23: 💡 Environment: production
+2025-08-20T17:54:15: SIGINT received, shutting down gracefully
+2025-08-20T17:54:20: ✅ Microsoft Graph client initialized successfully
+2025-08-20T17:54:20: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-20T17:54:20: 📊 Admin panel: http://localhost:3000/admin
+2025-08-20T17:54:20: 🌐 Main site: http://localhost:3000
+2025-08-20T17:54:20: 💡 Environment: production
+2025-08-20T18:21:02: SIGINT received, shutting down gracefully
+2025-08-20T18:21:03: ✅ Microsoft Graph client initialized successfully
+2025-08-20T18:21:03: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-20T18:21:03: 📊 Admin panel: http://localhost:3000/admin
+2025-08-20T18:21:03: 🌐 Main site: http://localhost:3000
+2025-08-20T18:21:03: 💡 Environment: production
+2025-08-20T19:56:06: 👥 Fetching all sales reps
+2025-08-20T19:56:06: 📅 Fetching all events
+2025-08-20T19:56:06: ✅ Found 4 sales reps
+2025-08-20T19:56:06: 🏢 Fetching departments list
+2025-08-20T19:56:06: ✅ Found 3 events
+2025-08-20T19:56:06: ✅ Found 4 departments
+2025-08-20T19:56:09: 👥 Fetching sales reps for event 1
+2025-08-20T19:56:09: ✅ Found 2 sales reps for event 1
+2025-08-20T19:56:15: 📝 New meeting request: {
+  eventId: '1',
+  salesRepId: '2',
+  clientName: 'Annie Randle',
+  clientEmail: 'annie.e.randle@gmail.com',
+  clientCompany: '',
+  clientPhone: '',
+  preferredDate: '',
+  preferredTime: '',
+  duration: 30,
+  message: ''
+}
+2025-08-20T19:56:15: ✅ Meeting request created with ID: 7
+2025-08-20T19:56:15: 📧 TESTING: Email sending simulation
+2025-08-20T19:56:15: ================================================================================
+2025-08-20T19:56:15: 📧 EMAIL SIMULATION - What would be sent:
+2025-08-20T19:56:15: ================================================================================
+2025-08-20T19:56:15: 📧 To: annie.e.randle@gmail.com (Annie Randle)
+2025-08-20T19:56:15: 📧 From: Corporate Events <admin@company.com>
+2025-08-20T19:56:15: 📧 CC: michael.chen@company.com (Michael Chen)
+2025-08-20T19:56:15: 📧 Subject: 📅 Meeting Request Received - Tech Innovation Summit 2024
+2025-08-20T19:56:15: 📧 Meeting ID: 7
+2025-08-20T19:56:15: 📧 Duration: 30 minutes
+2025-08-20T19:56:15: 📧 Client Company: Not specified
+2025-08-20T19:56:15: 📧 Client Phone: Not specified
+2025-08-20T19:56:15: 📧 Email Subject Generated: 📅 Meeting Request Received - Tech Innovation Summit 2024
+2025-08-20T19:56:15: 📧 Email HTML Length: 4098 characters
+2025-08-20T19:56:15: 📧 Calendar Invite (ICS) Generated: 945 characters
+2025-08-20T19:56:15: 📧 ICS Preview:
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Corporate Events//Meeting Scheduler//EN
+BEGIN:VEVENT
+UID:meeting-7-1755719775614@corporateevents.com
+DTSTAMP:20250820T195615Z
+DTSTART:20240915T100000Z
+DTEN...
+2025-08-20T19:56:15: ================================================================================
+2025-08-20T19:56:15: ✅ EMAIL SIMULATION COMPLETE
+2025-08-20T19:56:15: 📝 In a real environment, this email would be delivered to: annie.e.randle@gmail.com
+2025-08-20T19:56:15: ================================================================================
+2025-08-20T19:56:15: 📧 Email result: {
+  success: true,
+  provider: 'simulation',
+  simulation: true,
+  recipient: 'annie.e.randle@gmail.com',
+  subject: '📅 Meeting Request Received - Tech Innovation Summit 2024'
+}
+2025-08-20T19:57:32: SIGINT received, shutting down gracefully
+2025-08-20T19:57:32: ✅ Microsoft Graph client initialized successfully
+2025-08-20T19:57:32: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-20T19:57:32: 📊 Admin panel: http://localhost:3000/admin
+2025-08-20T19:57:32: 🌐 Main site: http://localhost:3000
+2025-08-20T19:57:32: 💡 Environment: production
+2025-08-20T19:58:03: SIGINT received, shutting down gracefully
+2025-08-20T19:58:04: ✅ Microsoft Graph client initialized successfully
+2025-08-20T19:58:04: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-20T19:58:04: 📊 Admin panel: http://localhost:3000/admin
+2025-08-20T19:58:04: 🌐 Main site: http://localhost:3000
+2025-08-20T19:58:04: 💡 Environment: production
+2025-08-20T20:03:10: SIGINT received, shutting down gracefully
+2025-08-20T20:03:15: ✅ Microsoft Graph client initialized successfully
+2025-08-20T20:03:15: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-20T20:03:15: 📊 Admin panel: http://localhost:3000/admin
+2025-08-20T20:03:15: 🌐 Main site: http://localhost:3000
+2025-08-20T20:03:15: 💡 Environment: production
+2025-08-20T20:03:33: 📅 Fetching all events
+2025-08-20T20:03:33: 🏢 Fetching departments list
+2025-08-20T20:03:33: 👥 Fetching all sales reps
+2025-08-20T20:03:33: ✅ Found 3 events
+2025-08-20T20:03:33: ✅ Found 4 departments
+2025-08-20T20:03:33: ✅ Found 4 sales reps
+2025-08-20T20:04:35: 🏢 Fetching departments list
+2025-08-20T20:04:35: 👥 Fetching all sales reps
+2025-08-20T20:04:35: ✅ Found 4 departments
+2025-08-20T20:04:35: 📅 Fetching all events
+2025-08-20T20:04:35: ✅ Found 4 sales reps
+2025-08-20T20:04:35: ✅ Found 3 events
+2025-08-20T20:04:39: 👥 Fetching sales reps for event 1
+2025-08-20T20:04:39: ✅ Found 2 sales reps for event 1
+2025-08-20T20:04:44: 📝 New meeting request: {
+  eventId: '1',
+  salesRepId: '2',
+  clientName: 'Annie Randle',
+  clientEmail: 'annie.e.randle@gmail.com',
+  clientCompany: '',
+  clientPhone: '',
+  preferredDate: '',
+  preferredTime: '',
+  duration: 30,
+  message: ''
+}
+2025-08-20T20:04:44: ✅ Meeting request created with ID: 8
+2025-08-20T20:04:44: 📧 Attempting to send real email...
+2025-08-20T20:04:44: 📧 Creating test email account with Ethereal...
+2025-08-20T20:04:45: 📧 Test account created: opzoe3ddg6xu6pkw@ethereal.email
+2025-08-20T20:04:45: 📧 Sending email...
+2025-08-20T20:04:45: 📧 To: annie.e.randle@gmail.com
+2025-08-20T20:04:45: 📧 Subject: 📅 Meeting Request Received - Tech Innovation Summit 2024
+2025-08-20T20:04:47: ✅ Email sent successfully!
+2025-08-20T20:04:47: 📧 Message ID: <7baaf2de-e3e7-a35e-671e-15558a054b55@ethereal.email>
+2025-08-20T20:04:47: 📧 Preview URL: https://ethereal.email/message/aKYqXUtUvPQAJQqWaKYqX6qYuaj5JNkzAAAAAfzUmkpR2lbDmFl-LbqOMIY
+2025-08-20T20:04:47: 🌐 You can view the email at the preview URL above
+2025-08-20T20:04:47: 📧 Email result: {
+  success: true,
+  provider: 'ethereal-smtp',
+  messageId: '<7baaf2de-e3e7-a35e-671e-15558a054b55@ethereal.email>',
+  previewUrl: 'https://ethereal.email/message/aKYqXUtUvPQAJQqWaKYqX6qYuaj5JNkzAAAAAfzUmkpR2lbDmFl-LbqOMIY'
+}
+2025-08-20T20:05:03: 📅 Fetching all events
+2025-08-20T20:05:03: 👥 Fetching all sales reps
+2025-08-20T20:05:03: ✅ Found 3 events
+2025-08-20T20:05:03: 🏢 Fetching departments list
+2025-08-20T20:05:03: ✅ Found 4 sales reps
+2025-08-20T20:05:03: ✅ Found 4 departments
+2025-08-20T20:05:05: 📋 Fetching all meeting requests
+2025-08-20T20:05:05: ✅ Found 8 meeting requests
+2025-08-20T20:05:11: 📋 Fetching all meeting requests
+2025-08-20T20:05:11: ✅ Found 8 meeting requests
+2025-08-20T20:05:15: 📝 Updating meeting request 8 status to: approved
+2025-08-20T20:05:15: ✅ Meeting request 8 status updated to: approved
+2025-08-20T20:05:15: 📧 Attempting to send real email...
+2025-08-20T20:05:15: 📧 Creating test email account with Ethereal...
+2025-08-20T20:05:15: 📧 Test account created: opzoe3ddg6xu6pkw@ethereal.email
+2025-08-20T20:05:15: ❌ Email service error: RangeError: Invalid time value
+    at Date.toISOString (<anonymous>)
+    at OutlookService.formatDateForICS (/home/user/webapp/src/utils/outlookService.js:898:21)
+    at OutlookService.generateICSContent (/home/user/webapp/src/utils/outlookService.js:804:29)
+    at OutlookService.sendViaWorkingEmailService (/home/user/webapp/src/utils/outlookService.js:225:37)
+    at async OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:52:16)
+    at async Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:370:35)
+2025-08-20T20:05:15: 📧 Status update email result: {
+  success: false,
+  error: 'Invalid time value',
+  provider: 'ethereal-smtp'
+}
+2025-08-20T20:05:15: ❌ Calendar event creation error: RangeError: Invalid time value
+    at Date.toISOString (<anonymous>)
+    at OutlookService.createCalendarEvent (/home/user/webapp/src/utils/outlookService.js:148:45)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:391:73)
+2025-08-20T20:05:15: 📅 Calendar event result: { success: false, error: 'Invalid time value' }
+2025-08-20T20:05:15: 📋 Fetching all meeting requests
+2025-08-20T20:05:15: ✅ Found 8 meeting requests
+2025-08-20T20:05:23: 📝 Updating meeting request 7 status to: rejected
+2025-08-20T20:05:23: ✅ Meeting request 7 status updated to: rejected
+2025-08-20T20:05:23: 📧 Attempting to send real email...
+2025-08-20T20:05:23: 📧 Creating test email account with Ethereal...
+2025-08-20T20:05:23: 📧 Test account created: opzoe3ddg6xu6pkw@ethereal.email
+2025-08-20T20:05:23: ❌ Email service error: RangeError: Invalid time value
+    at Date.toISOString (<anonymous>)
+    at OutlookService.formatDateForICS (/home/user/webapp/src/utils/outlookService.js:898:21)
+    at OutlookService.generateICSContent (/home/user/webapp/src/utils/outlookService.js:804:29)
+    at OutlookService.sendViaWorkingEmailService (/home/user/webapp/src/utils/outlookService.js:225:37)
+    at async OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:52:16)
+    at async Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:370:35)
+2025-08-20T20:05:23: 📧 Status update email result: {
+  success: false,
+  error: 'Invalid time value',
+  provider: 'ethereal-smtp'
+}
+2025-08-20T20:05:24: 📋 Fetching all meeting requests
+2025-08-20T20:05:24: ✅ Found 8 meeting requests
+2025-08-20T20:05:25: 📝 Updating meeting request 6 status to: approved
+2025-08-20T20:05:25: ✅ Meeting request 6 status updated to: approved
+2025-08-20T20:05:25: 📧 Attempting to send real email...
+2025-08-20T20:05:25: 📧 Creating test email account with Ethereal...
+2025-08-20T20:05:25: 📧 Test account created: opzoe3ddg6xu6pkw@ethereal.email
+2025-08-20T20:05:25: ❌ Email service error: RangeError: Invalid time value
+    at Date.toISOString (<anonymous>)
+    at OutlookService.formatDateForICS (/home/user/webapp/src/utils/outlookService.js:898:21)
+    at OutlookService.generateICSContent (/home/user/webapp/src/utils/outlookService.js:804:29)
+    at OutlookService.sendViaWorkingEmailService (/home/user/webapp/src/utils/outlookService.js:225:37)
+    at async OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:52:16)
+    at async Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:370:35)
+2025-08-20T20:05:25: 📧 Status update email result: {
+  success: false,
+  error: 'Invalid time value',
+  provider: 'ethereal-smtp'
+}
+2025-08-20T20:05:25: ❌ Calendar event creation error: RangeError: Invalid time value
+    at Date.toISOString (<anonymous>)
+    at OutlookService.createCalendarEvent (/home/user/webapp/src/utils/outlookService.js:148:45)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:391:73)
+2025-08-20T20:05:25: 📅 Calendar event result: { success: false, error: 'Invalid time value' }
+2025-08-20T20:05:25: 📋 Fetching all meeting requests
+2025-08-20T20:05:25: ✅ Found 8 meeting requests
+2025-08-20T20:05:27: 📝 Updating meeting request 5 status to: approved
+2025-08-20T20:05:27: ✅ Meeting request 5 status updated to: approved
+2025-08-20T20:05:27: 📧 Attempting to send real email...
+2025-08-20T20:05:27: 📧 Creating test email account with Ethereal...
+2025-08-20T20:05:27: 📧 Test account created: opzoe3ddg6xu6pkw@ethereal.email
+2025-08-20T20:05:27: 📧 Sending email...
+2025-08-20T20:05:27: 📧 To: annie.e.randle@gmail.com
+2025-08-20T20:05:27: 📧 Subject: ✅ Meeting Approved - Tech Innovation Summit 2024
+2025-08-20T20:05:29: ✅ Email sent successfully!
+2025-08-20T20:05:29: 📧 Message ID: <2aa251bc-7578-5906-4789-1f893c308eae@ethereal.email>
+2025-08-20T20:05:29: 📧 Preview URL: https://ethereal.email/message/aKYqXUtUvPQAJQqWaKYqiTr3pD0h9wS9AAAAAjyVQy6o5XdE7pWxTadNtKM
+2025-08-20T20:05:29: 🌐 You can view the email at the preview URL above
+2025-08-20T20:05:29: 📧 Status update email result: {
+  success: true,
+  provider: 'ethereal-smtp',
+  messageId: '<2aa251bc-7578-5906-4789-1f893c308eae@ethereal.email>',
+  previewUrl: 'https://ethereal.email/message/aKYqXUtUvPQAJQqWaKYqiTr3pD0h9wS9AAAAAjyVQy6o5XdE7pWxTadNtKM'
+}
+2025-08-20T20:05:29: ❌ Calendar event creation error: TypeError: this.graphClient.users is not a function
+    at OutlookService.createCalendarEvent (/home/user/webapp/src/utils/outlookService.js:179:18)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:391:73)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-08-20T20:05:29: 📅 Calendar event result: { success: false, error: 'this.graphClient.users is not a function' }
+2025-08-20T20:05:29: 📋 Fetching all meeting requests
+2025-08-20T20:05:29: ✅ Found 8 meeting requests
+2025-08-20T20:05:32: 📝 Updating meeting request 4 status to: rejected
+2025-08-20T20:05:32: ✅ Meeting request 4 status updated to: rejected
+2025-08-20T20:05:32: 📧 Attempting to send real email...
+2025-08-20T20:05:32: 📧 Creating test email account with Ethereal...
+2025-08-20T20:05:32: 📧 Test account created: opzoe3ddg6xu6pkw@ethereal.email
+2025-08-20T20:05:32: 📧 Sending email...
+2025-08-20T20:05:32: 📧 To: test@test.com
+2025-08-20T20:05:32: 📧 Subject: ❌ Meeting Request Update - Tech Innovation Summit 2024
+2025-08-20T20:05:34: ✅ Email sent successfully!
+2025-08-20T20:05:34: 📧 Message ID: <0f2dcff0-a1de-b52f-e6ca-38bd23044132@ethereal.email>
+2025-08-20T20:05:34: 📧 Preview URL: https://ethereal.email/message/aKYqXUtUvPQAJQqWaKYqjjr3pD0h9wTHAAAAA7sfx5QrvNhk0Oh77WA.J3s
+2025-08-20T20:05:34: 🌐 You can view the email at the preview URL above
+2025-08-20T20:05:34: 📧 Status update email result: {
+  success: true,
+  provider: 'ethereal-smtp',
+  messageId: '<0f2dcff0-a1de-b52f-e6ca-38bd23044132@ethereal.email>',
+  previewUrl: 'https://ethereal.email/message/aKYqXUtUvPQAJQqWaKYqjjr3pD0h9wTHAAAAA7sfx5QrvNhk0Oh77WA.J3s'
+}
+2025-08-20T20:05:35: 📋 Fetching all meeting requests
+2025-08-20T20:05:35: ✅ Found 8 meeting requests
+2025-08-20T20:05:36: 📝 Updating meeting request 3 status to: rejected
+2025-08-20T20:05:36: ✅ Meeting request 3 status updated to: rejected
+2025-08-20T20:05:36: 📧 Attempting to send real email...
+2025-08-20T20:05:36: 📧 Creating test email account with Ethereal...
+2025-08-20T20:05:36: 📧 Test account created: opzoe3ddg6xu6pkw@ethereal.email
+2025-08-20T20:05:36: 📧 Sending email...
+2025-08-20T20:05:36: 📧 To: test@test.com
+2025-08-20T20:05:36: 📧 Subject: ❌ Meeting Request Update - Tech Innovation Summit 2024
+2025-08-20T20:05:38: ✅ Email sent successfully!
+2025-08-20T20:05:38: 📧 Message ID: <a3dcc063-975f-79bb-8f72-31087a1f16c6@ethereal.email>
+2025-08-20T20:05:38: 📧 Preview URL: https://ethereal.email/message/aKYqXUtUvPQAJQqWaKYqkmXUKwn.0Z9pAAAABOB9ONjq78QhkBPqP9wCLKk
+2025-08-20T20:05:38: 🌐 You can view the email at the preview URL above
+2025-08-20T20:05:38: 📧 Status update email result: {
+  success: true,
+  provider: 'ethereal-smtp',
+  messageId: '<a3dcc063-975f-79bb-8f72-31087a1f16c6@ethereal.email>',
+  previewUrl: 'https://ethereal.email/message/aKYqXUtUvPQAJQqWaKYqkmXUKwn.0Z9pAAAABOB9ONjq78QhkBPqP9wCLKk'
+}
+2025-08-20T20:05:39: 📋 Fetching all meeting requests
+2025-08-20T20:05:39: ✅ Found 8 meeting requests
+2025-08-20T20:05:42: 📋 Fetching all meeting requests
+2025-08-20T20:05:42: ✅ Found 8 meeting requests
+2025-08-20T20:07:32: SIGINT received, shutting down gracefully
+2025-08-20T20:07:32: ✅ Microsoft Graph client initialized successfully
+2025-08-20T20:07:32: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-20T20:07:32: 📊 Admin panel: http://localhost:3000/admin
+2025-08-20T20:07:32: 🌐 Main site: http://localhost:3000
+2025-08-20T20:07:32: 💡 Environment: production
+2025-08-20T20:14:02: 👥 Fetching all sales reps
+2025-08-20T20:14:02: 📅 Fetching all events
+2025-08-20T20:14:02: ✅ Found 4 sales reps
+2025-08-20T20:14:02: ✅ Found 3 events
+2025-08-20T20:14:02: 🏢 Fetching departments list
+2025-08-20T20:14:02: ✅ Found 4 departments
+2025-08-20T20:14:05: 👥 Fetching sales reps for event 1
+2025-08-20T20:14:05: ✅ Found 2 sales reps for event 1
+2025-08-20T20:14:10: 📝 New meeting request: {
+  eventId: '1',
+  salesRepId: '2',
+  clientName: 'Annie Randle',
+  clientEmail: 'annie.e.randle@gmail.com',
+  clientCompany: '',
+  clientPhone: '',
+  preferredDate: '',
+  preferredTime: '',
+  duration: 30,
+  message: ''
+}
+2025-08-20T20:14:10: ✅ Meeting request created with ID: 9
+2025-08-20T20:14:10: 📧 Attempting to send real email...
+2025-08-20T20:14:10: 📧 Creating test email account with Ethereal...
+2025-08-20T20:14:11: 📧 Test account created: ojcfmtrvn43a4pmc@ethereal.email
+2025-08-20T20:14:11: 📧 Sending email...
+2025-08-20T20:14:11: 📧 To: annie.e.randle@gmail.com
+2025-08-20T20:14:11: 📧 Subject: 📅 Meeting Request Received - Tech Innovation Summit 2024
+2025-08-20T20:14:13: ✅ Email sent successfully!
+2025-08-20T20:14:13: 📧 Message ID: <30d64353-8068-f9bb-7830-2c3b909d29cc@ethereal.email>
+2025-08-20T20:14:13: 📧 Preview URL: https://ethereal.email/message/aKYsk0tUvPQAJTn0aKYslSBpZpMT.y29AAAAAa0djnYAPU8TERnzSJrWK3I
+2025-08-20T20:14:13: 🌐 You can view the email at the preview URL above
+2025-08-20T20:14:13: 📧 Email result: {
+  success: true,
+  provider: 'ethereal-smtp',
+  messageId: '<30d64353-8068-f9bb-7830-2c3b909d29cc@ethereal.email>',
+  previewUrl: 'https://ethereal.email/message/aKYsk0tUvPQAJTn0aKYslSBpZpMT.y29AAAAAa0djnYAPU8TERnzSJrWK3I'
+}
+2025-08-20T20:14:26: 📋 Fetching all meeting requests
+2025-08-20T20:14:26: ✅ Found 9 meeting requests
+2025-08-20T20:14:28: 📋 Fetching all meeting requests
+2025-08-20T20:14:28: ✅ Found 9 meeting requests
+2025-08-20T20:14:30: 📝 Updating meeting request 9 status to: approved
+2025-08-20T20:14:30: ✅ Meeting request 9 status updated to: approved
+2025-08-20T20:14:30: 📧 Attempting to send real email...
+2025-08-20T20:14:30: 📧 Creating test email account with Ethereal...
+2025-08-20T20:14:30: 📧 Test account created: ojcfmtrvn43a4pmc@ethereal.email
+2025-08-20T20:14:30: 📧 Sending email...
+2025-08-20T20:14:30: 📧 To: annie.e.randle@gmail.com
+2025-08-20T20:14:30: 📧 Subject: ✅ Meeting Approved - Tech Innovation Summit 2024
+2025-08-20T20:14:32: ✅ Email sent successfully!
+2025-08-20T20:14:32: 📧 Message ID: <c5a00c4d-74fd-fb30-1c65-1beba5bad7a0@ethereal.email>
+2025-08-20T20:14:32: 📧 Preview URL: https://ethereal.email/message/aKYsk0tUvPQAJTn0aKYsqKqYuaj5JNp7AAAAAvKuF0Ma6pUqDmfNG7QZrZk
+2025-08-20T20:14:32: 🌐 You can view the email at the preview URL above
+2025-08-20T20:14:32: 📧 Status update email result: {
+  success: true,
+  provider: 'ethereal-smtp',
+  messageId: '<c5a00c4d-74fd-fb30-1c65-1beba5bad7a0@ethereal.email>',
+  previewUrl: 'https://ethereal.email/message/aKYsk0tUvPQAJTn0aKYsqKqYuaj5JNp7AAAAAvKuF0Ma6pUqDmfNG7QZrZk'
+}
+2025-08-20T20:14:32: ❌ Calendar event creation error: TypeError: this.graphClient.users is not a function
+    at OutlookService.createCalendarEvent (/home/user/webapp/src/utils/outlookService.js:179:18)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:391:73)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-08-20T20:14:32: 📅 Calendar event result: { success: false, error: 'this.graphClient.users is not a function' }
+2025-08-20T20:14:33: 📋 Fetching all meeting requests
+2025-08-20T20:14:33: ✅ Found 9 meeting requests
+2025-08-20T20:17:01: SIGINT received, shutting down gracefully
+2025-08-20T20:17:01: ✅ Microsoft Graph client initialized successfully
+2025-08-20T20:17:01: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-20T20:17:01: 📊 Admin panel: http://localhost:3000/admin
+2025-08-20T20:17:01: 🌐 Main site: http://localhost:3000
+2025-08-20T20:17:01: 💡 Environment: production
+2025-08-20T20:20:17: SIGINT received, shutting down gracefully
+2025-08-20T20:20:17: ✅ Microsoft Graph client initialized successfully
+2025-08-20T20:20:17: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-20T20:20:17: 📊 Admin panel: http://localhost:3000/admin
+2025-08-20T20:20:17: 🌐 Main site: http://localhost:3000
+2025-08-20T20:20:17: 💡 Environment: production
+2025-08-20T20:27:03: 👥 Fetching all sales reps
+2025-08-20T20:27:03: 📅 Fetching all events
+2025-08-20T20:27:03: 🏢 Fetching departments list
+2025-08-20T20:27:03: ✅ Found 4 sales reps
+2025-08-20T20:27:03: ✅ Found 3 events
+2025-08-20T20:27:03: ✅ Found 4 departments
+2025-08-20T20:27:05: 👥 Fetching sales reps for event 1
+2025-08-20T20:27:05: ✅ Found 2 sales reps for event 1
+2025-08-20T20:27:10: 📝 New meeting request: {
+  eventId: '1',
+  salesRepId: '2',
+  clientName: 'Annie Randle',
+  clientEmail: 'annie.e.randle@gmail.com',
+  clientCompany: '',
+  clientPhone: '',
+  preferredDate: '',
+  preferredTime: '',
+  duration: 30,
+  message: ''
+}
+2025-08-20T20:27:10: ✅ Meeting request created with ID: 10
+2025-08-20T20:27:10: 🚨🚨🚨 CRITICAL DEBUG: sendMeetingRequestEmail called! 🚨🚨🚨
+2025-08-20T20:27:10: 🚨 Full meetingData: {
+  "meeting": {
+    "id": 10,
+    "event_id": 1,
+    "sales_rep_id": 2,
+    "client_name": "Annie Randle",
+    "client_email": "annie.e.randle@gmail.com",
+    "client_company": null,
+    "client_phone": null,
+    "preferred_date": null,
+    "preferred_time": null,
+    "duration": 30,
+    "message": null,
+    "status": "pending",
+    "admin_notes": null,
+    "created_at": "2025-08-20 20:27:10",
+    "updated_at": "2025-08-20 20:27:10",
+    "event_name": "Tech Innovation Summit 2024",
+    "event_location": "San Francisco Convention Center",
+    "event_start_date": "2024-09-15",
+    "event_end_date": "2024-09-17",
+    "sales_rep_name": "Michael Chen",
+    "sales_rep_email": "michael.chen@company.com",
+    "sales_rep_department": "Technology Sales"
+  },
+  "event": {
+    "name": "Tech Innovation Summit 2024",
+    "location": "San Francisco Convention Center",
+    "start_date": "2024-09-15",
+    "end_date": "2024-09-17"
+  },
+  "salesRep": {
+    "name": "Michael Chen",
+    "email": "michael.chen@company.com",
+    "department": "Technology Sales"
+  },
+  "status": "pending"
+}
+2025-08-20T20:27:10: 📧 Attempting to send real email...
+2025-08-20T20:27:10: 📧 Setting up Gmail SMTP for real email delivery...
+2025-08-20T20:27:10: 📧 REAL EMAIL CONTENT READY FOR DELIVERY:
+2025-08-20T20:27:10: ================================================================================
+2025-08-20T20:27:10: 📧 To: annie.e.randle@gmail.com
+2025-08-20T20:27:10: 📧 Subject: 📅 Meeting Request Received - Tech Innovation Summit 2024
+2025-08-20T20:27:10: 📧 HTML Content: 4099 characters
+2025-08-20T20:27:10: 📧 ICS Attachment: 946 characters
+2025-08-20T20:27:10: ================================================================================
+2025-08-20T20:27:11: 📧 Sending demonstration email...
+2025-08-20T20:27:13: ✅ EMAIL SYSTEM WORKING PERFECTLY!
+2025-08-20T20:27:13: 📧 Message ID: <5eaead3f-8a2c-df27-b9e7-a37a666c5e6a@ethereal.email>
+2025-08-20T20:27:13: 📧 Preview URL: https://ethereal.email/message/aKYvn0tUvPQAJW31aKYvoSBpZpMT.y5QAAAAAaKTATr-be-FJg4Z7obapig
+2025-08-20T20:27:13: 🌐 CLICK THE PREVIEW URL TO SEE YOUR EMAIL!
+2025-08-20T20:27:13: ================================================================================
+2025-08-20T20:27:13: 💡 NOTE: This is a demonstration using Ethereal test email service.
+2025-08-20T20:27:13: 💡 The email content and calendar invite are generated perfectly.
+2025-08-20T20:27:13: 💡 To send to real Gmail, you would need production SMTP credentials.
+2025-08-20T20:27:13: 💡 The preview URL shows EXACTLY what would be sent to Gmail.
+2025-08-20T20:27:13: ================================================================================
+2025-08-20T20:27:13: 📧 Email result: {
+  success: true,
+  provider: 'ethereal-demo',
+  messageId: '<5eaead3f-8a2c-df27-b9e7-a37a666c5e6a@ethereal.email>',
+  previewUrl: 'https://ethereal.email/message/aKYvn0tUvPQAJW31aKYvoSBpZpMT.y5QAAAAAaKTATr-be-FJg4Z7obapig',
+  note: 'Email system working perfectly - view at preview URL'
+}
+2025-08-20T20:33:53: 📅 Fetching all events
+2025-08-20T20:33:53: ✅ Found 3 events
+2025-08-20T20:33:53: 👥 Fetching all sales reps
+2025-08-20T20:33:53: 🏢 Fetching departments list
+2025-08-20T20:33:53: ✅ Found 4 sales reps
+2025-08-20T20:33:53: ✅ Found 4 departments
+2025-08-20T20:42:48: SIGINT received, shutting down gracefully
+2025-08-20T20:42:49: ✅ Microsoft Graph client initialized successfully
+2025-08-20T20:42:49: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-20T20:42:49: 📊 Admin panel: http://localhost:3000/admin
+2025-08-20T20:42:49: 🌐 Main site: http://localhost:3000
+2025-08-20T20:42:49: 💡 Environment: production
+2025-08-20T20:46:34: 📅 Fetching all events
+2025-08-20T20:46:34: 👥 Fetching all sales reps
+2025-08-20T20:46:34: ✅ Found 3 events
+2025-08-20T20:46:34: 🏢 Fetching departments list
+2025-08-20T20:46:34: ✅ Found 4 sales reps
+2025-08-20T20:46:34: ✅ Found 4 departments
+2025-08-20T20:52:48: 📅 Fetching all events
+2025-08-20T20:52:48: 🏢 Fetching departments list
+2025-08-20T20:52:48: ✅ Found 3 events
+2025-08-20T20:52:48: ✅ Found 4 departments
+2025-08-20T20:52:48: 👥 Fetching all sales reps
+2025-08-20T20:52:48: ✅ Found 4 sales reps
+2025-08-20T21:22:17: SIGINT received, shutting down gracefully
+2025-08-20T21:22:17: ✅ Microsoft Graph client initialized successfully
+2025-08-20T21:22:17: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-20T21:22:17: 📊 Admin panel: http://localhost:3000/admin
+2025-08-20T21:22:17: 🌐 Main site: http://localhost:3000
+2025-08-20T21:22:17: 💡 Environment: production
+2025-08-20T21:23:08: 👥 Fetching all sales reps
+2025-08-20T21:23:08: 🏢 Fetching departments list
+2025-08-20T21:23:08: ✅ Found 4 sales reps
+2025-08-20T21:23:08: ✅ Found 4 departments
+2025-08-20T21:23:08: 📅 Fetching all events
+2025-08-20T21:23:08: ✅ Found 3 events
+2025-08-20T22:30:32: SIGINT received, shutting down gracefully
+2025-08-20T22:30:32: ✅ Microsoft Graph client initialized successfully
+2025-08-20T22:30:32: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-20T22:30:32: 📊 Admin panel: http://localhost:3000/admin
+2025-08-20T22:30:32: 🌐 Main site: http://localhost:3000
+2025-08-20T22:30:32: 💡 Environment: production
+2025-08-20T23:55:48: 📅 Fetching all events
+2025-08-20T23:55:48: 👥 Fetching all sales reps
+2025-08-20T23:55:48: 🏢 Fetching departments list
+2025-08-20T23:55:48: ✅ Found 4 events
+2025-08-20T23:55:48: ✅ Found 4 sales reps
+2025-08-20T23:55:48: ✅ Found 4 departments
+2025-08-21T00:00:56: SIGINT received, shutting down gracefully
+2025-08-21T00:00:56: ✅ Microsoft Graph client initialized successfully
+2025-08-21T00:00:56: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-21T00:00:56: 📊 Admin panel: http://localhost:3000/admin
+2025-08-21T00:00:56: 🌐 Main site: http://localhost:3000
+2025-08-21T00:00:56: 💡 Environment: production

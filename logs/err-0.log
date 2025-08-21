@@ -1,0 +1,145 @@
+2025-08-20T02:40:14: Microsoft Graph test failed: Cannot read properties of undefined (reading 'get')
+2025-08-20T02:40:14: SMTP test failed: nodemailer.createTransporter is not a function
+2025-08-20T03:29:29: Microsoft Graph test failed: Cannot read properties of undefined (reading 'get')
+2025-08-20T03:29:29: SMTP test failed: nodemailer.createTransporter is not a function
+2025-08-20T04:13:31: Microsoft Graph test failed: Cannot read properties of undefined (reading 'get')
+2025-08-20T04:13:31: SMTP test failed: nodemailer.createTransporter is not a function
+2025-08-20T04:14:13: Microsoft Graph test failed: Cannot read properties of undefined (reading 'get')
+2025-08-20T04:14:13: SMTP test failed: nodemailer.createTransporter is not a function
+2025-08-20T04:15:34: Microsoft Graph test failed: Cannot read properties of undefined (reading 'get')
+2025-08-20T04:15:34: SMTP test failed: nodemailer.createTransporter is not a function
+2025-08-20T04:36:32: Microsoft Graph test failed: Cannot read properties of undefined (reading 'get')
+2025-08-20T04:36:32: SMTP test failed: nodemailer.createTransporter is not a function
+2025-08-20T15:21:23: Microsoft Graph test failed: Cannot read properties of undefined (reading 'get')
+2025-08-20T15:21:23: SMTP test failed: nodemailer.createTransporter is not a function
+2025-08-20T15:22:02: Microsoft Graph test failed: invalid_request: Error(s): 900023 - Timestamp: 2025-08-20 15:22:02Z - Description: AADSTS900023: Specified tenant identifier 'your-azure-tenant-id' is neither a valid DNS name, nor a valid external domain. Trace ID: 827a8bfd-725e-45fe-8f2c-7e9d67fc1000 Correlation ID: 2f70dcb4-56bf-4d57-8840-ce394470e89a Timestamp: 2025-08-20 15:22:02Z - Correlation ID: 2f70dcb4-56bf-4d57-8840-ce394470e89a - Trace ID: 827a8bfd-725e-45fe-8f2c-7e9d67fc1000
+2025-08-20T15:22:02: SMTP test failed: nodemailer.createTransporter is not a function
+2025-08-20T15:24:41: ❌ Microsoft Graph email error: TypeError: ical is not a function
+    at OutlookService.generateICSContent (/home/user/webapp/src/utils/outlookService.js:617:26)
+    at OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:61:37)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:168:74)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+2025-08-20T15:24:41: ❌ SMTP email error: TypeError: nodemailer.createTransporter is not a function
+    at OutlookService.sendEmailViaSMTP (/home/user/webapp/src/utils/outlookService.js:202:44)
+    at OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:116:31)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:168:74)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+2025-08-20T15:25:07: ❌ Microsoft Graph email error: TypeError: ical is not a function
+    at OutlookService.generateICSContent (/home/user/webapp/src/utils/outlookService.js:617:26)
+    at OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:61:37)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:370:56)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+2025-08-20T15:25:07: ❌ SMTP email error: TypeError: nodemailer.createTransporter is not a function
+    at OutlookService.sendEmailViaSMTP (/home/user/webapp/src/utils/outlookService.js:202:44)
+    at OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:116:31)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:370:56)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+2025-08-20T15:25:07: ❌ Calendar event creation error: RangeError: Invalid time value
+    at Date.toISOString (<anonymous>)
+    at OutlookService.createCalendarEvent (/home/user/webapp/src/utils/outlookService.js:143:45)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:391:73)
+2025-08-20T15:25:30: Microsoft Graph test failed: invalid_request: Error(s): 900023 - Timestamp: 2025-08-20 15:25:30Z - Description: AADSTS900023: Specified tenant identifier 'your-azure-tenant-id' is neither a valid DNS name, nor a valid external domain. Trace ID: cef020a1-f062-41bd-973b-8a67a9da0000 Correlation ID: 5666fc5d-26fd-49c3-8ce5-2b602ab571fb Timestamp: 2025-08-20 15:25:30Z - Correlation ID: 5666fc5d-26fd-49c3-8ce5-2b602ab571fb - Trace ID: cef020a1-f062-41bd-973b-8a67a9da0000
+2025-08-20T15:25:30: SMTP test failed: nodemailer.createTransporter is not a function
+2025-08-20T15:32:15: SMTP test failed: nodemailer.createTransporter is not a function
+2025-08-20T15:34:16: ❌ Microsoft Graph email error: TypeError: ical is not a function
+    at OutlookService.generateICSContent (/home/user/webapp/src/utils/outlookService.js:617:26)
+    at OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:61:37)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:168:74)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+2025-08-20T15:34:16: ❌ SMTP email error: TypeError: nodemailer.createTransporter is not a function
+    at OutlookService.sendEmailViaSMTP (/home/user/webapp/src/utils/outlookService.js:202:44)
+    at OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:116:31)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:168:74)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+2025-08-20T15:42:27: ❌ Microsoft Graph email error: TypeError: ical is not a function
+    at OutlookService.generateICSContent (/home/user/webapp/src/utils/outlookService.js:617:26)
+    at OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:61:37)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:168:74)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+2025-08-20T15:42:27: ❌ SMTP email error: TypeError: nodemailer.createTransporter is not a function
+    at OutlookService.sendEmailViaSMTP (/home/user/webapp/src/utils/outlookService.js:202:44)
+    at OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:116:31)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:168:74)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+2025-08-20T15:46:29: SMTP test failed: nodemailer.createTransporter is not a function
+2025-08-20T15:47:42: ❌ Microsoft Graph email error: TypeError: ical is not a function
+    at OutlookService.generateICSContent (/home/user/webapp/src/utils/outlookService.js:618:26)
+    at OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:61:37)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:168:74)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+2025-08-20T15:47:42: ❌ SMTP email error: TypeError: ical is not a function
+    at OutlookService.generateICSContent (/home/user/webapp/src/utils/outlookService.js:618:26)
+    at OutlookService.sendEmailViaSMTP (/home/user/webapp/src/utils/outlookService.js:216:37)
+    at OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:116:31)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:168:74)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+2025-08-20T15:54:14: ❌ Microsoft Graph email error: TypeError: this.graphClient.users is not a function
+    at OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:100:18)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:168:74)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+    at Statement.replacement (/home/user/webapp/node_modules/sqlite3/lib/trace.js:25:27)
+2025-08-20T15:54:15: ❌ SMTP email error: Error: Invalid login: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-76e7d1375a3sm5680406b3a.43 - gsmtp
+    at SMTPConnection._formatError (/home/user/webapp/node_modules/nodemailer/lib/smtp-connection/index.js:809:19)
+    at SMTPConnection._actionAUTHComplete (/home/user/webapp/node_modules/nodemailer/lib/smtp-connection/index.js:1588:34)
+    at SMTPConnection.<anonymous> (/home/user/webapp/node_modules/nodemailer/lib/smtp-connection/index.js:556:26)
+    at SMTPConnection._processResponse (/home/user/webapp/node_modules/nodemailer/lib/smtp-connection/index.js:993:20)
+    at SMTPConnection._onData (/home/user/webapp/node_modules/nodemailer/lib/smtp-connection/index.js:774:14)
+    at SMTPConnection._onSocketData (/home/user/webapp/node_modules/nodemailer/lib/smtp-connection/index.js:195:44)
+    at TLSSocket.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5) {
+  code: 'EAUTH',
+  response: '535-5.7.8 Username and Password not accepted. For more information, go to\n' +
+    '535 5.7.8  https://support.google.com/mail/?p=BadCredentials d2e1a72fcca58-76e7d1375a3sm5680406b3a.43 - gsmtp',
+  responseCode: 535,
+  command: 'AUTH PLAIN'
+}
+2025-08-20T20:05:15: ❌ Email service error: RangeError: Invalid time value
+    at Date.toISOString (<anonymous>)
+    at OutlookService.formatDateForICS (/home/user/webapp/src/utils/outlookService.js:898:21)
+    at OutlookService.generateICSContent (/home/user/webapp/src/utils/outlookService.js:804:29)
+    at OutlookService.sendViaWorkingEmailService (/home/user/webapp/src/utils/outlookService.js:225:37)
+    at async OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:52:16)
+    at async Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:370:35)
+2025-08-20T20:05:15: ❌ Calendar event creation error: RangeError: Invalid time value
+    at Date.toISOString (<anonymous>)
+    at OutlookService.createCalendarEvent (/home/user/webapp/src/utils/outlookService.js:148:45)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:391:73)
+2025-08-20T20:05:23: ❌ Email service error: RangeError: Invalid time value
+    at Date.toISOString (<anonymous>)
+    at OutlookService.formatDateForICS (/home/user/webapp/src/utils/outlookService.js:898:21)
+    at OutlookService.generateICSContent (/home/user/webapp/src/utils/outlookService.js:804:29)
+    at OutlookService.sendViaWorkingEmailService (/home/user/webapp/src/utils/outlookService.js:225:37)
+    at async OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:52:16)
+    at async Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:370:35)
+2025-08-20T20:05:25: ❌ Email service error: RangeError: Invalid time value
+    at Date.toISOString (<anonymous>)
+    at OutlookService.formatDateForICS (/home/user/webapp/src/utils/outlookService.js:898:21)
+    at OutlookService.generateICSContent (/home/user/webapp/src/utils/outlookService.js:804:29)
+    at OutlookService.sendViaWorkingEmailService (/home/user/webapp/src/utils/outlookService.js:225:37)
+    at async OutlookService.sendMeetingRequestEmail (/home/user/webapp/src/utils/outlookService.js:52:16)
+    at async Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:370:35)
+2025-08-20T20:05:25: ❌ Calendar event creation error: RangeError: Invalid time value
+    at Date.toISOString (<anonymous>)
+    at OutlookService.createCalendarEvent (/home/user/webapp/src/utils/outlookService.js:148:45)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:391:73)
+2025-08-20T20:05:29: ❌ Calendar event creation error: TypeError: this.graphClient.users is not a function
+    at OutlookService.createCalendarEvent (/home/user/webapp/src/utils/outlookService.js:179:18)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:391:73)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-08-20T20:14:32: ❌ Calendar event creation error: TypeError: this.graphClient.users is not a function
+    at OutlookService.createCalendarEvent (/home/user/webapp/src/utils/outlookService.js:179:18)
+    at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:391:73)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)

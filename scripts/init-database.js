@@ -141,34 +141,34 @@ const insertSampleData = async () => {
         const events = [
             {
                 name: 'GBTA Convention 2024',
-                description: 'The Global Business Travel Association\'s premier annual convention bringing together travel management professionals, suppliers, and industry leaders to explore trends, innovations, and best practices in corporate travel.',
+                description: 'The Global Business Travel Association\'s premier annual convention bringing together travel management professionals, suppliers, and industry leaders to explore trends, innovations, and best practices in corporate travel. This event has concluded.',
                 start_date: '2024-07-28',
                 end_date: '2024-08-01',
                 location: 'San Diego Convention Center, San Diego, CA',
-                status: 'active'
+                status: 'past'
             },
             {
-                name: 'Commercial Payments International Global Summit',
-                description: 'Leading international conference focused on commercial payments innovation, digital transformation, and emerging payment technologies. Bringing together payment processors, financial institutions, and technology providers.',
-                start_date: '2024-09-18',
-                end_date: '2024-09-19',
+                name: 'Commercial Payments International Global Summit 2025',
+                description: 'Leading international conference focused on commercial payments innovation, digital transformation, and emerging payment technologies. Bringing together payment processors, financial institutions, and technology providers for 2025.',
+                start_date: '2025-09-17',
+                end_date: '2025-09-18',
                 location: 'The Brewery, London, UK',
                 status: 'active'
             },
             {
-                name: 'NACHA Payments Conference',
-                description: 'The Electronic Payments Association\'s flagship event covering ACH payments, faster payments, digital wallets, and payment security. Essential for payment professionals and financial institutions.',
-                start_date: '2024-05-06',
-                end_date: '2024-05-08',
+                name: 'NACHA Payments Conference 2025',
+                description: 'The Electronic Payments Association\'s flagship event covering ACH payments, faster payments, digital wallets, and payment security. Essential for payment professionals and financial institutions in 2025.',
+                start_date: '2025-05-05',
+                end_date: '2025-05-07',
                 location: 'Gaylord Opryland Resort, Nashville, TN',
                 status: 'active'
             },
             {
-                name: 'Sibos 2024',
-                description: 'Swift\'s premier annual financial services event bringing together banks, financial institutions, corporates, and technology providers to discuss the future of financial messaging, payments, and market infrastructure.',
-                start_date: '2024-10-21',
-                end_date: '2024-10-24',
-                location: 'National Exhibition Centre (NEC), Birmingham, UK',
+                name: 'Sibos 2025',
+                description: 'Swift\'s premier annual financial services event bringing together banks, financial institutions, corporates, and technology providers to discuss the future of financial messaging, payments, and market infrastructure in 2025.',
+                start_date: '2025-10-13',
+                end_date: '2025-10-16',
+                location: 'Beijing, China',
                 status: 'active'
             }
         ];
