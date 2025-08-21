@@ -46,11 +46,13 @@ class AdminApp {
             logoutBtn.addEventListener('click', () => this.handleLogout());
         }
 
-        // Tab navigation
-        document.querySelectorAll('.nav-tab').forEach(tab => {
-            tab.addEventListener('click', (e) => {
-                const tabName = e.target.dataset.tab;
-                this.switchTab(tabName);
+        // Clickable stat card navigation
+        document.querySelectorAll('.clickable-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                const tabName = e.currentTarget.dataset.tab;
+                if (tabName) {
+                    this.switchTab(tabName);
+                }
             });
         });
 
@@ -223,11 +225,14 @@ class AdminApp {
     switchTab(tabName) {
         console.log(`🔄 Switching to tab: ${tabName}`);
         
-        // Update nav tabs
-        document.querySelectorAll('.nav-tab').forEach(tab => {
-            tab.classList.remove('active');
+        // Update stat card highlights (no longer using nav-tab elements)
+        document.querySelectorAll('.clickable-card').forEach(card => {
+            card.classList.remove('active');
         });
-        document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+        const activeCard = document.querySelector(`[data-tab="${tabName}"]`);
+        if (activeCard) {
+            activeCard.classList.add('active');
+        }
         
         // Update tab content
         document.querySelectorAll('.tab-content').forEach(content => {
@@ -285,14 +290,18 @@ class AdminApp {
             if (pendingStatsResponse.success) {
                 document.getElementById('pendingRequests').textContent = pendingStatsResponse.data.total || 0;
                 
-                // Update pending requests stats
-                document.getElementById('todayRequests').textContent = pendingStatsResponse.data.today || 0;
-                document.getElementById('weekRequests').textContent = pendingStatsResponse.data.week || 0;
-                document.getElementById('urgentRequests').textContent = pendingStatsResponse.data.urgent || 0;
+                // Update pending requests count
+                document.getElementById('pendingRequests').textContent = pendingStatsResponse.data.total || 0;
             }
             
             if (meetingsResponse.success) {
-                document.getElementById('totalMeetings').textContent = meetingsResponse.data.length;
+                // Count only approved meetings that haven't happened yet
+                const upcomingMeetings = (meetingsResponse.data.data || meetingsResponse.data).filter(meeting => {
+                    return meeting.status === 'approved' && 
+                           meeting.preferred_date && 
+                           new Date(meeting.preferred_date) > new Date();
+                });
+                document.getElementById('upcomingMeetings').textContent = upcomingMeetings.length;
             }
             
             console.log('✅ Dashboard data loaded');
@@ -429,10 +438,6 @@ class AdminApp {
                     </div>
                     <div class="request-details">
                         <div class="detail-item">
-                            <i class="fas fa-envelope"></i>
-                            <span>${window.utils.escapeHtml(meeting.client_email)}</span>
-                        </div>
-                        <div class="detail-item">
                             <i class="fas fa-building"></i>
                             <span>${window.utils.escapeHtml(meeting.client_company || 'No company')}</span>
                         </div>
@@ -441,16 +446,8 @@ class AdminApp {
                             <span>${window.utils.escapeHtml(meeting.sales_rep_name)}</span>
                         </div>
                         <div class="detail-item">
-                            <i class="fas fa-calendar"></i>
-                            <span>${meeting.preferred_date ? window.utils.formatDate(meeting.preferred_date) : 'Any date'}</span>
-                        </div>
-                        <div class="detail-item">
                             <i class="fas fa-clock"></i>
                             <span>${meeting.preferred_time || 'Any time'} (${meeting.duration || 30} min)</span>
-                        </div>
-                        <div class="detail-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>${window.utils.escapeHtml(meeting.event_location || 'Location TBD')}</span>
                         </div>
                     </div>
                     ${meeting.message ? `
@@ -626,7 +623,7 @@ class AdminApp {
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Representative</th>
                         <th>Department</th>
                         <th>Contact</th>
                         <th>Events</th>
@@ -638,15 +635,22 @@ class AdminApp {
                     ${this.salesReps.map(rep => `
                         <tr>
                             <td>
-                                <strong>${window.utils.escapeHtml(rep.name)}</strong><br>
-                                <small>${window.utils.escapeHtml(window.utils.truncateText(rep.bio || 'No bio available', 60))}</small>
+                                <div class="rep-info">
+                                    ${rep.photo_url ? 
+                                        `<img src="${rep.photo_url}" alt="${window.utils.escapeHtml(rep.name)}" class="rep-photo" onerror="this.style.display='none'">` : 
+                                        `<div class="rep-photo-placeholder"><i class="fas fa-user"></i></div>`
+                                    }
+                                    <div class="rep-details">
+                                        <strong>${window.utils.escapeHtml(rep.name)}</strong><br>
+                                        <small>${window.utils.escapeHtml(window.utils.truncateText(rep.bio || 'No bio available', 60))}</small>
+                                    </div>
+                                </div>
                             </td>
                             <td>
                                 ${window.utils.escapeHtml(rep.department || 'General')}
                             </td>
                             <td>
-                                <a href="mailto:${rep.email}">${window.utils.escapeHtml(rep.email)}</a><br>
-                                ${rep.phone ? `<small><a href="tel:${rep.phone}">${window.utils.escapeHtml(rep.phone)}</a></small>` : '<small>No phone</small>'}
+                                <a href="mailto:${rep.email}">${window.utils.escapeHtml(rep.email)}</a>
                             </td>
                             <td>
                                 <span class="badge badge-info">${rep.event_count} events</span>
@@ -1110,12 +1114,6 @@ class AdminApp {
                         <i class="fas fa-envelope"></i>
                         <span>${window.utils.escapeHtml(rep.email || '')}</span>
                     </div>
-                    ${rep.phone ? `
-                        <div class="contact-item-admin">
-                            <i class="fas fa-phone"></i>
-                            <span>${window.utils.escapeHtml(rep.phone)}</span>
-                        </div>
-                    ` : ''}
                 </div>
                 <p class="sales-rep-bio-admin">${window.utils.escapeHtml((rep.bio || 'No bio available').substring(0, 100))}${rep.bio && rep.bio.length > 100 ? '...' : ''}</p>
                 <div class="sales-rep-actions-admin">

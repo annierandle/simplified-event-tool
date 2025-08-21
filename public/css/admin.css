@@ -279,6 +279,28 @@
     transform: translateY(-2px);
 }
 
+.stat-card.clickable-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.stat-card.clickable-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+}
+
+.stat-card.clickable-card:active {
+    transform: translateY(-1px);
+}
+
+.stat-card.clickable-card.active {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    border: 2px solid rgba(102, 126, 234, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.2);
+}
+
 .stat-icon {
     width: 60px;
     height: 60px;
@@ -1143,4 +1165,53 @@
     .stat-card {
         break-inside: avoid;
     }
+}
+
+/* Sales Rep Photo Styles */
+.rep-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.rep-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #e0e0e0;
+    transition: border-color 0.3s ease;
+}
+
+.rep-photo:hover {
+    border-color: var(--primary-color);
+}
+
+.rep-photo-placeholder {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    font-size: 18px;
+    border: 2px solid #e0e0e0;
+}
+
+.rep-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.rep-details strong {
+    display: block;
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.rep-details small {
+    color: var(--text-secondary);
+    line-height: 1.3;
 }

@@ -94,21 +94,7 @@
 
             <!-- Dashboard Section -->
             <section id="dashboardSection" class="dashboard-section" style="display: none;">
-                <!-- Navigation Tabs -->
-                <div class="admin-nav">
-                    <button class="nav-tab active" data-tab="overview">
-                        <i class="fas fa-chart-line"></i> Overview
-                    </button>
-                    <button class="nav-tab" data-tab="meetings">
-                        <i class="fas fa-clock"></i> Pending Requests
-                    </button>
-                    <button class="nav-tab" data-tab="events">
-                        <i class="fas fa-calendar"></i> Events
-                    </button>
-                    <button class="nav-tab" data-tab="sales-reps">
-                        <i class="fas fa-users"></i> Sales Reps
-                    </button>
-                </div>
+                <!-- Navigation removed - using clickable stat cards instead -->
 
                 <!-- Overview Tab -->
                 <div id="overviewTab" class="tab-content active">
@@ -125,7 +111,7 @@
                     </div>
                     
                     <div class="stats-grid">
-                        <div class="stat-card">
+                        <div class="stat-card clickable-card" data-tab="events" title="Click to manage events">
                             <div class="stat-icon">
                                 <i class="fas fa-calendar-alt"></i>
                             </div>
@@ -135,7 +121,7 @@
                             </div>
                         </div>
                         
-                        <div class="stat-card">
+                        <div class="stat-card clickable-card" data-tab="sales-reps" title="Click to manage sales team">
                             <div class="stat-icon">
                                 <i class="fas fa-users"></i>
                             </div>
@@ -145,7 +131,7 @@
                             </div>
                         </div>
                         
-                        <div class="stat-card">
+                        <div class="stat-card clickable-card" data-tab="meetings" title="Click to view pending requests">
                             <div class="stat-icon">
                                 <i class="fas fa-clock"></i>
                             </div>
@@ -160,8 +146,8 @@
                                 <i class="fas fa-handshake"></i>
                             </div>
                             <div class="stat-content">
-                                <h4 id="totalMeetings">-</h4>
-                                <p>Total Meetings</p>
+                                <h4 id="upcomingMeetings">-</h4>
+                                <p>Upcoming Meetings</p>
                             </div>
                         </div>
                     </div>
@@ -200,20 +186,7 @@
                         </div>
                     </div>
                     
-                    <div class="pending-stats">
-                        <div class="pending-stat-item">
-                            <span class="stat-number" id="todayRequests">0</span>
-                            <span class="stat-label">Today</span>
-                        </div>
-                        <div class="pending-stat-item">
-                            <span class="stat-number" id="weekRequests">0</span>
-                            <span class="stat-label">This Week</span>
-                        </div>
-                        <div class="pending-stat-item">
-                            <span class="stat-number" id="urgentRequests">0</span>
-                            <span class="stat-label">Urgent</span>
-                        </div>
-                    </div>
+
                     
                     <div id="pendingRequestsContainer" class="requests-container">
                         <!-- Pending requests will be loaded here -->
