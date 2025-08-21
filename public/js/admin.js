@@ -569,47 +569,59 @@ class AdminApp {
             return;
         }
         
+        // Map event logos based on event names
+        const getEventLogo = (eventName) => {
+            const logos = {
+                'GBTA Convention': 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=200&h=100&fit=crop&crop=center&q=80', // Business/travel theme  
+                'Commercial Payments International Global Summit': 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=200&h=100&fit=crop&crop=center&q=80', // Finance/payment theme
+                'NACHA Payments Conference': 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=200&h=100&fit=crop&crop=center&q=80', // Banking/ACH theme
+                'Sibos': 'https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=200&h=100&fit=crop&crop=center&q=80' // Global finance theme
+            };
+            return logos[eventName] || 'https://images.unsplash.com/photo-1556740758-90de374c12ad?w=200&h=100&fit=crop&crop=center&q=80';
+        };
+        
         container.innerHTML = `
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Event Name</th>
-                        <th>Date Range</th>
-                        <th>Location</th>
-                        <th>Sales Reps</th>
-                        <th>Status</th>
-                        <th>Created</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${this.events.map(event => `
-                        <tr>
-                            <td>
-                                <strong>${window.utils.escapeHtml(event.name)}</strong><br>
-                                <small>${window.utils.escapeHtml(window.utils.truncateText(event.description || 'No description', 100))}</small>
-                            </td>
-                            <td>
-                                ${window.utils.formatDate(event.start_date)} - ${window.utils.formatDate(event.end_date)}
-                            </td>
-                            <td>
-                                ${window.utils.escapeHtml(event.location || 'Location TBD')}
-                            </td>
-                            <td>
-                                <span class="badge badge-info">${event.sales_rep_count} assigned</span>
-                            </td>
-                            <td>
+            <div class="events-grid-professional">
+                ${this.events.map(event => `
+                    <div class="event-card-professional">
+                        <div class="event-image-container">
+                            <img src="${getEventLogo(event.name)}" alt="${window.utils.escapeHtml(event.name)}" class="event-logo" onerror="this.src='https://images.unsplash.com/photo-1556740758-90de374c12ad?w=200&h=100&fit=crop&crop=center&q=80'">
+                        </div>
+                        <div class="event-details">
+                            <div class="event-header">
+                                <h4>${window.utils.escapeHtml(event.name)}</h4>
                                 <span class="status-badge ${event.status}">
                                     <i class="fas fa-calendar-check"></i>
                                     ${event.status}
                                 </span>
-                            </td>
-                            <td>
-                                ${window.utils.formatDateTime(event.created_at)}
-                            </td>
-                        </tr>
-                    `).join('')}
-                </tbody>
-            </table>
+                            </div>
+                            <p class="event-description">${window.utils.escapeHtml(window.utils.truncateText(event.description || 'No description', 120))}</p>
+                            <div class="event-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>${window.utils.formatDate(event.start_date)} - ${window.utils.formatDate(event.end_date)}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>${window.utils.escapeHtml(event.location || 'Location TBD')}</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>${event.sales_rep_count || 0} reps assigned</span>
+                                </div>
+                            </div>
+                            <div class="event-actions">
+                                <button class="btn btn-sm btn-outline-primary edit-event" data-event-id="${event.id}">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                                <button class="btn btn-sm btn-outline-info view-event" data-event-id="${event.id}">
+                                    <i class="fas fa-eye"></i> View
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
         `;
     }
 
