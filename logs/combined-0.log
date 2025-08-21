@@ -2009,3 +2009,65 @@ SyntaxError: Missing catch or finally after try
 2025-08-21T04:50:50: ✅ User found: { id: 1, email: 'admin@company.com', role: 'admin' }
 2025-08-21T04:50:51: ✅ Password verified for: admin@company.com
 2025-08-21T04:50:51: ✅ JWT token generated for: admin@company.com
+2025-08-21T04:54:50: 🔐 Login attempt: { email: 'admin@company.com', hasPassword: true }
+2025-08-21T04:54:50: ✅ User found: { id: 1, email: 'admin@company.com', role: 'admin' }
+2025-08-21T04:54:51: ✅ Password verified for: admin@company.com
+2025-08-21T04:54:51: ✅ JWT token generated for: admin@company.com
+2025-08-21T15:25:23: SIGINT received, shutting down gracefully
+2025-08-21T15:25:23: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-21T15:25:23: 📊 Admin panel: http://localhost:3000/admin
+2025-08-21T15:25:23: 🌐 Main site: http://localhost:3000
+2025-08-21T15:25:23: 💡 Environment: production
+2025-08-21T15:26:39: SIGINT received, shutting down gracefully
+2025-08-21T15:26:39: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-21T15:26:39: 📊 Admin panel: http://localhost:3000/admin
+2025-08-21T15:26:39: 🌐 Main site: http://localhost:3000
+2025-08-21T15:26:39: 💡 Environment: production
+2025-08-21T15:37:01: 🔐 Login attempt: { email: 'admin@company.com', hasPassword: true }
+2025-08-21T15:37:01: ✅ User found: { id: 1, email: 'admin@company.com', role: 'admin' }
+2025-08-21T15:37:01: ✅ Password verified for: admin@company.com
+2025-08-21T15:37:01: ✅ JWT token generated for: admin@company.com
+2025-08-21T15:37:02: 📋 Fetching all meeting requests
+2025-08-21T15:37:02: 👥 Fetching all sales reps for admin
+2025-08-21T15:37:02: ✅ Found 0 meeting requests
+2025-08-21T15:37:02: 📅 Fetching all events
+2025-08-21T15:37:02: ✅ Found 4 sales reps for admin
+2025-08-21T15:37:02: 📊 Fetching pending requests statistics
+2025-08-21T15:37:02: ✅ Found 4 events
+2025-08-21T15:37:02: ✅ Pending requests statistics fetched: { today: 0, week: 0, urgent: 0, total: 0 }
+2025-08-21T15:37:12: 📋 Fetching meeting request search
+2025-08-21T15:37:17: 📅 Fetching all events
+2025-08-21T15:37:17: ✅ Found 4 events
+2025-08-21T15:37:19: 📊 Fetching pending requests statistics
+2025-08-21T15:37:19: 📋 Fetching all meeting requests
+2025-08-21T15:37:19: ✅ Pending requests statistics fetched: { today: 0, week: 0, urgent: 0, total: 0 }
+2025-08-21T15:37:19: 📅 Fetching all events
+2025-08-21T15:37:19: ✅ Found 0 meeting requests
+2025-08-21T15:37:19: 👥 Fetching all sales reps for admin
+2025-08-21T15:37:19: ✅ Found 4 events
+2025-08-21T15:37:19: ✅ Found 4 sales reps for admin
+2025-08-21T15:38:13: 📋 Fetching meeting request search
+2025-08-21T15:38:47: 📋 Fetching all meeting requests
+2025-08-21T15:38:47: 👥 Fetching all sales reps for admin
+2025-08-21T15:38:47: 📊 Fetching pending requests statistics
+2025-08-21T15:38:47: ✅ Found 0 meeting requests
+2025-08-21T15:38:47: ✅ Found 4 sales reps for admin
+2025-08-21T15:38:47: 📅 Fetching all events
+2025-08-21T15:38:47: ✅ Pending requests statistics fetched: { today: 0, week: 0, urgent: 0, total: 0 }
+2025-08-21T15:38:47: ✅ Found 4 events
+2025-08-21T15:40:44: SIGINT received, shutting down gracefully
+2025-08-21T15:40:45: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-21T15:40:45: 📊 Admin panel: http://localhost:3000/admin
+2025-08-21T15:40:45: 🌐 Main site: http://localhost:3000
+2025-08-21T15:40:45: 💡 Environment: production
+2025-08-21T15:41:50: 📋 Fetching meeting request search
+2025-08-21T15:42:24: 🔐 Login attempt: { email: 'admin@company.com', hasPassword: true }
+2025-08-21T15:42:24: ✅ User found: { id: 1, email: 'admin@company.com', role: 'admin' }
+2025-08-21T15:42:25: ✅ Password verified for: admin@company.com
+2025-08-21T15:42:25: ✅ JWT token generated for: admin@company.com
+2025-08-21T15:42:25: 📋 Fetching meeting request search
+2025-08-21T15:43:55: SIGINT received, shutting down gracefully
+2025-08-21T15:43:56: 🚀 Corporate Events Scheduler running on port 3000
+2025-08-21T15:43:56: 📊 Admin panel: http://localhost:3000/admin
+2025-08-21T15:43:56: 🌐 Main site: http://localhost:3000
+2025-08-21T15:43:56: 💡 Environment: production

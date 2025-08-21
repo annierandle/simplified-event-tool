@@ -259,123 +259,6 @@ router.get('/', (req, res) => {
 });
 
 // Get meeting request by ID
-router.get('/search', (req, res) => {
-    const { 
-        page = 1, 
-        limit = 10, 
-        status = '', 
-        eventId = '', 
-        salesRepId = '',
-        search = ''
-    } = req.query;
-    
-    const offset = (page - 1) * limit;
-    
-    let query = `
-        SELECT 
-            mr.*,
-            e.name as event_name,
-            e.location as event_location,
-            sr.name as sales_rep_name,
-            sr.email as sales_rep_email,
-            sr.department as sales_rep_department
-        FROM meeting_requests mr
-        JOIN events e ON mr.event_id = e.id
-        JOIN sales_reps sr ON mr.sales_rep_id = sr.id
-        WHERE 1=1
-    `;
-    
-    let params = [];
-    
-    if (status) {
-        query += ` AND mr.status = ?`;
-        params.push(status);
-    }
-    
-    if (eventId) {
-        query += ` AND mr.event_id = ?`;
-        params.push(eventId);
-    }
-    
-    if (salesRepId) {
-        query += ` AND mr.sales_rep_id = ?`;
-        params.push(salesRepId);
-    }
-    
-    if (search) {
-        query += ` AND (mr.client_name LIKE ? OR mr.client_email LIKE ? OR mr.client_company LIKE ?)`;
-        params.push(`%${search}%`, `%${search}%`, `%${search}%`);
-    }
-    
-    query += ` ORDER BY mr.created_at DESC LIMIT ? OFFSET ?`;
-    params.push(parseInt(limit), parseInt(offset));
-    
-    db.all(query, params, (err, rows) => {
-        if (err) {
-            console.error('❌ Error searching meeting requests:', err);
-            return res.status(500).json({
-                success: false,
-                error: 'Database error'
-            });
-        }
-        
-        // Get total count for pagination
-        let countQuery = `
-            SELECT COUNT(*) as total 
-            FROM meeting_requests mr
-            JOIN events e ON mr.event_id = e.id
-            JOIN sales_reps sr ON mr.sales_rep_id = sr.id
-            WHERE 1=1
-        `;
-        
-        let countParams = [];
-        
-        if (status) {
-            countQuery += ` AND mr.status = ?`;
-            countParams.push(status);
-        }
-        
-        if (eventId) {
-            countQuery += ` AND mr.event_id = ?`;
-            countParams.push(eventId);
-        }
-        
-        if (salesRepId) {
-            countQuery += ` AND mr.sales_rep_id = ?`;
-            countParams.push(salesRepId);
-        }
-        
-        if (search) {
-            countQuery += ` AND (mr.client_name LIKE ? OR mr.client_email LIKE ? OR mr.client_company LIKE ?)`;
-            countParams.push(`%${search}%`, `%${search}%`, `%${search}%`);
-        }
-        
-        db.get(countQuery, countParams, (err, countResult) => {
-            if (err) {
-                console.error('❌ Error counting meeting requests:', err);
-                return res.status(500).json({
-                    success: false,
-                    error: 'Database error'
-                });
-            }
-            
-            const totalPages = Math.ceil(countResult.total / limit);
-            
-            res.json({
-                success: true,
-                data: rows,
-                pagination: {
-                    currentPage: parseInt(page),
-                    totalPages,
-                    totalItems: countResult.total,
-                    itemsPerPage: parseInt(limit),
-                    hasNextPage: page < totalPages,
-                    hasPrevPage: page > 1
-                }
-            });
-        });
-    });
-});
 router.get('/:id', (req, res) => {
     const meetingId = req.params.id;
     console.log(`📋 Fetching meeting request ${meetingId}`);
@@ -550,6 +433,123 @@ router.put('/:id/status', (req, res) => {
 });
 
 // Get meeting requests with filters and pagination
+router.get('/search', (req, res) => {
+    const { 
+        page = 1, 
+        limit = 10, 
+        status = '', 
+        eventId = '', 
+        salesRepId = '',
+        search = ''
+    } = req.query;
+    
+    const offset = (page - 1) * limit;
+    
+    let query = `
+        SELECT 
+            mr.*,
+            e.name as event_name,
+            e.location as event_location,
+            sr.name as sales_rep_name,
+            sr.email as sales_rep_email,
+            sr.department as sales_rep_department
+        FROM meeting_requests mr
+        JOIN events e ON mr.event_id = e.id
+        JOIN sales_reps sr ON mr.sales_rep_id = sr.id
+        WHERE 1=1
+    `;
+    
+    let params = [];
+    
+    if (status) {
+        query += ` AND mr.status = ?`;
+        params.push(status);
+    }
+    
+    if (eventId) {
+        query += ` AND mr.event_id = ?`;
+        params.push(eventId);
+    }
+    
+    if (salesRepId) {
+        query += ` AND mr.sales_rep_id = ?`;
+        params.push(salesRepId);
+    }
+    
+    if (search) {
+        query += ` AND (mr.client_name LIKE ? OR mr.client_email LIKE ? OR mr.client_company LIKE ?)`;
+        params.push(`%${search}%`, `%${search}%`, `%${search}%`);
+    }
+    
+    query += ` ORDER BY mr.created_at DESC LIMIT ? OFFSET ?`;
+    params.push(parseInt(limit), parseInt(offset));
+    
+    db.all(query, params, (err, rows) => {
+        if (err) {
+            console.error('❌ Error searching meeting requests:', err);
+            return res.status(500).json({
+                success: false,
+                error: 'Database error'
+            });
+        }
+        
+        // Get total count for pagination
+        let countQuery = `
+            SELECT COUNT(*) as total 
+            FROM meeting_requests mr
+            JOIN events e ON mr.event_id = e.id
+            JOIN sales_reps sr ON mr.sales_rep_id = sr.id
+            WHERE 1=1
+        `;
+        
+        let countParams = [];
+        
+        if (status) {
+            countQuery += ` AND mr.status = ?`;
+            countParams.push(status);
+        }
+        
+        if (eventId) {
+            countQuery += ` AND mr.event_id = ?`;
+            countParams.push(eventId);
+        }
+        
+        if (salesRepId) {
+            countQuery += ` AND mr.sales_rep_id = ?`;
+            countParams.push(salesRepId);
+        }
+        
+        if (search) {
+            countQuery += ` AND (mr.client_name LIKE ? OR mr.client_email LIKE ? OR mr.client_company LIKE ?)`;
+            countParams.push(`%${search}%`, `%${search}%`, `%${search}%`);
+        }
+        
+        db.get(countQuery, countParams, (err, countResult) => {
+            if (err) {
+                console.error('❌ Error counting meeting requests:', err);
+                return res.status(500).json({
+                    success: false,
+                    error: 'Database error'
+                });
+            }
+            
+            const totalPages = Math.ceil(countResult.total / limit);
+            
+            res.json({
+                success: true,
+                data: rows,
+                pagination: {
+                    currentPage: parseInt(page),
+                    totalPages,
+                    totalItems: countResult.total,
+                    itemsPerPage: parseInt(limit),
+                    hasNextPage: page < totalPages,
+                    hasPrevPage: page > 1
+                }
+            });
+        });
+    });
+});
 
 // Test email configuration endpoint
 router.get('/test/email-config', async (req, res) => {
