@@ -3,14 +3,14 @@ const router = express.Router();
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
-const OutlookService = require('../utils/outlookService');
+// const OutlookService = require('../utils/outlookService');
 
 // Database connection
 const dbPath = path.join(__dirname, '../../database.sqlite');
 const db = new sqlite3.Database(dbPath);
 
-// Initialize Outlook service
-const outlookService = new OutlookService();
+// Initialize Outlook service (temporarily disabled to prevent crashes)
+// const outlookService = new OutlookService();
 
 // Request a meeting
 router.post('/request', async (req, res) => {
@@ -163,23 +163,25 @@ router.post('/request', async (req, res) => {
                                 });
                             }
                             
-                            // Send confirmation email
+                            // Send confirmation email (temporarily disabled)
                             try {
-                                const emailResult = await outlookService.sendMeetingRequestEmail({
-                                    meeting: meetingData,
-                                    event: {
-                                        name: meetingData.event_name,
-                                        location: meetingData.event_location,
-                                        start_date: meetingData.event_start_date,
-                                        end_date: meetingData.event_end_date
-                                    },
-                                    salesRep: {
-                                        name: meetingData.sales_rep_name,
-                                        email: meetingData.sales_rep_email,
-                                        department: meetingData.sales_rep_department
-                                    },
-                                    status: 'pending'
-                                });
+                                console.log('📧 Email functionality temporarily disabled - Meeting request received');
+                                const emailResult = { success: true, message: 'Email temporarily disabled' };
+                                // const emailResult = await outlookService.sendMeetingRequestEmail({
+                                //     meeting: meetingData,
+                                //     event: {
+                                //         name: meetingData.event_name,
+                                //         location: meetingData.event_location,
+                                //         start_date: meetingData.event_start_date,
+                                //         end_date: meetingData.event_end_date
+                                //     },
+                                //     salesRep: {
+                                //         name: meetingData.sales_rep_name,
+                                //         email: meetingData.sales_rep_email,
+                                //         department: meetingData.sales_rep_department
+                                //     },
+                                //     status: 'pending'
+                                // });
                                 
                                 console.log('📧 Email result:', emailResult);
                                 
@@ -367,41 +369,45 @@ router.put('/:id/status', (req, res) => {
             let emailResult = { success: false };
             if (['approved', 'rejected', 'completed'].includes(status)) {
                 try {
-                    emailResult = await outlookService.sendMeetingRequestEmail({
-                        meeting: updatedMeeting,
-                        event: {
-                            name: updatedMeeting.event_name,
-                            location: updatedMeeting.event_location,
-                            start_date: updatedMeeting.event_start_date,
-                            end_date: updatedMeeting.event_end_date
-                        },
-                        salesRep: {
-                            name: updatedMeeting.sales_rep_name,
-                            email: updatedMeeting.sales_rep_email,
-                            department: updatedMeeting.sales_rep_department
-                        },
-                        status: status
-                    });
+                    console.log('📧 Email functionality temporarily disabled - Status update');
+                    emailResult = { success: true, message: 'Email temporarily disabled' };
+                    // emailResult = await outlookService.sendMeetingRequestEmail({
+                    //     meeting: updatedMeeting,
+                    //     event: {
+                    //         name: updatedMeeting.event_name,
+                    //         location: updatedMeeting.event_location,
+                    //         start_date: updatedMeeting.event_start_date,
+                    //         end_date: updatedMeeting.event_end_date
+                    //     },
+                    //     salesRep: {
+                    //         name: updatedMeeting.sales_rep_name,
+                    //         email: updatedMeeting.sales_rep_email,
+                    //         department: updatedMeeting.sales_rep_department
+                    //     },
+                    //     status: status
+                    // });
                     
                     console.log(`📧 Status update email result:`, emailResult);
                     
                     // Create calendar event if approved
                     if (status === 'approved') {
                         try {
-                            const calendarResult = await outlookService.createCalendarEvent({
-                                meeting: updatedMeeting,
-                                event: {
-                                    name: updatedMeeting.event_name,
-                                    location: updatedMeeting.event_location,
-                                    start_date: updatedMeeting.event_start_date,
-                                    end_date: updatedMeeting.event_end_date
-                                },
-                                salesRep: {
-                                    name: updatedMeeting.sales_rep_name,
-                                    email: updatedMeeting.sales_rep_email,
-                                    department: updatedMeeting.sales_rep_department
-                                }
-                            });
+                            console.log('📅 Calendar functionality temporarily disabled');
+                            const calendarResult = { success: true, message: 'Calendar temporarily disabled' };
+                            // const calendarResult = await outlookService.createCalendarEvent({
+                            //     meeting: updatedMeeting,
+                            //     event: {
+                            //         name: updatedMeeting.event_name,
+                            //         location: updatedMeeting.event_location,
+                            //         start_date: updatedMeeting.event_start_date,
+                            //         end_date: updatedMeeting.event_end_date
+                            //     },
+                            //     salesRep: {
+                            //         name: updatedMeeting.sales_rep_name,
+                            //         email: updatedMeeting.sales_rep_email,
+                            //         department: updatedMeeting.sales_rep_department
+                            //     }
+                            // });
                             
                             console.log(`📅 Calendar event result:`, calendarResult);
                         } catch (calendarError) {
