@@ -489,36 +489,6 @@ class AdminApp {
     renderMeetings(meetingsToRender = null) {
         return this.renderPendingRequests(meetingsToRender);
     }
-        
-        // Bind action buttons
-        container.querySelectorAll('.view-meeting').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const meetingId = e.target.closest('[data-meeting-id]').dataset.meetingId;
-                this.viewMeeting(meetingId);
-            });
-        });
-        
-        container.querySelectorAll('.approve-meeting').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const meetingId = e.target.closest('[data-meeting-id]').dataset.meetingId;
-                this.updateMeetingStatus(meetingId, 'approved');
-            });
-        });
-        
-        container.querySelectorAll('.reject-meeting').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const meetingId = e.target.closest('[data-meeting-id]').dataset.meetingId;
-                this.updateMeetingStatus(meetingId, 'rejected');
-            });
-        });
-        
-        container.querySelectorAll('.update-status').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const meetingId = e.target.closest('[data-meeting-id]').dataset.meetingId;
-                this.showStatusModal('', meetingId);
-            });
-        });
-    }
 
     async loadEvents() {
         try {
