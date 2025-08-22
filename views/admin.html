@@ -103,7 +103,7 @@
                         </div>
                         <div class="dashboard-actions">
                             <button id="refreshDashboard" class="btn btn-outline">
-                                <i class="fas fa-sync-alt"></i> Refresh
+                                <i class="fas fa-sync-alt"></i>
                             </button>
                         </div>
                     </div>
@@ -177,7 +177,7 @@
                         <div class="tab-controls">
                             <input type="search" id="meetingSearchInput" placeholder="Search requests..." class="form-control">
                             <button id="refreshMeetingsBtn" class="btn btn-secondary">
-                                <i class="fas fa-sync-alt"></i> Refresh
+                                <i class="fas fa-sync-alt"></i>
                             </button>
                             <button id="bulkApprovalBtn" class="btn btn-success" style="display: none;">
                                 <i class="fas fa-check-double"></i> Bulk Approve
@@ -210,7 +210,7 @@
                                 <i class="fas fa-plus"></i> Add Event
                             </button>
                             <button id="refreshEventsBtn" class="btn btn-secondary">
-                                <i class="fas fa-sync-alt"></i> Refresh
+                                <i class="fas fa-sync-alt"></i>
                             </button>
                         </div>
                     </div>
@@ -241,7 +241,7 @@
                                 <i class="fas fa-user-plus"></i> Add Sales Rep
                             </button>
                             <button id="refreshRepsBtn" class="btn btn-secondary">
-                                <i class="fas fa-sync-alt"></i> Refresh
+                                <i class="fas fa-sync-alt"></i>
                             </button>
                         </div>
                     </div>
@@ -395,7 +395,7 @@
     <div id="salesRepEditModal" class="modal">
         <div class="modal-content modal-large">
             <div class="modal-header">
-                <h4 class="modal-title">Edit Sales Representative</h4>
+                <h4 class="modal-title">Add Sales Representative</h4>
                 <button class="modal-close">&times;</button>
             </div>
             <div class="modal-body">
@@ -430,11 +430,11 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="editSalesRepStatus" class="form-label">Availability Status *</label>
-                        <select id="editSalesRepStatus" class="form-control" required>
-                            <option value="available">Available</option>
-                            <option value="unavailable">Unavailable</option>
+                        <label for="editSalesRepEvents" class="form-label">Assign to Events</label>
+                        <select id="editSalesRepEvents" class="form-control" multiple size="5">
+                            <!-- Events will be loaded dynamically -->
                         </select>
+                        <small class="form-text text-muted">Hold Ctrl (or Cmd) to select multiple events</small>
                     </div>
                     
                     <div class="form-group">

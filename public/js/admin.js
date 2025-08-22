@@ -264,11 +264,10 @@ class AdminApp {
             console.log('📊 Loading dashboard data...');
             
             // Load basic stats
-            const [eventsResponse, salesRepsResponse, meetingsResponse, pendingStatsResponse] = await Promise.all([
+            const [eventsResponse, salesRepsResponse, meetingsResponse] = await Promise.all([
                 window.apiClient.getEvents(),
                 window.apiClient.request('GET', '/sales-reps/admin/all'),
-                window.apiClient.getMeetings(),
-                window.apiClient.request('GET', '/meetings/admin/pending-stats')
+                window.apiClient.getMeetings()
             ]);
             
             // Update stat cards
@@ -290,15 +289,14 @@ class AdminApp {
                 document.getElementById('totalSalesReps').textContent = '0';
             }
             
-            if (pendingStatsResponse.success) {
-                const pendingCount = pendingStatsResponse.data.total || 0;
-                document.getElementById('pendingRequests').textContent = pendingCount;
-                console.log(`📊 Pending requests: ${pendingCount}`);
-            } else {
-                // Fallback: count pending from meetings data
+            // Calculate pending requests from meetings data
+            if (meetingsResponse.success) {
                 const meetings = meetingsResponse.data.data || meetingsResponse.data || [];
                 const pendingCount = meetings.filter(meeting => meeting.status === 'pending').length;
                 document.getElementById('pendingRequests').textContent = pendingCount;
+                console.log(`📊 Pending requests: ${pendingCount} out of ${meetings.length} total meetings`);
+            } else {
+                document.getElementById('pendingRequests').textContent = '0';
             }
             
             if (meetingsResponse.success) {
@@ -717,9 +715,9 @@ class AdminApp {
                                 <span class="badge badge-info">${rep.event_count} events</span>
                             </td>
                             <td>
-                                <span class="status-badge ${rep.availability_status}">
-                                    <i class="fas fa-user-check"></i>
-                                    ${rep.availability_status}
+                                <span class="badge badge-primary">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    ${rep.event_count || 0} EVENTS
                                 </span>
                             </td>
                             <td>
@@ -1237,9 +1235,43 @@ class AdminApp {
         modal.classList.add('show');
     }
 
-    showSalesRepEditModal(repId = null) {
+    async loadEventsForSalesRep() {
+        try {
+            const response = await window.apiClient.getEvents();
+            if (response.success) {
+                const events = response.data.data || response.data || [];
+                const eventsSelect = document.getElementById('editSalesRepEvents');
+                
+                eventsSelect.innerHTML = '';
+                events.forEach(event => {
+                    const option = document.createElement('option');
+                    option.value = event.id;
+                    option.textContent = `${event.title} (${window.utils.formatDate(event.date)})`;
+                    eventsSelect.appendChild(option);
+                });
+            }
+        } catch (error) {
+            console.error('Failed to load events:', error);
+        }
+    }
+
+    async loadSalesRepEvents(repId) {
+        try {
+            // This would load the events assigned to a specific sales rep
+            // For now, we'll just clear the selection since we're adding a new system
+            const eventsSelect = document.getElementById('editSalesRepEvents');
+            eventsSelect.value = [];
+        } catch (error) {
+            console.error('Failed to load sales rep events:', error);
+        }
+    }
+
+    async showSalesRepEditModal(repId = null) {
         const modal = document.getElementById('salesRepEditModal');
         const form = document.getElementById('salesRepEditForm');
+        
+        // Load events for the dropdown
+        await this.loadEventsForSalesRep();
         
         if (repId) {
             const rep = this.salesReps.find(r => r.id == repId);
@@ -1250,7 +1282,9 @@ class AdminApp {
                 document.getElementById('editSalesRepPhone').value = rep.phone || '';
                 document.getElementById('editSalesRepDepartment').value = rep.department || '';
                 document.getElementById('editSalesRepBio').value = rep.bio || '';
-                document.getElementById('editSalesRepStatus').value = rep.availability_status;
+                
+                // Load rep's assigned events (if any)
+                await this.loadSalesRepEvents(repId);
                 
                 // Show current photo if exists
                 if (rep.photo_url) {
@@ -1328,13 +1362,17 @@ class AdminApp {
             const form = document.getElementById('salesRepEditForm');
             
             const repId = document.getElementById('editSalesRepId').value;
+            const selectedEvents = Array.from(document.getElementById('editSalesRepEvents').selectedOptions)
+                                      .map(option => option.value);
+            
             const repData = {
                 name: document.getElementById('editSalesRepName').value,
                 email: document.getElementById('editSalesRepEmail').value,
                 phone: document.getElementById('editSalesRepPhone').value,
                 department: document.getElementById('editSalesRepDepartment').value,
                 bio: document.getElementById('editSalesRepBio').value,
-                availability_status: document.getElementById('editSalesRepStatus').value
+                availability_status: selectedEvents.length > 0 ? 'available' : 'unavailable',
+                event_ids: selectedEvents
             };
             
             // Handle photo upload if file is selected
