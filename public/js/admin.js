@@ -123,7 +123,6 @@ class AdminApp {
     showLogin() {
         document.getElementById('loginSection').style.display = 'block';
         document.getElementById('dashboardSection').style.display = 'none';
-        document.getElementById('userInfo').style.display = 'none';
         document.getElementById('logoutBtn').style.display = 'none';
         this.isAuthenticated = false;
     }
@@ -131,7 +130,6 @@ class AdminApp {
     showDashboard() {
         document.getElementById('loginSection').style.display = 'none';
         document.getElementById('dashboardSection').style.display = 'block';
-        document.getElementById('userInfo').style.display = 'inline-flex';
         document.getElementById('logoutBtn').style.display = 'inline-flex';
         this.isAuthenticated = true;
         
@@ -168,9 +166,6 @@ class AdminApp {
             
             if (response.success) {
                 console.log('✅ Login successful:', response.data.user);
-                
-                // Update user info
-                document.getElementById('userName').textContent = response.data.user.name || response.data.user.email;
                 
                 // Show dashboard
                 this.showDashboard();
@@ -1107,7 +1102,7 @@ class AdminApp {
                             <span class="status-badge-admin ${event.status}">${event.status.toUpperCase()}</span>
                         </div>
                     </div>
-                    <p class="event-description-admin">${window.utils.escapeHtml((event.description || 'No description available').substring(0, 100))}${event.description && event.description.length > 100 ? '...' : ''}</p>
+
                     <div class="event-actions-admin">
                         <button class="btn btn-sm btn-outline edit-event-btn" data-event-id="${event.id}">
                             <i class="fas fa-edit"></i> Edit
