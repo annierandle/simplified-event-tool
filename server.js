@@ -41,6 +41,7 @@ app.use('/api/auth', require('./src/routes/auth'));
 app.use('/api/events', require('./src/routes/events'));
 app.use('/api/meetings', require('./src/routes/meetings'));
 app.use('/api/sales-reps', require('./src/routes/salesReps'));
+app.use('/api/uploads', require('./src/routes/uploads'));
 
 // Serve main pages
 app.get('/', (req, res) => {
@@ -49,6 +50,10 @@ app.get('/', (req, res) => {
 
 app.get('/admin', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'admin.html'));
+});
+
+app.get('/event/:id', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'event.html'));
 });
 
 // Health check endpoint

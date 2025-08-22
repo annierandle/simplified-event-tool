@@ -406,28 +406,59 @@ class CorporateEventsApp {
     showSection(sectionName) {
         console.log(`🔄 Switching to section: ${sectionName}`);
         
-        // Hide all sections
-        document.querySelectorAll('.section').forEach(section => {
-            section.style.display = 'none';
-        });
+        // Add loading class to prevent flashing
+        document.body.classList.add('section-loading');
         
-        // Hide hero if showing a section
+        // Get the target section first
+        const targetSection = document.getElementById(`${sectionName}Section`);
         const hero = document.querySelector('.hero');
         const features = document.querySelector('.features');
         
+        // Immediately hide all sections without fade for smoother transition
+        document.querySelectorAll('.section').forEach(section => {
+            if (section !== targetSection) {
+                section.style.display = 'none';
+                section.style.opacity = '0';
+            }
+        });
+        
+        // Handle hero and features visibility
         if (sectionName !== 'hero') {
-            if (hero) hero.style.display = 'none';
-            if (features) features.style.display = 'none';
+            if (hero) {
+                hero.style.display = 'none';
+                hero.style.opacity = '0';
+            }
+            if (features) {
+                features.style.display = 'none';
+                features.style.opacity = '0';
+            }
         } else {
-            if (hero) hero.style.display = 'block';
-            if (features) features.style.display = 'block';
+            if (hero) {
+                hero.style.display = 'block';
+                // Force reflow
+                hero.offsetHeight;
+                hero.style.opacity = '1';
+            }
+            if (features) {
+                features.style.display = 'block';
+                // Force reflow
+                features.offsetHeight;
+                features.style.opacity = '1';
+            }
         }
         
-        // Show selected section
-        const targetSection = document.getElementById(`${sectionName}Section`);
+        // Show target section immediately if it exists
         if (targetSection) {
             targetSection.style.display = 'block';
+            // Force reflow to ensure display is applied before opacity
+            targetSection.offsetHeight;
+            targetSection.style.opacity = '1';
         }
+        
+        // Remove loading class after transition
+        setTimeout(() => {
+            document.body.classList.remove('section-loading');
+        }, 100);
         
         this.currentSection = sectionName;
         
@@ -515,9 +546,7 @@ class CorporateEventsApp {
                         </div>
                     </div>
                     
-                    <p class="event-description">
-                        ${window.utils.escapeHtml(event.description || 'Connect with our team at this upcoming event and explore partnership opportunities.')}
-                    </p>
+
                     
                     <div class="event-actions">
                         ${isPast ? `
@@ -575,56 +604,52 @@ class CorporateEventsApp {
             return;
         }
         
-        container.innerHTML = this.salesReps.map(rep => `
-            <div class="card sales-rep-card" data-rep-id="${rep.id}">
-                <div class="card-header">
-                    <h4 class="card-title">${window.utils.escapeHtml(rep.name)}</h4>
-                    <div class="badge badge-info">${window.utils.escapeHtml(rep.department || 'General')}</div>
+        container.innerHTML = this.salesReps.map(rep => {
+            // Map names to image files
+            const imageMap = {
+                'Sarah Johnson': 'sarah-johnson.jpg',
+                'Michael Chen': 'michael-chen.jpg', 
+                'Emily Rodriguez': 'emily-rodriguez.jpg',
+                'David Thompson': 'david-thompson.jpg'
+            };
+            const imageName = imageMap[rep.name] || 'default-avatar.svg';
+            
+            return `
+                <div class="team-member-card" data-rep-id="${rep.id}">
+                    <div class="team-member-photo">
+                        <img src="/images/team/${imageName}" alt="${window.utils.escapeHtml(rep.name)}" class="team-member-avatar">
+                    </div>
+                    <div class="team-member-info">
+                        <h4 class="team-member-name">${window.utils.escapeHtml(rep.name)}</h4>
+                        <div class="team-member-department">${window.utils.escapeHtml(rep.department || 'General')}</div>
+                        <p class="team-member-bio">${window.utils.escapeHtml((rep.bio || 'Available for meetings').substring(0, 80))}${rep.bio && rep.bio.length > 80 ? '...' : ''}</p>
+                        <div class="team-member-availability">
+                            <i class="fas fa-calendar-check"></i>
+                            <span>${rep.event_count} events</span>
+                        </div>
+                    </div>
+                    <div class="team-member-actions">
+                        <button class="btn-team-contact schedule-with-rep" data-rep-id="${rep.id}">
+                            <i class="fas fa-calendar-plus"></i>
+                            <span>Schedule Meeting</span>
+                        </button>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <p class="card-text">
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:${rep.email}">${window.utils.escapeHtml(rep.email)}</a>
-                    </p>
-                    ${rep.phone ? `
-                        <p class="card-text">
-                            <i class="fas fa-phone"></i>
-                            <a href="tel:${rep.phone}">${window.utils.escapeHtml(rep.phone)}</a>
-                        </p>
-                    ` : ''}
-                    <p class="card-text bio">
-                        ${window.utils.escapeHtml(rep.bio || 'No bio available')}
-                    </p>
-                    <p class="card-text">
-                        <i class="fas fa-calendar-check"></i>
-                        <span class="badge badge-success">Available for ${rep.event_count} events</span>
-                    </p>
-                </div>
-                <div class="card-footer">
-                    <button class="btn btn-primary btn-sm view-rep-details" data-rep-id="${rep.id}">
-                        <i class="fas fa-eye"></i> View Details
-                    </button>
-                    <button class="btn btn-secondary btn-sm schedule-with-rep" data-rep-id="${rep.id}">
-                        <i class="fas fa-calendar-plus"></i> Schedule Meeting
-                    </button>
-                </div>
-            </div>
-        `).join('');
+            `;
+        }).join('');
         
         // Bind sales rep card buttons
-        container.querySelectorAll('.view-rep-details').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const repId = e.target.closest('[data-rep-id]').dataset.repId;
-                this.showSalesRepDetails(repId);
-            });
-        });
-        
         container.querySelectorAll('.schedule-with-rep').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 const repId = e.target.closest('[data-rep-id]').dataset.repId;
                 this.scheduleFromSalesRepId(repId);
             });
         });
+        
+        // Reinitialize Lucide icons
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
     }
 
     populateEventSelect() {
@@ -637,7 +662,7 @@ class CorporateEventsApp {
         select.innerHTML = '<option value="">Choose an event...</option>' + 
             activeEvents.map(event => `
                 <option value="${event.id}">
-                    ${window.utils.escapeHtml(event.name)} - ${window.utils.formatDate(event.start_date)}
+                    ${window.utils.escapeHtml(event.name)}
                 </option>
             `).join('');
     }
@@ -792,46 +817,13 @@ class CorporateEventsApp {
 
     async showEventDetails(eventId) {
         try {
-            const response = await window.apiClient.getEvent(eventId);
-            
-            if (response.success) {
-                const event = response.data;
-                const modal = document.getElementById('eventDetailsModal');
-                const content = document.getElementById('eventDetailsContent');
-                
-                content.innerHTML = `
-                    <div class="event-details">
-                        <h5>${window.utils.escapeHtml(event.name)}</h5>
-                        <p><strong>Date:</strong> ${window.utils.formatDate(event.start_date)} - ${window.utils.formatDate(event.end_date)}</p>
-                        <p><strong>Location:</strong> ${window.utils.escapeHtml(event.location || 'Location TBD')}</p>
-                        <p><strong>Description:</strong> ${window.utils.escapeHtml(event.description || 'No description available')}</p>
-                        
-                        <h6>Available Sales Representatives (${event.salesReps?.length || 0}):</h6>
-                        ${event.salesReps && event.salesReps.length > 0 ? `
-                            <div class="sales-reps-list">
-                                ${event.salesReps.map(rep => `
-                                    <div class="sales-rep-item">
-                                        <strong>${window.utils.escapeHtml(rep.name)}</strong>
-                                        <span class="badge badge-info">${window.utils.escapeHtml(rep.department || 'General')}</span>
-                                        <br>
-                                        <small>${window.utils.escapeHtml(rep.bio || 'No bio available')}</small>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        ` : '<p>No sales representatives assigned to this event.</p>'}
-                    </div>
-                `;
-                
-                this.selectedEvent = event;
-                modal.classList.add('show');
-                
-            } else {
-                throw new Error(response.error || 'Failed to load event details');
-            }
+            console.log(`📅 Navigating to event details page for event ${eventId}`);
+            // Navigate to dedicated event page instead of showing modal
+            window.location.href = `/event/${eventId}`;
             
         } catch (error) {
-            console.error('❌ Error loading event details:', error);
-            window.utils.showError('Failed to load event details. Please try again.');
+            console.error('❌ Error navigating to event details:', error);
+            window.utils.showError('Failed to navigate to event details. Please try again.');
         }
     }
 
@@ -916,7 +908,6 @@ class CorporateEventsApp {
 
     scheduleFromEvent() {
         if (this.selectedEvent) {
-            document.getElementById('eventDetailsModal').classList.remove('show');
             this.showSection('meetingRequest');
             
             // Pre-select the event

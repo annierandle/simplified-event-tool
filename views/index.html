@@ -39,9 +39,8 @@
                         <a href="#" id="navEvents" class="nav-link">Events</a>
                         <a href="#" id="navSalesReps" class="nav-link">Team</a>
                     </nav>
-                    <a href="/admin" class="btn-outline">
+                    <a href="/admin" class="admin-link">
                         <i data-lucide="settings"></i>
-                        Admin Panel
                     </a>
                 </div>
             </div>
@@ -179,19 +178,27 @@
             <!-- Sales Reps Section -->
             <section id="salesRepsSection" class="section" style="display: none;">
                 <div class="section-header">
-                    <h3>Our Sales Representatives</h3>
-                    <div class="section-controls">
-                        <input type="search" id="salesRepSearchInput" placeholder="Search sales reps..." class="form-control" style="width: 300px; display: inline-block;">
-                        <select id="departmentFilter" class="form-control" style="width: 200px; display: inline-block;">
+                    <h2 class="section-title">MEET OUR TEAM</h2>
+                    <p class="section-subtitle">Connect with our expert sales representatives at upcoming events</p>
+                </div>
+                
+                <div class="team-filters">
+                    <div class="filter-controls">
+                        <div class="search-input-wrapper">
+                            <i data-lucide="search"></i>
+                            <input type="search" id="salesRepSearchInput" placeholder="Search team members..." class="team-search-input">
+                        </div>
+                        <select id="departmentFilter" class="department-filter">
                             <option value="">All Departments</option>
                         </select>
-                        <button id="refreshSalesRepsBtn" class="btn btn-secondary btn-sm">
-                            <i class="fas fa-sync-alt"></i> Refresh
+                        <button id="refreshSalesRepsBtn" class="refresh-btn">
+                            <i data-lucide="refresh-cw"></i>
+                            <span>Refresh</span>
                         </button>
                     </div>
                 </div>
                 
-                <div id="salesRepsContainer" class="grid grid-3">
+                <div id="salesRepsContainer" class="team-members-grid">
                     <!-- Sales reps will be loaded here -->
                 </div>
                 

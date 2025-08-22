@@ -143,3 +143,16 @@
     at OutlookService.createCalendarEvent (/home/user/webapp/src/utils/outlookService.js:179:18)
     at Statement.<anonymous> (/home/user/webapp/src/routes/meetings.js:391:73)
     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+2025-08-21T04:01:27: ❌ Token verification error: TokenExpiredError: jwt expired
+    at /home/user/webapp/node_modules/jsonwebtoken/verify.js:190:21
+    at getSecret (/home/user/webapp/node_modules/jsonwebtoken/verify.js:97:14)
+    at module.exports [as verify] (/home/user/webapp/node_modules/jsonwebtoken/verify.js:101:10)
+    at /home/user/webapp/src/routes/auth.js:122:29
+    at Layer.handle [as handle_request] (/home/user/webapp/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/user/webapp/node_modules/express/lib/router/route.js:149:13)
+    at Route.dispatch (/home/user/webapp/node_modules/express/lib/router/route.js:119:3)
+    at Layer.handle [as handle_request] (/home/user/webapp/node_modules/express/lib/router/layer.js:95:5)
+    at /home/user/webapp/node_modules/express/lib/router/index.js:284:15
+    at Function.process_params (/home/user/webapp/node_modules/express/lib/router/index.js:346:12) {
+  expiredAt: 2025-08-21T02:31:55.000Z
+}

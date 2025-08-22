@@ -15,18 +15,21 @@
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header class="admin-header">
         <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <h1><i class="fas fa-cog"></i> Admin Panel</h1>
-                    <p>Corporate Events Management</p>
+            <div class="admin-header-content">
+                <div class="admin-brand">
+                    <div class="admin-logo">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <div class="admin-brand-text">
+                        <h1>Admin Panel</h1>
+                        <p>Corporate Events Management</p>
+                    </div>
                 </div>
-                <div class="nav-buttons">
-                    <span id="userInfo" class="user-info" style="display: none;">
-                        <i class="fas fa-user"></i> <span id="userName"></span>
-                    </span>
-                    <a href="/" class="btn btn-secondary">
+                <div class="admin-nav-buttons">
+
+                    <a href="/" class="btn btn-outline">
                         <i class="fas fa-home"></i> Main Site
                     </a>
                     <button id="logoutBtn" class="btn btn-danger" style="display: none;">
@@ -89,28 +92,24 @@
 
             <!-- Dashboard Section -->
             <section id="dashboardSection" class="dashboard-section" style="display: none;">
-                <!-- Navigation Tabs -->
-                <div class="admin-nav">
-                    <button class="nav-tab active" data-tab="overview">
-                        <i class="fas fa-tachometer-alt"></i> Overview
-                    </button>
-                    <button class="nav-tab" data-tab="meetings">
-                        <i class="fas fa-calendar-check"></i> Meeting Requests
-                    </button>
-                    <button class="nav-tab" data-tab="events">
-                        <i class="fas fa-calendar"></i> Events
-                    </button>
-                    <button class="nav-tab" data-tab="sales-reps">
-                        <i class="fas fa-users"></i> Sales Reps
-                    </button>
-                </div>
+                <!-- Navigation removed - using clickable stat cards instead -->
 
                 <!-- Overview Tab -->
                 <div id="overviewTab" class="tab-content active">
-                    <h3><i class="fas fa-chart-line"></i> Dashboard Overview</h3>
+                    <div class="dashboard-header">
+                        <div class="dashboard-title">
+                            <h2>Dashboard Overview</h2>
+                            <p>Manage your corporate events and meeting requests</p>
+                        </div>
+                        <div class="dashboard-actions">
+                            <button id="refreshDashboard" class="btn btn-outline">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        </div>
+                    </div>
                     
                     <div class="stats-grid">
-                        <div class="stat-card">
+                        <div class="stat-card clickable-card" data-tab="events" title="Click to manage events">
                             <div class="stat-icon">
                                 <i class="fas fa-calendar-alt"></i>
                             </div>
@@ -120,7 +119,7 @@
                             </div>
                         </div>
                         
-                        <div class="stat-card">
+                        <div class="stat-card clickable-card" data-tab="sales-reps" title="Click to manage sales team">
                             <div class="stat-icon">
                                 <i class="fas fa-users"></i>
                             </div>
@@ -130,13 +129,13 @@
                             </div>
                         </div>
                         
-                        <div class="stat-card">
+                        <div class="stat-card clickable-card" data-tab="meetings" title="Click to view pending requests">
                             <div class="stat-icon">
                                 <i class="fas fa-clock"></i>
                             </div>
                             <div class="stat-content">
-                                <h4 id="pendingMeetings">-</h4>
-                                <p>Pending Meetings</p>
+                                <h4 id="pendingRequests">-</h4>
+                                <p>Pending Requests</p>
                             </div>
                         </div>
                         
@@ -145,62 +144,78 @@
                                 <i class="fas fa-handshake"></i>
                             </div>
                             <div class="stat-content">
-                                <h4 id="totalMeetings">-</h4>
-                                <p>Total Meetings</p>
+                                <h4 id="upcomingMeetings">-</h4>
+                                <p>Upcoming Meetings</p>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="recent-activity">
-                        <h4><i class="fas fa-history"></i> Recent Activity</h4>
-                        <div id="recentMeetings" class="activity-list">
-                            <!-- Recent meetings will be loaded here -->
+                    <div class="quick-actions">
+                        <h4><i class="fas fa-bolt"></i> Quick Actions</h4>
+                        <div class="action-buttons">
+                            <button class="btn btn-primary action-btn" data-action="add-event">
+                                <i class="fas fa-plus"></i> Add New Event
+                            </button>
+                            <button class="btn btn-success action-btn" data-action="add-sales-rep">
+                                <i class="fas fa-user-plus"></i> Add Sales Rep
+                            </button>
+
+                            <button class="btn btn-outline action-btn" data-action="export-data">
+                                <i class="fas fa-download"></i> Export Data
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Meetings Tab -->
+                <!-- Pending Requests Tab -->
                 <div id="meetingsTab" class="tab-content">
+                    <button class="back-to-dashboard" onclick="adminApp.switchTab('overview')">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </button>
                     <div class="tab-header">
-                        <h3><i class="fas fa-calendar-check"></i> Meeting Requests</h3>
+                        <h3><i class="fas fa-clock"></i> Pending Requests</h3>
                         <div class="tab-controls">
-                            <select id="meetingStatusFilter" class="form-control">
-                                <option value="">All Status</option>
-                                <option value="pending">Pending</option>
-                                <option value="approved">Approved</option>
-                                <option value="rejected">Rejected</option>
-                                <option value="completed">Completed</option>
-                            </select>
-                            <input type="search" id="meetingSearchInput" placeholder="Search meetings..." class="form-control">
+                            <input type="search" id="meetingSearchInput" placeholder="Search requests..." class="form-control">
                             <button id="refreshMeetingsBtn" class="btn btn-secondary">
-                                <i class="fas fa-sync-alt"></i> Refresh
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                            <button id="bulkApprovalBtn" class="btn btn-success" style="display: none;">
+                                <i class="fas fa-check-double"></i> Bulk Approve
                             </button>
                         </div>
                     </div>
                     
-                    <div id="meetingsContainer" class="data-table">
-                        <!-- Meetings will be loaded here -->
+
+                    
+                    <div id="pendingRequestsContainer" class="requests-container">
+                        <!-- Pending requests will be loaded here -->
                     </div>
                     
                     <div id="meetingsLoading" class="loading-spinner" style="display: none;">
                         <div class="spinner"></div>
-                        <span>Loading meetings...</span>
+                        <span>Loading pending requests...</span>
                     </div>
                 </div>
 
                 <!-- Events Tab -->
                 <div id="eventsTab" class="tab-content">
+                    <button class="back-to-dashboard" onclick="adminApp.switchTab('overview')">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </button>
                     <div class="tab-header">
                         <h3><i class="fas fa-calendar"></i> Events Management</h3>
                         <div class="tab-controls">
                             <input type="search" id="eventSearchInput" placeholder="Search events..." class="form-control">
+                            <button id="addEventBtn" class="btn btn-primary">
+                                <i class="fas fa-plus"></i> Add Event
+                            </button>
                             <button id="refreshEventsBtn" class="btn btn-secondary">
-                                <i class="fas fa-sync-alt"></i> Refresh
+                                <i class="fas fa-sync-alt"></i>
                             </button>
                         </div>
                     </div>
                     
-                    <div id="eventsContainer" class="data-table">
+                    <div id="eventsContainer" class="events-grid-admin">
                         <!-- Events will be loaded here -->
                     </div>
                     
@@ -212,6 +227,9 @@
 
                 <!-- Sales Reps Tab -->
                 <div id="sales-repsTab" class="tab-content">
+                    <button class="back-to-dashboard" onclick="adminApp.switchTab('overview')">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </button>
                     <div class="tab-header">
                         <h3><i class="fas fa-users"></i> Sales Representatives</h3>
                         <div class="tab-controls">
@@ -219,13 +237,16 @@
                                 <option value="">All Departments</option>
                             </select>
                             <input type="search" id="repSearchInput" placeholder="Search sales reps..." class="form-control">
+                            <button id="addSalesRepBtn" class="btn btn-primary">
+                                <i class="fas fa-user-plus"></i> Add Sales Rep
+                            </button>
                             <button id="refreshRepsBtn" class="btn btn-secondary">
-                                <i class="fas fa-sync-alt"></i> Refresh
+                                <i class="fas fa-sync-alt"></i>
                             </button>
                         </div>
                     </div>
                     
-                    <div id="salesRepsContainer" class="data-table">
+                    <div id="salesRepsContainer" class="sales-reps-grid-admin">
                         <!-- Sales reps will be loaded here -->
                     </div>
                     
@@ -298,8 +319,175 @@
         </div>
     </div>
 
+    <!-- Event Edit Modal -->
+    <div id="eventEditModal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h4 class="modal-title">Edit Event</h4>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="eventEditForm" enctype="multipart/form-data">
+                    <input type="hidden" id="editEventId">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editEventName" class="form-label">Event Name *</label>
+                            <input type="text" id="editEventName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editEventStatus" class="form-label">Status *</label>
+                            <select id="editEventStatus" class="form-control" required>
+                                <option value="active">Active</option>
+                                <option value="past">Past</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editEventStartDate" class="form-label">Start Date *</label>
+                            <input type="date" id="editEventStartDate" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editEventEndDate" class="form-label">End Date *</label>
+                            <input type="date" id="editEventEndDate" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editEventLocation" class="form-label">Location *</label>
+                        <input type="text" id="editEventLocation" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editEventDescription" class="form-label">Description</label>
+                        <textarea id="editEventDescription" class="form-control" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editEventImage" class="form-label">Event Image</label>
+                        <div class="file-upload-area">
+                            <input type="file" id="editEventImage" class="form-control-file" accept="image/*">
+                            <div class="file-upload-text">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Click to upload or drag and drop</span>
+                            </div>
+                            <div id="currentEventImage" class="current-image" style="display: none;">
+                                <img src="" alt="Current event image">
+                                <button type="button" class="btn btn-sm btn-danger remove-image">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-close">Cancel</button>
+                <button id="saveEventBtn" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Save Changes
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sales Rep Edit Modal -->
+    <div id="salesRepEditModal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h4 class="modal-title">Add Sales Representative</h4>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="salesRepEditForm" enctype="multipart/form-data">
+                    <input type="hidden" id="editSalesRepId">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editSalesRepName" class="form-label">Full Name *</label>
+                            <input type="text" id="editSalesRepName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editSalesRepDepartment" class="form-label">Department *</label>
+                            <input type="text" id="editSalesRepDepartment" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editSalesRepEmail" class="form-label">Email *</label>
+                            <input type="email" id="editSalesRepEmail" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editSalesRepPhone" class="form-label">Phone</label>
+                            <input type="tel" id="editSalesRepPhone" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editSalesRepBio" class="form-label">Bio</label>
+                        <textarea id="editSalesRepBio" class="form-control" rows="4"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editSalesRepEvents" class="form-label">Assign to Events</label>
+                        <select id="editSalesRepEvents" class="form-control" multiple size="5">
+                            <!-- Events will be loaded dynamically -->
+                        </select>
+                        <small class="form-text text-muted">Hold Ctrl (or Cmd) to select multiple events</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editSalesRepPhoto" class="form-label">Profile Photo</label>
+                        <div class="file-upload-area">
+                            <input type="file" id="editSalesRepPhoto" class="form-control-file" accept="image/*">
+                            <div class="file-upload-text">
+                                <i class="fas fa-user-circle"></i>
+                                <span>Click to upload or drag and drop</span>
+                            </div>
+                            <div id="currentSalesRepPhoto" class="current-image" style="display: none;">
+                                <img src="" alt="Current profile photo">
+                                <button type="button" class="btn btn-sm btn-danger remove-image">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-close">Cancel</button>
+                <button id="saveSalesRepBtn" class="btn btn-primary">
+                    <i class="fas fa-save"></i> Save Changes
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Request Details Modal -->
+    <div id="requestDetailsModal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h4 class="modal-title">Meeting Request Details</h4>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="requestDetailsContent">
+                    <!-- Request details will be loaded here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary modal-close">Close</button>
+                <button id="approveRequestBtn" class="btn btn-success">
+                    <i class="fas fa-check"></i> Approve
+                </button>
+                <button id="rejectRequestBtn" class="btn btn-danger">
+                    <i class="fas fa-times"></i> Reject
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript -->
-    <script src="/js/api.js"></script>
+    <script src="/js/utils.js"></script>\n    <script src="/js/apiClient.js"></script>
     <script src="/js/admin.js"></script>
 </body>
 </html>
